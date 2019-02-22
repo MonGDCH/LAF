@@ -11,7 +11,6 @@ return [
 	// 应用初始化
 	'bootstrap'		=> [
 		\Laf\hook\Bootstrap::class,
-		// \Laf\hook\Test::class
 	],
 
 	// 应用执行

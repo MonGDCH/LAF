@@ -31,24 +31,6 @@ class Counter extends Model
     protected $record_table = 'cnt_record';
 
     /**
-     * 数据库配置
-     *
-     * @var [type]
-     */
-    protected $config = [
-        // 服务器地址
-        'host'            => '127.0.0.1',
-        // 数据库名
-        'database'        => 'counter',
-        // 用户名
-        'username'        => 'root',
-        // 密码
-        'password'        => 'root',
-        // 端口
-        'port'            => '3306',
-    ];
-
-    /**
      * 增加计数
      * 注意： 已创建计数器标志索引，则设置pond计数池无效
      * 
