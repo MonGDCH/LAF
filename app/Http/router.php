@@ -8,6 +8,7 @@
 */
 
 $router->get('/', function(){
-	return 'Hello LAF! Version '.\FApi\App::VERSION;
+    $composer_config = json_decode(file_get_contents(ROOT_PATH . '/composer.json'), true);
+	return 'Hello LAF! Version '.$composer_config['version'];
 });
 
