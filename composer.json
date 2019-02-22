@@ -1,0 +1,19 @@
+{
+    "name": "administrator/laf",
+    "authors": [
+        {
+            "name": "MonGDCH",
+            "email": "985558837@qq.com"
+        }
+    ],
+    "require": {
+        "mongdch/mon-orm": "^2.0",
+        "mongdch/fapi": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Laf\\": "framework"
+        }
+    }
+}
