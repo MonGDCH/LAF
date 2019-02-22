@@ -74,12 +74,4 @@ return [
 		'secure'	=> '',
 		'httponly'	=> ''
 	],
-
-	/**
-	 * WxApi配置
-	 */
-	'wxApp'		=> [
-		'appid'		=> 'wx4a89252963af9046',
-		'secret'	=> 'd940fb1f187f7ffec4f616c5a3c2d2b9'
-	]
 ];
