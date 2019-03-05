@@ -4,6 +4,7 @@ namespace Laf\plug;
 use Exception;
 use ArrayAccess;
 use FApi\Container;
+use Laf\exception\ViewException;
 
 /**
 * 视图引擎
@@ -431,7 +432,7 @@ class View implements ArrayAccess
             return ob_get_clean();
 		}
 		else{
-			throw new Exception("Cannot find the requested view: " . $view);
+			throw new ViewException("Cannot find the requested view: " . $view);
 		}
 	}
 

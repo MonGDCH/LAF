@@ -12,112 +12,67 @@ use FApi\traits\Jump;
  */
 class Controller
 {
-	use Jump;
-
-	/**
-	 * 服务容器
-	 *
-	 * @var [type]
-	 */
-	protected $container;
-
-	/**
-	 * 请求实例
-	 *
-	 * @var [type]
-	 */
-	protected $request;
-
-	/**
-	 * 是否为API接口
-	 *
-	 * @var boolean
-	 */
-	protected $isApi = false;
-
-	/**
-	 * 返回数据类型
-	 *
-	 * @var string
-	 */
-	protected $dataType = 'json';
-
-	/**
-	 * 请求头
-	 *
-	 * @var array
-	 */
-	protected $headers = [];
-
-	/**
-     * 允许跨域的域名
-     *
-     * @var [type]
-     */
-    protected $allowOrigin = [];
+    use Jump;
 
     /**
-     * 允许跨域的请求方式
+     * 服务容器
      *
      * @var [type]
      */
-    protected $allowMethods = []; 
+    protected $container;
 
-	/**
-	 * 构造方法
-	 */
-	public function __construct()
-	{
-		$this->container = Container::instance();
-		$this->request = $this->container->make('request');
-	}
+    /**
+     * 请求实例
+     *
+     * @var [type]
+     */
+    protected $request;
 
-	/**
-	 * 返回错误信息
-	 *
-	 * @param  [type] $msg  [description]
-	 * @param  array  $data [description]
-	 * @return [type]       [description]
-	 */
-	protected function errorJson($msg, $data = [], $extend = [])
-	{
-		return $this->result(0, $msg, $data, $extend);
-	}
-
-	/**
-	 * 返回成功信息
-	 *
-	 * @param  [type] $msg  [description]
-	 * @param  array  $data [description]
-	 * @return [type]       [description]
-	 */
-	protected function successJson($msg, $data = [], $extend = [])
-	{
-		return $this->dataReturn(1, $msg, $data, $extend);
-	}
-
-	/**
-	 * 封装的json返回
-	 *
-	 * @param  [type] $code    状态码
-	 * @param  [type] $msg     描述信息
-	 * @param  array  $data    结果集
-	 * @param  array  $extend  扩展字段
-	 * @return [type]          [description]
-	 */
-    protected function dataReturn($code, $msg, $data = [], $extend = [])
+    /**
+     * 构造方法
+     */
+    public function __construct()
     {
-        if($this->isApi){
-        	if(!empty($this->allowOrigin)){
-	            $origin = implode(',', $this->allowOrigin);
-	            $this->headers['Access-Control-Allow-Origin'] = $origin;
-	        }
+        $this->container = Container::instance();
+        $this->request = $this->container->make('request');
+    }
 
-	        if(!empty($this->allowMethods)){
-	            $method = strtoupper(implode(',', $this->allowMethods));
-	            $this->headers['Access-Control-Allow-Methods'] = $method;
-	        }
-        }
+    /**
+     * 返回错误信息
+     *
+     * @param  [type] $msg  [description]
+     * @param  array  $data [description]
+     * @return [type]       [description]
+     */
+    protected function errorJson($msg, $data = [], $extend = [], $headers = [])
+    {
+        return $this->result(0, $msg, $data, $extend);
+    }
+
+    /**
+     * 返回成功信息
+     *
+     * @param  [type] $msg  [description]
+     * @param  array  $data [description]
+     * @return [type]       [description]
+     */
+    protected function successJson($msg, $data = [], $extend = [], $headers = [])
+    {
+        return $this->dataReturn(1, $msg, $data, $extend);
+    }
+
+    /**
+     * 封装的json返回
+     *
+     * @param  [type] $code    状态码
+     * @param  [type] $msg     描述信息
+     * @param  array  $data    结果集
+     * @param  array  $extend  扩展字段
+     * @return [type]          [description]
+     */
+    protected function dataReturn($code, $msg, $data = [], $extend = [], $headers = [])
+    {
+    	$this->headers = array_merge($this->headers, $headers);
 
         return $this->result($code, $msg, $data, $extend, $this->dataType, $this->headers);
     }

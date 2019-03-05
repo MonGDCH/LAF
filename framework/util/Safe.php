@@ -22,7 +22,7 @@ class Safe
         $encode_buf = '';
         for($i = 0; $i < $len; $i++)
         {
-            $sChar = substr($src,$i,1);
+            $sChar = substr($src, $i, 1);
             switch($sChar)
             {
                 case "~":
@@ -62,7 +62,7 @@ class Safe
                 case "\n":
                 case "\r":
                 case "\t":
-                        $encode_buf = sprintf("%%%s",bin2hex($sChar));
+                        $encode_buf = sprintf("%%%s", bin2hex($sChar));
                         $result .= $encode_buf;
                     break;
                 default:
@@ -88,9 +88,9 @@ class Safe
         for($i = 0; $i < $len; $i++)
         {
             $sChar = mb_substr($src,$i,1);
-            if($sChar == '%' && $i < ($len - 2) && self::IsXDigit(mb_substr($src,$i+1,1)) && self::IsXDigit(mb_substr($src,$i+2,1))){
-                $chDecode = mb_substr($src,$i+1,2);
-                $result .= pack("H*",$chDecode);
+            if($sChar == '%' && $i < ($len - 2) && self::IsXDigit(mb_substr($src, $i+1, 1)) && self::IsXDigit(mb_substr($src, $i+2, 1))){
+                $chDecode = mb_substr($src, $i+1, 2);
+                $result .= pack("H*", $chDecode);
                 $i += 2;
             }
             else{
@@ -164,7 +164,7 @@ class Safe
         $now          = time();
         $result       = false;
 
-        if(empty($token) || empty($tokenTime)) {
+        if(empty($token) || empty($tokenTime)){
             return $result;
         }
 

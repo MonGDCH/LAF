@@ -18,27 +18,23 @@ return [
 	'lang'			=> Laf\plug\Lang::class,
 	'uploadImg'		=> Laf\plug\UploadImg::class,
 	'date'			=> Laf\plug\Date::class,
+	'oauth'			=> Laf\plug\OAuth::class,
 
 	'session'		=> Laf\lib\Session::class,
 	'cookie'		=> Laf\lib\Cookie::class,
 	'cache'			=> Laf\lib\Cache::class,
 	'validate'		=> Laf\lib\Validate::class,
 	'redis'			=> Laf\lib\Redis::class,
-	'log'			=> Laf\lib\Log::instance(), 		// 日志类做了单例处理，所以这里直接注册日志实例
+	'log'			=> Laf\lib\Log::instance(), // 日志类做了单例处理，所以这里直接注册日志实例
 	'captcha'		=> Laf\lib\Captcha::class,
-	'oauth'			=> Laf\lib\OAuth::class,
 
 	/**
 	 * 中间件服务组件
 	 */
-	'middle'		=> [
-		'home'		=> App\Http\Middleware\Home::class
-	],
+	'middle'		=> [],
 
 	/**
 	 * 后置件服务组件
 	 */
-	'append'		=> [
-
-	],
+	'append'		=> [],
 ];
