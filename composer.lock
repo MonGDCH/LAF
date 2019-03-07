@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9df72bcc89025ff97f607f72cc846dbc",
+    "content-hash": "08acb8d775161a69b217a2d762b108d3",
     "packages": [
         {
             "name": "mongdch/fapi",
@@ -54,6 +54,52 @@
                 "route"
             ],
             "time": "2019-01-02T08:31:03+00:00"
+        },
+        {
+            "name": "mongdch/mon-console",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-console.git",
+                "reference": "63bbd24ce1fa715f47a0634a89729f8f8a0a3278"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-console/zipball/63bbd24ce1fa715f47a0634a89729f8f8a0a3278",
+                "reference": "63bbd24ce1fa715f47a0634a89729f8f8a0a3278",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mon\\console\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "the php console utils.",
+            "keywords": [
+                "cli",
+                "console"
+            ],
+            "time": "2019-03-05T07:09:00+00:00"
         },
         {
             "name": "mongdch/mon-orm",
@@ -162,6 +208,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6.0"
+    },
     "platform-dev": []
 }

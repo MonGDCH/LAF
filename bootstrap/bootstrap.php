@@ -48,7 +48,7 @@ $app = \FApi\App::instance();
 | 这里注册加载全局配置信息
 |
 */
-$app->register( require(ROOT_PATH.'/bootstrap/config.php') );
+$app->register( require(__DIR__.'/config/config.php') );
 
 
 /*
@@ -68,37 +68,7 @@ date_default_timezone_set( $app->config->get('time_zone', 'PRC') );
 | 这里注册定义全局服务
 |
 */
-$app->singleton( require(ROOT_PATH.'/bootstrap/kernel.php') );
-
-
-/*
-|--------------------------------------------------------------------------
-| 注册应用钩子
-|--------------------------------------------------------------------------
-| 这里搭载应用钩子
-|
-*/
-$app->definition( require(ROOT_PATH.'/bootstrap/tags.php') );
-
-
-/*
-|--------------------------------------------------------------------------
-| 定义应用启动模式
-|--------------------------------------------------------------------------
-| 这里设置应用是否为调试模式启动
-|
-*/
-$app->debug( (strtolower(RUN_MODE) !== 'prd') );
-
-
-/*
-|--------------------------------------------------------------------------
-| 初始化应用
-|--------------------------------------------------------------------------
-| 这里初始化应用
-|
-*/
-$app->init();
+$app->singleton( require(__DIR__.'/config/kernel.php') );
 
 
 /*
@@ -108,7 +78,7 @@ $app->init();
 | 这里配置数据库链接信息
 |
 */
-\mon\Db::setConfig( require(ROOT_PATH.'/bootstrap/database.php') );
+\mon\Db::setConfig( require(__DIR__.'/config/database.php') );
 
 /*
 |--------------------------------------------------------------------------
