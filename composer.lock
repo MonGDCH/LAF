@@ -57,16 +57,16 @@
         },
         {
             "name": "mongdch/mon-console",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-console.git",
-                "reference": "63bbd24ce1fa715f47a0634a89729f8f8a0a3278"
+                "reference": "df65e66757d238997acc3442c0c98e7c6a598bcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-console/zipball/63bbd24ce1fa715f47a0634a89729f8f8a0a3278",
-                "reference": "63bbd24ce1fa715f47a0634a89729f8f8a0a3278",
+                "url": "https://api.github.com/repos/MonGDCH/mon-console/zipball/df65e66757d238997acc3442c0c98e7c6a598bcb",
+                "reference": "df65e66757d238997acc3442c0c98e7c6a598bcb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -99,7 +99,7 @@
                 "cli",
                 "console"
             ],
-            "time": "2019-03-05T07:09:00+00:00"
+            "time": "2019-03-08T03:40:23+00:00"
         },
         {
             "name": "mongdch/mon-orm",

@@ -23,6 +23,15 @@ define('ROOT_PATH', __DIR__ . '/..');
 
 /*
 |--------------------------------------------------------------------------
+| 定义路由缓存文件路径
+|--------------------------------------------------------------------------
+| 这里定义路由缓存文件路径, 存在路由缓存文件则不重新加载路由定义文件
+|
+*/
+define('ROUTE_CACHE', ROOT_PATH . '/storage/cache/router.php');
+
+/*
+|--------------------------------------------------------------------------
 | 加载composer
 |--------------------------------------------------------------------------
 | 加载composer, 处理类文件自动加载
@@ -78,7 +87,7 @@ $app->singleton( require(__DIR__.'/config/kernel.php') );
 | 这里配置数据库链接信息
 |
 */
-\mon\Db::setConfig( require(__DIR__.'/config/database.php') );
+\mon\Db::setConfig( $app->config->get('database', []) );
 
 /*
 |--------------------------------------------------------------------------
@@ -87,10 +96,15 @@ $app->singleton( require(__DIR__.'/config/kernel.php') );
 | 注册应用请求路由
 |
 */
-$app->route->group([
-    'namespace' => 'App\Http\Controller\\',
-], function ($router) {
-    require __DIR__.'/../app/Http/router.php';
-});
+if(file_exists(ROUTE_CACHE)){
+    $app->route->setData( require(ROUTE_CACHE) );
+}
+else{
+    $app->route->group([
+        'namespace' => 'App\Http\Controller\\',
+    ], function ($router) {
+        require ROOT_PATH.'/app/Http/router.php';
+    });
+}
 
 return $app;

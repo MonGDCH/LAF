@@ -23,10 +23,11 @@ return [
         'handle'    => Laf\command\Router::class,
         'desc'      => 'Router dependent instruction.',
     ],
-    // 自定义指令
-    'test'    => [
-        'handle'    => App\Console\Command\Test::class,
-        'desc'      => 'This is user custom instruction',
-        'alias'     => 't'
+    // 查看配置指令
+    'config'    => [
+        'handle'    => Laf\command\Config::class,
+        'desc'      => 'Check the configuration',
     ],
+    // 自定义指令
+    'test'    => App\Console\Command\Test::class,
 ];

@@ -24,14 +24,26 @@ class Router extends Command
     public function execute(Input $in, Output $out)
     {
         // 获取执行的回调
-        $action = $in->getArgs()[0] ?? 'show';
-
+        $action = $in->getArgs()[0] ?? 'help';
+        $out->write('');
         // 执行回调
         switch($action)
         {
-            case 'show':    
-            default:
+            case 'clear':
+                return $this->clear($in, $out);
+                break;
+            case 'cache':
+                return $this->cache($in, $out);
+                break;
+            case 'show':
                 return $this->show($in, $out);
+                break;
+            case 'help':
+                return $this->help($in, $out);
+            default:
+                $out->block('action is not found!', 'error');
+                $out->write('');
+                return $this->help($in, $out);
                 break;
         }
     }
@@ -61,7 +73,61 @@ class Router extends Command
             }
         }
 
-        $out->write('');
         return $out->table($res, 'Router Table', $columns);
+    }
+
+    /**
+     * 缓存路由
+     *
+     * @param  [type] $in  [description]
+     * @param  [type] $out [description]
+     * @return [type]      [description]
+     */
+    protected function cache($in, $out)
+    {
+        $cache = Route::instance()->cache(ROUTE_CACHE);
+        if(!$cache){
+            return $out->block('build route cache error!', 'ERROR');
+        }
+
+        return $out->block('build route cache success!', 'SUCCESS');
+    }
+
+    /**
+     * 清除路由缓存
+     *
+     * @param  [type] $in  [description]
+     * @param  [type] $out [description]
+     * @return [type]      [description]
+     */
+    protected function clear($in, $out)
+    {
+        if(!file_exists(ROUTE_CACHE)){
+            return $out->block('route cache file is not exists', 'INFO');
+        }
+        if(!unlink(ROUTE_CACHE)){
+            return $out->block('clear route cache error!', 'ERROR');
+        }
+
+        return $out->block('clear route cache success!', 'SUCCESS');
+    }
+
+    /**
+     * 指令帮助
+     *
+     * @param  [type] $in  [description]
+     * @param  [type] $out [description]
+     * @return [type]      [description]
+     */
+    protected function help($in, $out)
+    {
+        $help = [
+            'show help: '  => 'php laf route help',
+            'show route: '  => 'php laf route show',
+            'cache route: ' => 'php laf route cache',
+            'clear route: ' => 'php laf route clear',
+        ];
+
+        return $out->list($help, 'route command help');
     }
 }

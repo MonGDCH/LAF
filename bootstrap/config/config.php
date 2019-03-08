@@ -11,7 +11,7 @@ return [
 	/**
 	 * 应用时区
 	 */
-	'time_zone'			=> 'PRC',
+	'time_zone'	=> 'PRC',
 
 	/**
 	 * 日志
@@ -23,14 +23,10 @@ return [
         'logName'      	=> '',
 	],
 
-	/**
-	 * OAuth权限控制
-	 */
-	'oauth'		=> [
-		'salt'		=> 'mon123465789',
-		'token_key'	=> 'mon_fapi_key',
-		'token_life'=> 86400,
-	],
+    /**
+     * 数据库配置
+     */
+    'database'  => file_exists(__DIR__ . '/database.php') ? require(__DIR__ . '/database.php') : [],
 
 	/**
 	 * Redis缓存数据库
@@ -74,4 +70,13 @@ return [
 		'secure'	=> '',
 		'httponly'	=> ''
 	],
+
+    /**
+     * OAuth权限控制
+     */
+    'oauth'     => [
+        'salt'      => 'mon123465789',
+        'token_key' => 'mon_fapi_key',
+        'token_life'=> 86400,
+    ],
 ];

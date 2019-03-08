@@ -1,6 +1,6 @@
 # LAF
 
-基于PHP5.6+的高性能快速开发框架
+基于PHP7.0+的高性能快速开发框架
 
 
 ## 安装
@@ -9,7 +9,29 @@
 composer create-project mongdch/laf
 ```
 
-## Versuib
+## Version
+
+> v1.1.0
+
+- 调整PHP版本依赖，采用php7版本
+- 调整代码结构，增加console命令行功能
+- 调整Controller基类，分成ApiController和ViewController，细化功能实现
+- 增加路由缓存功能，用于优化系统性能，通过console指令执行: php laf router cache 调用
+
+#### console说明
+
+1. 在bootstrap/config/commands.php中添加自定义指令
+2. 执行指令
+
+```base
+# php laf [指令名称] [...指令参数]
+
+php laf router help
+
+```
+
+更多说明请在代码备注中查看
+
 
 > v1.0.1
 
