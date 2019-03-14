@@ -1,7 +1,7 @@
 <?php
 namespace Laf\hook;
 
-use FApi\Container;
+use mon\factory\Container;
 
 /**
  * 应用错误钩子

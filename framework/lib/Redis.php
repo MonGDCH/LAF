@@ -2,7 +2,7 @@
 namespace Laf\lib;
 
 use Redis;
-use FApi\Container;
+use mon\env\Config;
 use BadFunctionCallException;
 
 /**
@@ -64,7 +64,7 @@ class Redis
             throw new BadFunctionCallException('not support: redis');
         }
         if(empty($options)){
-           $options = Container::get('config')->get('redis', []);
+           $options = Config::instance()->get('redis', []);
         }
         $this->options = array_merge($this->options, $options);
 

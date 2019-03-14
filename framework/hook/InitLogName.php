@@ -1,7 +1,7 @@
 <?php
 namespace Laf\hook;
 
-use FApi\Container;
+use mon\factory\Container;
 
 /**
  * 定义设置日志保存名称

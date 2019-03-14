@@ -1,7 +1,7 @@
 <?php
 namespace Laf\plug;
 
-use FApi\Container;
+use FApi\Request;
 
 /**
  * URL构建类
@@ -24,7 +24,7 @@ class Url
      */
     public function __construct()
     {
-        $this->request = Container::get('request');
+        $this->request = Request::instance();
     }
 
     /**

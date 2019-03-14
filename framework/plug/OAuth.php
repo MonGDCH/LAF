@@ -1,8 +1,8 @@
 <?php
 namespace Laf\plug;
 
-use FApi\Container;
 use Laf\util\Strs;
+use mon\env\Config;
 
 /**
  * 权限控制管理, JWT简易实现OAuath1.0
@@ -40,7 +40,7 @@ class OAuth
 	 */
 	public function __construct(array $config = [])
 	{
-		$config = empty($config) ? Container::get('config')->get('oauth', []) : $config;
+		$config = empty($config) ? Config::instance()->get('oauth', []) : $config;
 		$this->config = array_merge($this->config, $config);
 	}
 

@@ -49,6 +49,14 @@ require ROOT_PATH . '/vendor/autoload.php';
 */
 $app = \FApi\App::instance();
 
+/*
+|--------------------------------------------------------------------------
+| 获取配置服务
+|--------------------------------------------------------------------------
+| 这里获取配置服务, 定义配置环境
+|
+*/
+$config = \mon\env\Config::instance()->env( RUN_MODE );
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +65,7 @@ $app = \FApi\App::instance();
 | 这里注册加载全局配置信息
 |
 */
-$app->register( require(__DIR__.'/config/config.php') );
+$config->register( require(__DIR__.'/config/config.php') );
 
 
 /*
@@ -67,7 +75,7 @@ $app->register( require(__DIR__.'/config/config.php') );
 | 这里设置时区
 |
 */
-date_default_timezone_set( $app->config->get('time_zone', 'PRC') );
+date_default_timezone_set( $config->get('time_zone', 'PRC') );
 
 
 /*
@@ -87,7 +95,7 @@ $app->singleton( require(__DIR__.'/config/kernel.php') );
 | 这里配置数据库链接信息
 |
 */
-\mon\Db::setConfig( $app->config->get('database', []) );
+\mon\Db::setConfig( $config->get('database', []) );
 
 /*
 |--------------------------------------------------------------------------

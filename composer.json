@@ -20,7 +20,9 @@
         "php": ">=7.0.0",
         "mongdch/mon-orm": "^2.0",
         "mongdch/fapi": "^1.2",
-        "mongdch/mon-console": "^1.0"
+        "mongdch/mon-console": "^1.0",
+        "mongdch/mon-env": "^1.0",
+        "mongdch/mon-container": "^1.0"
     },
     "autoload": {
         "psr-4": {

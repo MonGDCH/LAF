@@ -1,7 +1,8 @@
 <?php
 namespace Laf\lib;
 
-use FApi\Container;
+use mon\env\Config;
+use mon\factory\Container;
 
 /**
 * 文件缓存类
@@ -47,7 +48,7 @@ class Cache
 	public function __construct(array $config = [])
 	{
         // 定义配置
-        $config = (empty($config)) ? Container::get('config')->get('cache', []) : $config;
+        $config = (empty($config)) ? Config::instance()->get('cache', []) : $config;
         $this->config = array_merge($this->config, $config);
         if(substr($this->config['path'], -1) != DIRECTORY_SEPARATOR)
         {

@@ -1,8 +1,6 @@
 <?php
 namespace Laf\plug;
 
-use FApi\Container;
-
 /**
  * base64图片上传类
  *

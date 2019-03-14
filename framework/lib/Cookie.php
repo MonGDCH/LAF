@@ -1,7 +1,7 @@
 <?php
 namespace Laf\lib;
 
-use FApi\Container;
+use mon\env\Config;
 
 /**
  * Cookie操作类
@@ -48,7 +48,7 @@ class Cookie
 	 */
 	public function register(array $config = [])
 	{
-		$config = empty($config) ? Container::get('config')->get('cookie') : $config;
+		$config = empty($config) ? Config::instance()->get('cookie') : $config;
 		$this->config = array_merge($this->config, array_change_key_case($config));
 		if (!empty($this->config['httponly'])) {
             ini_set('session.cookie_httponly', 1);

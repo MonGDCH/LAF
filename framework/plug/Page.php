@@ -1,7 +1,7 @@
 <?php
 namespace Laf\plug;
 
-use FApi\Container;
+use mon\factory\Container;
 
 /**
 * 基于Bootstrap的分页类

@@ -1,7 +1,7 @@
 <?php
 namespace Laf\lib;
 
-use FApi\Container;
+use mon\env\Config;
 
 /**
  * Session辅助类
@@ -34,7 +34,7 @@ class Session
     public function register($config = [])
     {
         if(empty($config)){
-            $config = Container::get('config')->get('session');
+            $config = Config::instance()->get('session');
         }
         $isDoStart = false;
         // 判断是否在php.ini中开启是否已开启session

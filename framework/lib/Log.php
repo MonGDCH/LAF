@@ -1,8 +1,9 @@
 <?php
 namespace Laf\lib;
 
-use FApi\Container;
+use mon\env\Config;
 use FApi\traits\Instance;
+use mon\factory\Container;
 
 /**
  * 日志处理类
@@ -54,7 +55,7 @@ class Log
      */
     protected function __construct($config = [])
     {
-    	$config = (empty($config)) ? Container::get('config')->get('log', []) : $config;
+    	$config = (empty($config)) ? Config::instance()->get('log', []) : $config;
         $this->register($config);
     }
 

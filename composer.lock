@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08acb8d775161a69b217a2d762b108d3",
+    "content-hash": "3acee113a74b4775f75174731fb65e8d",
     "packages": [
         {
             "name": "mongdch/fapi",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/FApi.git",
-                "reference": "4908aadd44b599de251fec2fa84bb9f5e99c6140"
+                "reference": "e0448c8bf04c04c84f21aa1831a58226752de1b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/4908aadd44b599de251fec2fa84bb9f5e99c6140",
-                "reference": "4908aadd44b599de251fec2fa84bb9f5e99c6140",
+                "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/e0448c8bf04c04c84f21aa1831a58226752de1b8",
+                "reference": "e0448c8bf04c04c84f21aa1831a58226752de1b8",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -27,6 +27,7 @@
                 ]
             },
             "require": {
+                "mongdch/mon-container": "^1.0",
                 "nikic/fast-route": "^1.3",
                 "php": ">=5.6.0"
             },
@@ -53,7 +54,7 @@
                 "fapi",
                 "route"
             ],
-            "time": "2019-01-02T08:31:03+00:00"
+            "time": "2019-03-14T07:30:16+00:00"
         },
         {
             "name": "mongdch/mon-console",
@@ -100,6 +101,100 @@
                 "console"
             ],
             "time": "2019-03-08T03:40:23+00:00"
+        },
+        {
+            "name": "mongdch/mon-container",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-container.git",
+                "reference": "592fdd831dba4872b4d9a1e23d1fce1a7cca6014"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-container/zipball/592fdd831dba4872b4d9a1e23d1fce1a7cca6014",
+                "reference": "592fdd831dba4872b4d9a1e23d1fce1a7cca6014",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\factory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "the php factory container utils.",
+            "keywords": [
+                "container",
+                "factory",
+                "php"
+            ],
+            "time": "2019-03-13T09:24:10+00:00"
+        },
+        {
+            "name": "mongdch/mon-env",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-env.git",
+                "reference": "d8fae2a736aaf51e7ff6f3d4d8ed67f06e4daedb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-env/zipball/d8fae2a736aaf51e7ff6f3d4d8ed67f06e4daedb",
+                "reference": "d8fae2a736aaf51e7ff6f3d4d8ed67f06e4daedb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\env\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "the php env config utils.",
+            "keywords": [
+                "config",
+                "env",
+                "php"
+            ],
+            "time": "2019-03-14T06:42:50+00:00"
         },
         {
             "name": "mongdch/mon-orm",
@@ -209,7 +304,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.0"
+        "php": ">=7.0.0"
     },
     "platform-dev": []
 }

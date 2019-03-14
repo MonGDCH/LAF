@@ -1,10 +1,10 @@
 <?php
 namespace Laf\plug;
 
-use FApi\Container;
 use Laf\util\Http;
 use Laf\util\Strs;
 use Laf\util\Comm;
+use mon\factory\Container;
 
 /**
  * 微信SDK工具类
