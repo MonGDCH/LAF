@@ -46,9 +46,9 @@ class ApiController extends Controller
      * @param  array  $data [description]
      * @return [type]       [description]
      */
-    protected function errorJson($msg, $data = [], $extend = [], $headers = [])
+    protected function error($msg, $data = [], $extend = [], $headers = [])
     {
-        return $this->result(0, $msg, $data, $extend);
+        return $this->dataReturn(0, $msg, $data, $extend, $headers);
     }
 
     /**
@@ -58,9 +58,9 @@ class ApiController extends Controller
      * @param  array  $data [description]
      * @return [type]       [description]
      */
-    protected function successJson($msg, $data = [], $extend = [], $headers = [])
+    protected function success($msg, $data = [], $extend = [], $headers = [])
     {
-        return $this->dataReturn(1, $msg, $data, $extend);
+        return $this->dataReturn(1, $msg, $data, $extend, $headers);
     }
 
     /**
