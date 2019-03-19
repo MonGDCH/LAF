@@ -52,7 +52,8 @@ class Wx
 		'access_token'	=> 'https://api.weixin.qq.com/cgi-bin/token',
 		'msg_sec_check' => 'https://api.weixin.qq.com/wxa/img_sec_check',
 		'prepay'		=> 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-		'query_order'	=> 'https://api.mch.weixin.qq.com/pay/orderquery'
+		'query_order'	=> 'https://api.mch.weixin.qq.com/pay/orderquery',
+        'jsapi_ticket'  => 'https://api.weixin.qq.com/cgi-bin/ticket/getticket'
 	];
 
 	/**
@@ -146,6 +147,67 @@ class Wx
             Container::get('log')->warning('Cache access_token faild, access_token => '.$res['access_token']);
         }
         return $res['access_token'];
+    }
+
+    /**
+     * 获取jsapi_ticket，公众号用于调用微信JS接口的临时票据
+     *
+     * @return [type] [description]
+     */
+    public function getJsApiTicket()
+    {
+        // 先判断是否存在缓存
+        $cache = Container::get('cache')->get('jsapi_ticket');
+        if($cache){
+            return $cache;
+        }
+
+        $data = [
+            'type'  => 'jsapi',
+            'access_token'  => $this->getAccessToken();
+        ];
+        $res =  Http::excuteUrl($this->api['jsapi_ticket'], $data, 'get', true);
+        if(isset($res['errcode']) && $res['errcode'] != 0){
+            // 获取失败
+            $this->error = $res['errmsg'];
+            return false;
+        }
+
+        $cacheToken = Container::get('cache')->set('ticket', $res['ticket'], $res['expires_in']);
+        if(!$cacheToken){
+            Container::get('log')->warning('Cache jsapi ticket faild, jsapi_ticket => '.$res['ticket']);
+        }
+        return $res['ticket'];
+    }
+
+    /**
+     * 获取js-sdk使用签名
+     *
+     * @return [type] [description]
+     */
+    public function getJsSign(string $url = '')
+    {
+        // 获取jsapi_ticket
+        $ticket = $this->getJsApiTicket();
+        // 随机字符串
+        $nonce_str = Strs::randString(32);
+        // 当前时间
+        $time = time();
+
+        // 签名
+        $string = "jsapi_ticket={$ticket}&noncestr={$nonce_str}&timestamp={$time}&url={$url}";
+        $signature = sha1($string);
+
+        // 返回签名包
+        $signPackage = [
+            'appid'     => $this->appid,
+            'nonceStr'  => $nonce_str,
+            'timestamp' => $time,
+            'url'       => $url,
+            'signature' => $signature,
+            'rawString' => $string
+        ];
+        return $signPackage; 
     }
 
     /**
