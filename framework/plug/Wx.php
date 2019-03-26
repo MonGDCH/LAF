@@ -48,12 +48,14 @@ class Wx
 	 * @var [type]
 	 */
 	public $api = [
-		'openid'		=> 'https://api.weixin.qq.com/sns/jscode2session',
-		'access_token'	=> 'https://api.weixin.qq.com/cgi-bin/token',
-		'msg_sec_check' => 'https://api.weixin.qq.com/wxa/img_sec_check',
-		'prepay'		=> 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-		'query_order'	=> 'https://api.mch.weixin.qq.com/pay/orderquery',
-        'jsapi_ticket'  => 'https://api.weixin.qq.com/cgi-bin/ticket/getticket'
+		'openid'		    => 'https://api.weixin.qq.com/sns/jscode2session',
+        'access_token'      => 'https://api.weixin.qq.com/cgi-bin/token',
+		'user_access_token'	=> 'https://api.weixin.qq.com/sns/oauth2/access_token',
+        'userinfo'          => 'https://api.weixin.qq.com/sns/userinfo',
+		'msg_sec_check'     => 'https://api.weixin.qq.com/wxa/img_sec_check',
+		'prepay'		    => 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+		'query_order'	    => 'https://api.mch.weixin.qq.com/pay/orderquery',
+        'jsapi_ticket'      => 'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
 	];
 
 	/**
@@ -150,6 +152,38 @@ class Wx
     }
 
     /**
+     * 获取用户Access_Token
+     *
+     * @param  [type] $code [description]
+     * @return [type]       [description]
+     */
+    public function getUserAccessToken($code)
+    {
+        $data = [
+            'appid'     => $this->appid,
+            'secret'    => $this->secret, 
+            'code'      => $code,
+            'grant_type'=> 'authorization_code'
+        ];
+
+        $res =  Http::excuteUrl($this->api['user_access_token'], $data, 'get', true);
+        if(isset($res['errcode']) && $res['errcode'] != 0){
+            // 获取失败
+            $this->error = $res['errmsg'];
+            return false;
+        }
+
+        // {
+        //     "access_token":"ACCESS_TOKEN",
+        //     "expires_in":7200,
+        //     "refresh_token":"REFRESH_TOKEN",
+        //     "openid":"OPENID",
+        //     "scope":"SCOPE" 
+        // }
+        return $res;
+    }
+
+    /**
      * 获取jsapi_ticket，公众号用于调用微信JS接口的临时票据
      *
      * @return [type] [description]
@@ -164,7 +198,7 @@ class Wx
 
         $data = [
             'type'  => 'jsapi',
-            'access_token'  => $this->getAccessToken();
+            'access_token'  => $this->getAccessToken()
         ];
         $res =  Http::excuteUrl($this->api['jsapi_ticket'], $data, 'get', true);
         if(isset($res['errcode']) && $res['errcode'] != 0){
@@ -208,6 +242,48 @@ class Wx
             'rawString' => $string
         ];
         return $signPackage; 
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @param  [type] $code [description]
+     * @param  string $lang [description]
+     * @return [type]       [description]
+     */
+    public function getUserInfo($code, $lang = 'zh_CN')
+    {
+        $user_access_token = $this->getUserAccessToken($code);
+        if(!$user_access_token){
+            return false;
+        }
+
+        $data = [
+            'access_token'  => $user_access_token['access_token'],
+            'openid'        => $user_access_token['openid'],
+            'lang'          => $lang
+        ];
+
+        $res =  Http::excuteUrl($this->api['userinfo'], $data, 'get', true);
+        if(isset($res['errcode']) && $res['errcode'] != 0){
+            // 获取失败
+            $this->error = $res['errmsg'];
+            return false;
+        }
+
+        // {   
+        //     "openid":" OPENID",
+        //     " nickname": NICKNAME,
+        //     "sex":"1",
+        //     "province":"PROVINCE"
+        //     "city":"CITY",
+        //     "country":"COUNTRY",
+        //     "headimgurl":       "http://thirdwx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+        //     "privilege":[ "PRIVILEGE1" "PRIVILEGE2"     ],
+        //     "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+        // }
+
+        return $res;
     }
 
     /**

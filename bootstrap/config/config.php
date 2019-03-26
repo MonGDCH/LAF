@@ -44,7 +44,7 @@ return [
 		'expire'        => 0,
         'cache_subdir'  => true,
         'prefix'        => '',
-        'path'          => ROOT_PATH . 'storage/cache',
+        'path'          => ROOT_PATH . '/storage/cache',
         'data_compress' => false,
 	],
 

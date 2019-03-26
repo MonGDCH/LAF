@@ -198,16 +198,16 @@
         },
         {
             "name": "mongdch/mon-orm",
-            "version": "v2.0.3",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-orm.git",
-                "reference": "1ccd25a2e85fd23776cb2de09e893c9a26b6eacd"
+                "reference": "80fc53eb7efc32a449267c521c8a0137f5b1ee40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/1ccd25a2e85fd23776cb2de09e893c9a26b6eacd",
-                "reference": "1ccd25a2e85fd23776cb2de09e893c9a26b6eacd",
+                "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/80fc53eb7efc32a449267c521c8a0137f5b1ee40",
+                "reference": "80fc53eb7efc32a449267c521c8a0137f5b1ee40",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -222,7 +222,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "mon\\": "src"
+                    "mon\\orm\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -242,7 +242,7 @@
                 "mysql",
                 "orm"
             ],
-            "time": "2018-11-21T02:14:29+00:00"
+            "time": "2019-03-26T06:01:39+00:00"
         },
         {
             "name": "nikic/fast-route",

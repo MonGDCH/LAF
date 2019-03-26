@@ -1,8 +1,8 @@
 <?php
 namespace App\Model;
 
-use mon\Model;
-use \mon\factory\Container;
+use mon\orm\Model;
+use mon\factory\Container;
 use FApi\traits\Instance;
 
 /**

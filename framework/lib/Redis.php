@@ -88,17 +88,6 @@ class Redis
     /************* string类型操作命令 *****************/
 
     /**
-     * 设置一个key值
-     *
-     * @param [type] $key   [description]
-     * @param [type] $value [description]
-     */
-    public function set($key, $value,$options = '')
-    {
-    	return $this->handler->set($key, $value,$options);
-    }
-
-    /**
      * 获取key值
      *
      * @param  [type] $key [description]
@@ -107,6 +96,30 @@ class Redis
     public function get($key)
     {
     	return $this->handler->get($key);
+    }
+
+    /**
+     * 获取key的原值，并设置新值，不存在原值则返回false
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function getSet($key, $value)
+    {
+        return $this->handler->getSet($key, $value);
+    }
+
+    /**
+     * 设置一个key值
+     *
+     * @param [type] $key     [description]
+     * @param [type] $value   [description]
+     * @param [type] $options [description]
+     */
+    public function set($key, $value, $options = '')
+    {
+        return $this->handler->set($key, $value, $options);
     }
 
     /**
@@ -129,9 +142,9 @@ class Redis
      * @param  [type] $value [description]
      * @return [type]        [description]
      */
-    public function setnx($key,$value)
+    public function setnx($key, $value)
     {
-        return $this->handler->setnx($key,$value);
+        return $this->handler->setnx($key, $value);
     }
 
     /**
