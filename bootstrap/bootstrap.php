@@ -95,7 +95,7 @@ $app->singleton( require(__DIR__.'/config/kernel.php') );
 | 这里配置数据库链接信息
 |
 */
-\mon\Db::setConfig( $config->get('database', []) );
+\mon\orm\Db::setConfig( $config->get('database', []) );
 
 /*
 |--------------------------------------------------------------------------

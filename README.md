@@ -11,6 +11,10 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v1.2.1
+
+- 修复已知BUG
+
 > v1.2.0
 
 - 调整项目依赖
