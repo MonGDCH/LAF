@@ -148,6 +148,18 @@ class Redis
     }
 
     /**
+     * 替换字符串的一部分, 主要配置setex, 实现更新值有效时间不更新
+     *
+     * @param [type]  $key    key
+     * @param [type]  $value  值
+     * @param integer $offset offset
+     */
+    public function setRange($key, $value, $offset = 0)
+    {
+        return $this->handler->setRange($key, $offset, $value);
+    }
+
+    /**
      * 批量设置key值
      * 
      * @param  [type] $array [description]
