@@ -4,6 +4,7 @@ namespace Laf\lib;
 use Redis;
 use mon\env\Config;
 use BadFunctionCallException;
+use InvalidArgumentException;
 
 /**
  * Redis操作类
@@ -521,6 +522,18 @@ class Redis
         return $this->handler->srem($key, $value);
     }
 
+    /**
+     * 筛选集合
+     *
+     * @param  [type] $key    [description]
+     * @param  array  $option [description]
+     * @return [type]         [description]
+     */
+    public function sort($key, array $option)
+    {
+        return $this->handler->sort($key, $option);
+    }
+
     /********************* sorted set有序集合类型操作命令 *********************/
 
     /**
@@ -791,6 +804,42 @@ class Redis
     }
 
     /**
+     * 移动一个KEY-VALUE到另一个DB
+     *
+     * @param  [type] $key     key值
+     * @param  [type] $dbindex 要移动到的数据库ID
+     * @return [type]          [description]
+     */
+    public function move($key, $dbindex)
+    {
+        return $this->handler->move($key, $dbindex);
+    }
+
+    /**
+     * 重命名一个KEY
+     *
+     * @param  [type] $key     [description]
+     * @param  [type] $new_key [description]
+     * @return [type]          [description]
+     */
+    public function rename($key, $new_key)
+    {
+        return $this->handler->rename($key, $new_key);
+    }
+
+    /**
+     * 复制一个KEY的VALUE到一个新的KEY
+     *
+     * @param  [type] $key     [description]
+     * @param  [type] $new_key [description]
+     * @return [type]          [description]
+     */
+    public function renameNx($key, $new_key)
+    {
+        return $this->handler->renameNx($key, $new_key);
+    }
+
+    /**
      * 清空当前数据库
      *
      * @return bool
@@ -798,6 +847,16 @@ class Redis
     public function flushDB()
     {
         return $this->handler->flushDB();
+    }
+
+    /**
+     * 清空所有数据库
+     *
+     * @return bool
+     */
+    public function flushAll()
+    {
+        return $this->handler->flushAll();
     }
 
     /**
@@ -809,7 +868,17 @@ class Redis
     {
         return $this->handler->info();
     }
-     
+
+    /**
+     * 重置状态
+     *
+     * @return [type] [description]
+     */
+    public function resetStat()
+    {
+        return $this->handler->resetStat();
+    }
+
     /**
      * 同步保存数据到磁盘
      */
@@ -845,7 +914,29 @@ class Redis
     {
         return $this->handler->keys($key);
     }
-     
+
+    /**
+     * 返回一个key的数据类型
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function type($key)
+    {
+        return $this->handler->type($key);
+    }
+
+    /**
+     * 发送一个字符串到Redis,返回一个相同的字符串
+     *
+     * @param  [type] $string [description]
+     * @return [type]         [description]
+     */
+    public function echo($string)
+    {
+        return $this->handler->echo($string);
+    }
+
     /**
      * 删除指定key
      *
@@ -867,16 +958,51 @@ class Redis
     }
      
     /**
-     * 为一个key设定过期时间 单位为秒
+     * 为一个key设定过期时间, 单位为秒
      *
      * @param [type] $key
      * @param [type] $expire
      */
-    public function expire($key,$expire)
+    public function expire($key, $expire)
     {
         return $this->handler->expire($key,$expire);
     }
-     
+
+    /**
+     * 为一个key设定过期时间, 单位为毫秒
+     *
+     * @param  [type] $key    [description]
+     * @param  [type] $expire [description]
+     * @return [type]         [description]
+     */
+    public function pexpire($key, $expire)
+    {
+        return $this->handler->pexpire($key, $expire);
+    }
+
+    /**
+     * 为一个key设定生命周期
+     *
+     * @param  [type] $key    key名称
+     * @param  [type] $expire 过期时间, Unix时间戳
+     * @return [type]         [description]
+     */
+    public function expireAt($key, $expire)
+    {
+        return $this->handler->expireAt($key, $expire);
+    }
+
+    /**
+     * 删除一个KEY的生命周期设置
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function persist($key)
+    {
+        return $this->handler->persist($key);
+    }
+
     /**
      * 返回一个key还有多久过期，单位秒
      *
@@ -885,6 +1011,17 @@ class Redis
     public function ttl($key)
     {
         return $this->handler->ttl($key);
+    }
+
+    /**
+     * 返回一个key还有多久过期, 单位毫秒
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function pttl($key)
+    {
+        return $this->handler->pttl($key);
     }
      
     /**
@@ -920,6 +1057,140 @@ class Redis
     public function randomKey()
     {
         return $this->handler->randomKey();
+    }
+
+    /**
+     * 设置客户端的选项
+     *
+     * @param [type] $key   [description]
+     * @param [type] $value [description]
+     */
+    public function setOption($key, $value)
+    {
+        return $this->handler->setOption($key, $value);
+    }
+
+    /**
+     * 取得客户端的选项
+     *
+     * @param [type] $key   [description]
+     */
+    public function getOption($key)
+    {
+        return $this->handler->getOption($key);
+    }
+
+    /**
+     * 使用aof来进行数据库持久化
+     *
+     * @return [type] [description]
+     */
+    public function bgrewriteaof()
+    {
+        return $this->handler->bgrewriteaof();
+    }
+
+    /**
+     * 选择从服务器
+     *
+     * @param  [type] $ip   [description]
+     * @param  [type] $port [description]
+     * @return [type]       [description]
+     */
+    public function slaveof($ip, $port)
+    {
+        return $this->handler->slaveof($ip, $port);
+    }
+
+    /**
+     * 声明一个对象，并指向KEY
+     *
+     * @param  [type] $type 检索的类型
+     * @param  [type] $key  key名
+     * @return [type]       [description]
+     */
+    public function object($type, $key)
+    {
+        if(!in_array($type, ['encoding', 'refcount', 'idletime'])){
+            throw new InvalidArgumentException('object type faild');
+        }
+        return $this->handler->object($type, $key);
+    }
+
+    /**
+     * 设置REIDS系统配置
+     *
+     * @return [type] [description]
+     */
+    public function setConfig($key, $value)
+    {
+        return $this->handler->config('SET', $key, $value);
+    }
+
+    /**
+     * 获取REIDS系统配置, *表示所有
+     *
+     * @return [type] [description]
+     */
+    public function setConfig($key)
+    {
+        return $this->handler->config('GET', $key);
+    }
+
+    /**
+     * 在服务器端执行LUA脚本
+     *
+     * @param  [type] $script LUA脚本
+     * @return [type]         [description]
+     */
+    public function eval($script)
+    {
+        return $this->handler->eval($script);
+    }
+
+    /**
+     * 取得最后的错误消息
+     *
+     * @return [type] [description]
+     */
+    public function getLastError()
+    {
+        return $this->handler->getLastError();
+    }
+
+    /**
+     * 把一个KEY从REIDS中销毁, 可以使用RESTORE函数恢复出来。
+     * 使用DUMP销毁的VALUE, 函数将返回这个数据在REIDS中的二进制内存地址
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function dump($key)
+    {
+        return $this->handler->dump($key);
+    }
+
+    /**
+     * 恢复DUMP函数销毁的VALUE到一个新的KEY上
+     *
+     * @param  [type]  $key    新的key名
+     * @param  [type]  $value  dump返回的地址值
+     * @param  integer $expire 生存时间, 0则不设置
+     * @return [type]          [description]
+     */
+    public function restore($key, $value, $expire = 0)
+    {
+        return $this->handler->restore($key, $expire, $value);
+    }
+
+    /**
+     * 返回当前REDIS服务器的生存时间
+     *
+     * @return [type] [description]
+     */
+    public function time()
+    {
+        return $this->handler->time();
     }
 
 }
