@@ -100,6 +100,41 @@ class Redis
     }
 
     /**
+     * 获取多个key值
+     *
+     * @param  array  $key [description]
+     * @return [type]      [description]
+     */
+    public function mGet(array $key)
+    {
+        return $this->handler->mGet($key);
+    }
+
+    /**
+     * 返回字符串的一部分
+     *
+     * @param  [type] $key   key名
+     * @param  [type] $start 起始点
+     * @param  [type] $end   结束点
+     * @return [type]        [description]
+     */
+    public function getRange($key, $start, $end)
+    {
+        return $this->handler->getRange($key, $start, $end);
+    }
+
+    /**
+     * 返回字符串长度
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function strlen($key)
+    {
+        return $this->handler->strlen($key);
+    }
+
+    /**
      * 获取key的原值，并设置新值，不存在原值则返回false
      *
      * @param  [type] $key   [description]
@@ -124,7 +159,19 @@ class Redis
     }
 
     /**
-     * 设置一个有过期时间的key值
+     * 添加指定的字符串到指定的字符串key
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $value [description]
+     * @return [type]        返回新的key size
+     */
+    public function append($key, $value)
+    {
+        return $this->handler->append($key, $value);
+    }
+
+    /**
+     * 设置一个有过期时间的key值, 单位秒
      * 
      * @param  [type] $key    [description]
      * @param  [type] $expire [description]
@@ -134,6 +181,19 @@ class Redis
     public function setex($key, $expire, $value)
     {
         return $this->handler->setex($key, $expire, $value);
+    }
+
+    /**
+     * 设置一个有过期时间的key值, 单位毫秒
+     * 
+     * @param  [type] $key    [description]
+     * @param  [type] $expire [description]
+     * @param  [type] $value  [description]
+     * @return [type]         [description]
+     */
+    public function psetex($key, $expire, $value)
+    {
+        return $this->handler->psetex($key, $expire, $value);
     }
 
     /**
@@ -166,9 +226,78 @@ class Redis
      * @param  [type] $array [description]
      * @return [type]        [description]
      */
-    public function mset($array)
+    public function mSet($array)
     {
-    	return $this->handler->mset($array);
+    	return $this->handler->mSet($array);
+    }
+
+    /**
+     * 移除已经存在key
+     *
+     * @param  [type] $key key名，字符串或者数组
+     * @return [type]      [description]
+     */
+    public function delete($key)
+    {
+        return $this->handler->delete($key);
+    }
+
+    /**
+     * 判断一个key值是不是存在
+     *
+     * @param [type] $key
+     */
+    public function exists($key)
+    {
+        return $this->handler->exists($key);
+    }
+
+    /**
+     * 对key的值加value, 相当于 key = key + value
+     *
+     * @param  [type] $key   [description]
+     * @param  int    $value [description]
+     * @return [type]        返回新的INT数值
+     */
+    public function incrBy($key, $value)
+    {
+        return $this->handler->incrBy($key, $value);
+    }
+
+    /**
+     * 对key的值加value, 相当于 key = key + value
+     *
+     * @param  [type] $key   [description]
+     * @param  float  $value [description]
+     * @return [type]        返回新的INT数值
+     */
+    public function incrByFloat($key, $value)
+    {
+        return $this->handler->incrByFloat($key, $value);
+    }
+
+    /**
+     * 对key的值减value, 相当于 key = key - value
+     *
+     * @param  [type] $key   [description]
+     * @param  int    $value [description]
+     * @return [type]        返回新的INT数值
+     */
+    public function decrBy($key, $value)
+    {
+        return $this->handler->decrBy($key, $value);
+    }
+
+    /**
+     * 对key的值减value, 相当于 key = key - value
+     *
+     * @param  [type] $key   [description]
+     * @param  float  $value [description]
+     * @return [type]        返回新的INT数值
+     */
+    public function decrByFloat($key, $value)
+    {
+        return $this->handler->decrByFloat($key, $value);
     }
 
     /***************** hash类型操作函数 *******************/
@@ -205,7 +334,7 @@ class Redis
      * @param  [type] $field [description]
      * @return [type]        [description]
      */
-    public function hdel($key, $field)
+    public function hDel($key, $field)
     {
     	$delNum = 0;
     	if(is_array($field)){
@@ -384,7 +513,18 @@ class Redis
     {
         return $this->handler->lLen($key); 
     }
-     
+
+    /**
+     * 返回队列大小
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function lSize($key)
+    {
+        return $this->handler->lSize($key)
+    }
+
     /**
      * 返回队列指定区间的元素
      * 
@@ -396,7 +536,20 @@ class Redis
     {
         return $this->handler->lrange($key, $start, $end);
     }
-     
+
+    /**
+     * 截取LIST中指定范围内的元素组成一个新的LIST并指向KEY
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $start [description]
+     * @param  [type] $end   [description]
+     * @return [type]        [description]
+     */
+    public function lTrim($key, $start, $end)
+    {
+        return $this->handler->lTrim($key, $start, $end);
+    }
+
     /**
      * 返回队列中指定索引的元素
      * 
@@ -407,7 +560,19 @@ class Redis
     {
         return $this->handler->lIndex($key, $index);
     }
-     
+
+    /**
+     * 根据索引值返回指定KEY-LIST中的元素，0为第一个
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $index [description]
+     * @return [type]        [description]
+     */
+    public function lGet($key, $index)
+    {
+        return $this->handler->lGet($key, $index);
+    }
+
     /**
      * 设定队列中指定index的值。
      * 
@@ -456,6 +621,18 @@ class Redis
         return $this->handler->rPop($key);
     }
 
+    /**
+     * 从key-LIST的最后弹出一个元素，并且把这个元素从target-LIST的顶部压入target-LIST中
+     *
+     * @param  [type] $key        [description]
+     * @param  [type] $target_key [description]
+     * @return [type]             [description]
+     */
+    public function rpoplpush($key, $target_key)
+    {
+        return $this->handler->rpoplpush($key, $target_key);
+    }
+
     /************* 无序集合操作命令 *****************/
 
     /**
@@ -467,18 +644,19 @@ class Redis
     {
         return $this->handler->sMembers($key);
     }
-     
+
     /**
-     * 求2个集合的差集
+     * 检查VALUE是否是key-SET容器中的成员
      *
-     * @param [type] $key1
-     * @param [type] $key2
+     * @param  [type] $key   [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
      */
-    public function sDiff($key1, $key2)
+    public function sIsMember($key, $value)
     {
-        return $this->handler->sDiff($key1, $key2);
+        return $this->handler->sIsMember($key, $value);
     }
-     
+    
     /**
      * 添加集合。由于版本问题，扩展不支持批量添加。这里做了封装
      *
@@ -500,26 +678,135 @@ class Redis
             $this->handler->sAdd($key, $row);
         }
     }
-     
+
     /**
      * 返回无序集合的元素个数
      *
      * @param [type] $key
      */
-    public function scard($key)
+    public function sCard($key)
     {
-        return $this->handler->scard($key);
+        return $this->handler->sCard($key);
     }
-     
+
+    /**
+     * 随机返回一个元素，并且在key-SET容器中移除该元素。
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function sPop($key)
+    {
+        return $this->handler->sPop($key);
+    }
+
+    /**
+     * 取得指定key-SET容器中的一个随机元素，但不会在key-SET容器中移除它
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function sRandMember($key)
+    {
+        return $this->handler->sRandMember($key);
+    }
+
     /**
      * 从集合中删除一个元素
      *
      * @param [type] $key
      * @param [type] $value
      */
-    public function srem($key, $value)
+    public function sRem($key, $value)
     {
-        return $this->handler->srem($key, $value);
+        return $this->handler->sRem($key, $value);
+    }
+
+    /**
+     * 移动一个指定的MEMBER从key-SET到指定的target-SET中
+     *
+     * @param  [type] $key    [description]
+     * @param  [type] $target [description]
+     * @param  [type] $member [description]
+     * @return [type]         [description]
+     */
+    public function sMove($key, $target, $member)
+    {
+        return $this->handler->sMove($key, $target, $member);
+    }
+
+    /**
+     * 返回指定两个SETS集合的交集结果，注意：原生的sInter可传N个key名
+     *
+     * @param  [type] $key1 [description]
+     * @param  [type] $key2 [description]
+     * @return [type]       [description]
+     */
+    public function sInter($key1, $key2)
+    {
+        return $this->handler->sInter($key1, $key2);
+    }
+
+    /**
+     * 执行一个交集操作，并把结果存储到一个新的SET容器中
+     *
+     * @param  [type] $name 新的key名
+     * @param  [type] $key1 [description]
+     * @param  [type] $key2 [description]
+     * @return [type]       [description]
+     */
+    public function sInterStore($name, $key1, $key2)
+    {
+        return $this->handler->sInterStore($name, $key1, $key2);
+    }
+
+    /**
+     * 返回指定两个SETS集合的并集结果，注意：原生的sUnion可传N个key名
+     *
+     * @param  [type] $key1 [description]
+     * @param  [type] $key2 [description]
+     * @return [type]       [description]
+     */
+    public function sUnion($key1, $key2)
+    {
+        return $this->handler->sUnion($key1, $key2);
+    }
+
+    /**
+     * 执行一个并集操作，并把结果存储到一个新的SET容器中
+     *
+     * @param  [type] $name 新的key名
+     * @param  [type] $key1 [description]
+     * @param  [type] $key2 [description]
+     * @return [type]       [description]
+     */
+    public function sUnionStore($name, $key1, $key2)
+    {
+        return $this->handler->sUnionStore($name, $key1, $key2);
+    }
+
+    /**
+     * 求2个集合的差集
+     *
+     * @param [type] $key1
+     * @param [type] $key2
+     */
+    public function sDiff($key1, $key2)
+    {
+        return $this->handler->sDiff($key1, $key2);
+    }
+
+    /**
+     * 执行一个差集操作，并把结果存储到一个新的SET容器中
+     *
+     * @param  [type] $name [description]
+     * @param  [type] $key1 [description]
+     * @param  [type] $key2 [description]
+     * @return [type]       [description]
+     */
+    public function sDiffStore($name, $key1, $key2)
+    {
+        return $this->handler->sDiffStore($name, $key1, $key2);
     }
 
     /**
@@ -547,6 +834,18 @@ class Redis
     public function zAdd($key, $order, $value)
     {
         return $this->handler->zAdd($key, $order, $value);   
+    }
+
+    /**
+     * 从有序集合中删除指定的成员
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function zDelete($key, $value)
+    {
+        return $this->handler->zDelete($key, $value);
     }
 
     /**
@@ -692,7 +991,20 @@ class Redis
     {
         return $this->handler->zRemRangeByScore($key, $start, $end);
     }
-     
+
+    /**
+     * 删除集合中，score值在start end之间的元素　不包括start end
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $start [description]
+     * @param  [type] $end   [description]
+     * @return [type]        [description]
+     */
+    public function zRemRangeByRank($key, $start, $end)
+    {
+        return $this->handler->zRemRangeByRank($key, $start, $end);
+    }
+
     /**
      * 返回集合元素个数。
      * 
@@ -701,6 +1013,34 @@ class Redis
     public function zCard($key)
     {
         return $this->handler->zCard($key);
+    }
+
+    /**
+     * 返回集合元素个数。
+     *
+     * @param  [type] $key [description]
+     * @return [type]      [description]
+     */
+    public function zSize($key)
+    {
+        return $this->handler->zSize($key);
+    }
+
+    /**
+     * 将key对应的有序集合中member元素的scroe加上increment
+     * 如果指定的member不存在，那么将会添加该元素，并且其score的初始值为increment。
+     * 如果key不存在，那么将会创建一个新的有序列表，其中包含member这一唯一的元素。
+     * 如果key对应的值不是有序列表，那么将会发生错误。
+     * 指定的score的值应该是能够转换为数字值的字符串，并且接收双精度浮点数。同时，你也可用提供一个负值，这样将减少score的值。
+     *
+     * @param  [type] $key    [description]
+     * @param  [type] $value  [description]
+     * @param  [type] $member [description]
+     * @return [type]         [description]
+     */
+    public function zIncrBy($key, $value, $member)
+    {
+        return $this->handler->zIncrBy($key, $value, $member);
     }
 
     /********************* 事务的相关方法 ************************/
@@ -755,6 +1095,18 @@ class Redis
     }
 
     /************* 订阅操作命令 *****************/
+
+    /**
+     * 订阅频道
+     *
+     * @param  [type] $key      订阅的频道名，可字符串，可数组
+     * @param  [type] $callback 回调函数，function($redis, $chan, $msg){}
+     * @return [type]           [description]
+     */
+    public function subscribe($key, $callback)
+    {
+        return $this->handler->subscribe($key, $callback);
+    }
 
     /**
      * 发布订阅
@@ -937,26 +1289,6 @@ class Redis
         return $this->handler->echo($string);
     }
 
-    /**
-     * 删除指定key
-     *
-     * @param [type] $key
-     */
-    public function del($key)
-    {
-        return $this->handler->del($key);
-    }
-     
-    /**
-     * 判断一个key值是不是存在
-     *
-     * @param [type] $key
-     */
-    public function exists($key)
-    {
-        return $this->handler->exists($key);
-    }
-     
     /**
      * 为一个key设定过期时间, 单位为秒
      *
