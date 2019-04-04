@@ -408,7 +408,7 @@ class Redis
     }
 
     /**
-     * 为hash表设这累加，可以负数
+     * 为hash表的某个值累加整数，可以负数
      * 
      * @param string $key   key值
      * @param int $field    字段
@@ -420,6 +420,21 @@ class Redis
         $value = intval($value);
 
         return $this->handler->hIncrBy($key, $field, $value);
+    }
+
+    /**
+     * 为hash表的某个值累加浮点数，可以负数
+     * 
+     * @param string $key   key值
+     * @param int $field    字段
+     * @param string $value 步长
+     * @return bool
+     */
+    public function hIncrByFloat($key, $field, $value)
+    {
+        $value = floatval($value);
+
+        return $this->handler->hIncrByFloat($key, $field, $value);
     }
 
     /**
@@ -442,6 +457,18 @@ class Redis
     public function hVals($key)
     {
         return $this->handler->hVals($key);
+    }
+
+    /**
+     * 验证HASH表中是否存在指定的KEY-VALUE
+     *
+     * @param  [type] $key   [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function hExists($key, $value)
+    {
+        return $this->handler->hExists($key, $value);
     }
 
     /**
