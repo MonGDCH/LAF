@@ -1,5 +1,5 @@
 <?php
-namespace Laf\lib;
+namespace Laf\plug;
 
 /**
  * 验证码类

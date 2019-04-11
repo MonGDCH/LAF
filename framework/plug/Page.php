@@ -21,66 +21,77 @@ class Page
 
     /**
      * 起始行数
+     *
      * @var [type]
      */
     public $firstRow;
 
     /**
      * 列表每页显示行数
+     *
      * @var [type]
      */
     public $listRows;
 
     /**
      * 分页跳转时要带的参数
+     *
      * @var [type]
      */
     public $parameter;
 
     /**
      * 总行数
+     *
      * @var [type]
      */
     public $totalRows;
 
     /**
      * 分页总页面数
+     *
      * @var [type]
      */
     public $totalPages;
 
     /**
      * 分页栏每页显示的页数
+     *
      * @var integer
      */
     public $rollPage = 6;
 
     /**
      * 最后一页是否显示总页数
+     *
      * @var boolean
      */
     public $lastSuffix = true;
 
     /**
      * 分页参数名
+     *
      * @var string
      */
     private $p = 'page';
 
     /**
      * 当前链接URL
+     *
      * @var string
      */
     private $url = '';
 
     /**
      * 当前页
+     *
      * @var integer
      */
     private $nowPage = 1;
 
     /**
      * 样式库
+     *
      * @var string
      */
     private $css = "
@@ -102,7 +113,11 @@ class Page
         </style>
     ";
 
-    // 分页显示定制
+    /**
+     * 分页显示定制
+     *
+     * @var array
+     */
     private $config  = array(
         'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
         'prev'   => '&laquo;',
@@ -112,14 +127,23 @@ class Page
         'theme'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%',
     );
 
-    private $size_type;
-
-    // 样式大小
+    /**
+     * 样式大小
+     *
+     * @var array
+     */
     private $size = array(
         'def'   => '',
         'sm'    => 'lmf_pagination-sm',
         'lg'    => 'lmf_pagination-lg'
     );
+
+    /**
+     * 选择的大小
+     *
+     * @var [type]
+     */
+    private $size_type;
 
     /**
      * 注册分页配置
@@ -149,6 +173,7 @@ class Page
 
     /**
      * 定制分页链接设置
+     *
      * @param string $name  设置名称
      * @param string $value 设置值
      */
@@ -163,6 +188,7 @@ class Page
 
     /**
      * 组装分页链接
+     *
      * @return string
      */
     public function show()
@@ -243,6 +269,7 @@ class Page
 
     /**
      * 生成链接URL
+     *
      * @param  integer $page 页码
      * @return string
      */

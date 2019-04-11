@@ -1,5 +1,5 @@
 <?php
-namespace Laf\util;
+namespace Laf\plug;
 
 use mon\factory\Container;
 use Laf\exception\HttpException;

@@ -1,7 +1,7 @@
 <?php
 namespace Laf\plug;
 
-use Laf\util\Http;
+use Laf\plug\Http;
 use Laf\util\Strs;
 use Laf\util\Comm;
 use mon\factory\Container;
@@ -233,7 +233,7 @@ class Wx
         $signature = sha1($string);
 
         // 返回签名包
-        $signPackage = [
+        return [
             'appid'     => $this->appid,
             'nonceStr'  => $nonce_str,
             'timestamp' => $time,
@@ -241,7 +241,6 @@ class Wx
             'signature' => $signature,
             'rawString' => $string
         ];
-        return $signPackage; 
     }
 
     /**
@@ -474,7 +473,8 @@ class Wx
         }
         $post_xml .= '<sign>'.$sign.'</sign></xml>';
         $xml = Http::excuteUrl($this->api['query_order'], $post_xml, 'post');
-        $array = Comm::xml2array($xml);               //将【统一下单】api返回xml数据转换成数组，全要大写
+        //将【统一下单】api返回xml数据转换成数组，全要大写
+        $array = Comm::xml2array($xml);
         if( array_key_exists("RETURN_CODE", $array) && array_key_exists("RESULT_CODE", $array) && 
             $array["RETURN_CODE"] == "SUCCESS" && $array["RESULT_CODE"] == "SUCCESS"
         ){

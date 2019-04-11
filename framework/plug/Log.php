@@ -1,9 +1,9 @@
 <?php
-namespace Laf\lib;
+namespace Laf\plug;
 
 use mon\env\Config;
-use FApi\traits\Instance;
 use mon\factory\Container;
+use FApi\traits\Instance;
 
 /**
  * 日志处理类
@@ -300,7 +300,6 @@ class Log
         foreach($logs as $type => $value)
         {
             $offset = "[{$now}] [{$type}] ";
-
             if(is_array($value)){
                 $info = '';
                 foreach($value as $data)
