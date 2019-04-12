@@ -1,7 +1,7 @@
 <?php
 namespace Laf\plug;
 
-use Laf\util\Strs;
+use mon\util\Common;
 use mon\env\Config;
 
 /**
@@ -154,7 +154,7 @@ class OAuth
 	 */
     protected function encryption($str)
     {
-        $res = Strs::stringEncrypt($str, $this->config['salt'], $this->config['token_life']);
+        $res = Common::stringEncrypt($str, $this->config['salt'], $this->config['token_life']);
         return base64_encode($res);
     }
 
@@ -166,7 +166,7 @@ class OAuth
    	 */
     protected function decryption($str)
     {
-        $res = Strs::stringDecrypt(base64_decode($str), $this->config['salt']);
+        $res = Common::stringDecrypt(base64_decode($str), $this->config['salt']);
         return $res;
     }
 

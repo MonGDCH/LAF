@@ -18,4 +18,6 @@ return [
 	'uploadImg'		=> Laf\plug\UploadImg::class,
     'oauth'         => Laf\plug\OAuth::class,
 	'log'			=> Laf\plug\Log::instance(),
+	'file'			=> \mon\store\File::class;
+	// 'cache'			=> new mon\store\Cache(\mon\env\Config::instance()->get('cache', [])),
 ];

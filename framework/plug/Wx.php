@@ -2,8 +2,7 @@
 namespace Laf\plug;
 
 use Laf\plug\Http;
-use Laf\util\Strs;
-use Laf\util\Comm;
+use mon\util\Common;
 use mon\factory\Container;
 
 /**
@@ -224,7 +223,7 @@ class Wx
         // 获取jsapi_ticket
         $ticket = $this->getJsApiTicket();
         // 随机字符串
-        $nonce_str = Strs::randString(32);
+        $nonce_str = Common::randString(32);
         // 当前时间
         $time = time();
 
@@ -325,7 +324,7 @@ class Wx
     public function jsApiPay(string $body, int $total_fee, string $order_id, string $openid, string $notify_url = '')
     {
         // 随机字符串
-        $nonce_str = Strs::randString(32);
+        $nonce_str = Common::randString(32);
         //服务器终端的ip
         $spbill_create_ip = $_SERVER['SERVER_ADDR'];
         // 统一下单
@@ -368,7 +367,7 @@ class Wx
     public function h5Pay(string $body, int $total_fee, string $order_id, string $notify_url = '')
     {
         // 随机字符串
-        $nonce_str = Strs::randString(32);
+        $nonce_str = Common::randString(32);
         //客户终端的ip
         $spbill_create_ip = $_SERVER['REMOTE_ADDR'];
         // 统一下单
@@ -427,7 +426,7 @@ class Wx
         //统一下单接口prepay_id
         $url = $this->api['prepay'];
         $xml = Http::excuteUrl($url, $post_xml, 'post');
-        $array = Comm::xml2array($xml);               //将【统一下单】api返回xml数据转换成数组，全要大写
+        $array = Common::xml2array($xml);               //将【统一下单】api返回xml数据转换成数组，全要大写
         if($array['RETURN_CODE'] == 'SUCCESS' && $array['RESULT_CODE'] == 'SUCCESS'){
             // 成功，返回结果集
             return $array;
@@ -447,7 +446,7 @@ class Wx
 	 */
 	public function queryOrder($out_trade_no = null, $transaction_id = null)
 	{
-		$nonce_str = Strs::randString(32);
+		$nonce_str = Common::randString(32);
 		
         $post['appid'] = $this->appid;
         $post['mch_id'] = $this->mchid;
@@ -474,7 +473,7 @@ class Wx
         $post_xml .= '<sign>'.$sign.'</sign></xml>';
         $xml = Http::excuteUrl($this->api['query_order'], $post_xml, 'post');
         //将【统一下单】api返回xml数据转换成数组，全要大写
-        $array = Comm::xml2array($xml);
+        $array = Common::xml2array($xml);
         if( array_key_exists("RETURN_CODE", $array) && array_key_exists("RESULT_CODE", $array) && 
             $array["RETURN_CODE"] == "SUCCESS" && $array["RESULT_CODE"] == "SUCCESS"
         ){

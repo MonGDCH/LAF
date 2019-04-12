@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3acee113a74b4775f75174731fb65e8d",
+    "content-hash": "13fd92ed0a6216ac16bc3ad64fbdfb93",
     "packages": [
         {
             "name": "mongdch/fapi",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/FApi.git",
-                "reference": "e0448c8bf04c04c84f21aa1831a58226752de1b8"
+                "reference": "6eafd8e9ec61c41dc4bb00e81aa12e9304043873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/e0448c8bf04c04c84f21aa1831a58226752de1b8",
-                "reference": "e0448c8bf04c04c84f21aa1831a58226752de1b8",
+                "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/6eafd8e9ec61c41dc4bb00e81aa12e9304043873",
+                "reference": "6eafd8e9ec61c41dc4bb00e81aa12e9304043873",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -54,7 +54,7 @@
                 "fapi",
                 "route"
             ],
-            "time": "2019-03-14T07:30:16+00:00"
+            "time": "2019-04-04T08:00:27+00:00"
         },
         {
             "name": "mongdch/mon-console",
@@ -245,6 +245,102 @@
             "time": "2019-03-26T06:01:39+00:00"
         },
         {
+            "name": "mongdch/mon-store",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-store.git",
+                "reference": "dfee8bbcffa99f576b73e0d481cc710ccdc8a8b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-store/zipball/dfee8bbcffa99f576b73e0d481cc710ccdc8a8b4",
+                "reference": "dfee8bbcffa99f576b73e0d481cc710ccdc8a8b4",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\store\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The PHP store util",
+            "keywords": [
+                "cache",
+                "cookie",
+                "file",
+                "redis",
+                "session",
+                "store"
+            ],
+            "time": "2019-04-11T10:12:57+00:00"
+        },
+        {
+            "name": "mongdch/mon-util",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-util.git",
+                "reference": "fb18fde22fa91c5e99221b4b2c06c312169c98fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-util/zipball/fb18fde22fa91c5e99221b4b2c06c312169c98fb",
+                "reference": "fb18fde22fa91c5e99221b4b2c06c312169c98fb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\util\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The php common utils.",
+            "keywords": [
+                "php",
+                "utils"
+            ],
+            "time": "2019-04-12T08:29:13+00:00"
+        },
+        {
             "name": "nikic/fast-route",
             "version": "v1.3.0",
             "source": {
@@ -300,7 +396,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mongdch/mon-util": 20,
+        "mongdch/mon-store": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

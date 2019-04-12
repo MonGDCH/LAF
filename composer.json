@@ -22,7 +22,9 @@
         "mongdch/fapi": "^1.2",
         "mongdch/mon-console": "^1.0",
         "mongdch/mon-env": "^1.0",
-        "mongdch/mon-container": "^1.0"
+        "mongdch/mon-container": "^1.0",
+        "mongdch/mon-util": "dev-master",
+        "mongdch/mon-store": "dev-master"
     },
     "autoload": {
         "psr-4": {
