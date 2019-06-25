@@ -16,12 +16,11 @@ class InitLogName
 	public function handler($app)
 	{
 		$name = '';
-		if(is_string($app->controller)){
+		if (is_string($app->controller)) {
 			list($controller, $action) = explode('@', $app->controller);
 			$ctrl = strtolower($controller);
 			$names = str_replace('app\http\controller\\', '', $ctrl);
 			$name = str_replace('\\', DIRECTORY_SEPARATOR, $names);
-			
 		}
 		Container::get('log')->register(['logName' => $name]);
 	}

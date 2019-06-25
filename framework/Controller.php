@@ -1,7 +1,6 @@
 <?php
 namespace Laf;
 
-use FApi\traits\Jump;
 use mon\factory\Container;
 
 /**
@@ -12,8 +11,6 @@ use mon\factory\Container;
  */
 class Controller
 {
-    use Jump;
-
     /**
      * 服务容器
      *

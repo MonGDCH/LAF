@@ -34,20 +34,17 @@ $console = \Mon\console\App::instance();
 | 这里注册指令
 |
 */
-foreach($commands as $command => $option)
-{
-    if(is_array($option)){
+foreach ($commands as $command => $option) {
+    if (is_array($option)) {
         $handle = $option['handle'] ?? null;
-        if(is_null($handle)){
+        if (is_null($handle)) {
             // 指令定义错误
-            throw new Exception('[ERROR] register command error, handle required! command: '.$command, 500);
+            throw new Exception('[ERROR] register command error, handle required! command: ' . $command, 500);
         }
         $console->add($command, $handle, $option);
-    }
-    else{
+    } else {
         $console->add($command, $option);
     }
-    
 }
 
 return $console;

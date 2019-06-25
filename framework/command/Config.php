@@ -1,7 +1,7 @@
 <?php
 namespace Laf\command;
 
-use mon\env\Config;
+use mon\env\Config as Env;
 use Mon\console\Command;
 use Mon\console\Input;
 use Mon\console\Output;
@@ -13,7 +13,7 @@ use Mon\console\Output;
  * @version v1.0
  */
 class Config extends Command
-{   
+{
     /**
      * 执行指令
      *
@@ -26,14 +26,12 @@ class Config extends Command
         // 获取查看的节点
         $action = $in->getArgs()[0] ?? null;
         $out->write('');
-        $config = Config::instance()->get($action);
-        
-        if(!is_null($action)){
+        $config = Env::instance()->get($action);
+
+        if (!is_null($action)) {
             return $out->list($config, $action);
-        }
-        else{
-            foreach($config as $title => $value)
-            {
+        } else {
+            foreach ($config as $title => $value) {
                 $out->list($value, $title);
             }
 

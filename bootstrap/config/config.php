@@ -18,23 +18,23 @@ return [
 	 */
 	'log'		=> [
 		'maxSize'      	=> 20480000,
-        'logPath'      	=> ROOT_PATH . '/storage/log',
-        'rollNum'      	=> 3,
-        'logName'      	=> '',
+		'logPath'      	=> ROOT_PATH . '/storage/log',
+		'rollNum'      	=> 3,
+		'logName'      	=> '',
 	],
 
-    /**
-     * 数据库配置
-     */
-    'database'  => file_exists(__DIR__ . '/database.php') ? require(__DIR__ . '/database.php') : [],
+	/**
+	 * 数据库配置
+	 */
+	'database'  => file_exists(__DIR__ . '/database.php') ? require(__DIR__ . '/database.php') : [],
 
 	/**
 	 * Redis缓存数据库
 	 */
 	'redis'		=> [
 		'host'       => '127.0.0.1',
-        'port'       => 6379,
-        'password'   => '',
+		'port'       => 6379,
+		'password'   => '',
 	],
 
 	/**
@@ -42,23 +42,23 @@ return [
 	 */
 	'cache'		=> [
 		'expire'        => 0,
-        'cache_subdir'  => true,
-        'prefix'        => '',
-        'path'          => ROOT_PATH . '/storage/cache',
-        'data_compress' => false,
+		'cache_subdir'  => true,
+		'prefix'        => '',
+		'path'          => ROOT_PATH . '/storage/cache',
+		'data_compress' => false,
 	],
 
 	/**
 	 * cookie配置
 	 */
 	'cookie'	=> [
-        'prefix'    => '',
-        'expire'    => 0,
-        'path'      => '/',
-        'domain'    => '',
-        'secure'    => false,
-        'httponly'  => '',
-        'setcookie' => true,
+		'prefix'    => '',
+		'expire'    => 0,
+		'path'      => '/',
+		'domain'    => '',
+		'secure'    => false,
+		'httponly'  => '',
+		'setcookie' => true,
 	],
 
 	/**
@@ -71,12 +71,12 @@ return [
 		'httponly'	=> ''
 	],
 
-    /**
-     * OAuth权限控制
-     */
-    'oauth'     => [
-        'salt'      => 'mon123465789',
-        'token_key' => 'mon_fapi_key',
-        'token_life'=> 86400,
-    ],
+	/**
+	 * OAuth权限控制
+	 */
+	'oauth'     => [
+		'salt'      => 'mon123465789',
+		'token_key' => 'mon_fapi_key',
+		'token_life'=> 86400,
+	],
 ];

@@ -27,8 +27,7 @@ class Router extends Command
         $action = $in->getArgs()[0] ?? 'help';
         $out->write('');
         // 执行回调
-        switch($action)
-        {
+        switch ($action) {
             case 'clear':
                 return $this->clear($in, $out);
                 break;
@@ -59,14 +58,12 @@ class Router extends Command
 
         $data = Route::instance()->getData();
         $res = [];
-        foreach($data[0] as $method => $item)
-        {
-            foreach($item as $path => $info)
-            {
+        foreach ($data[0] as $method => $item) {
+            foreach ($item as $path => $info) {
                 $res[] = [
                     'method'    => $method,
                     'path'      => $path,
-                    'middleware'=> $info['middleware'],
+                    'middleware' => $info['middleware'],
                     'callback'  => is_string($info['callback']) ? $info['callback'] : '- Closure Function',
                     'append'    => $info['append'],
                 ];
@@ -86,7 +83,7 @@ class Router extends Command
     protected function cache($in, $out)
     {
         $cache = Route::instance()->cache(ROUTE_CACHE);
-        if(!$cache){
+        if (!$cache) {
             return $out->block('build route cache error!', 'ERROR');
         }
 
@@ -102,10 +99,10 @@ class Router extends Command
      */
     protected function clear($in, $out)
     {
-        if(!file_exists(ROUTE_CACHE)){
+        if (!file_exists(ROUTE_CACHE)) {
             return $out->block('route cache file is not exists', 'INFO');
         }
-        if(!unlink(ROUTE_CACHE)){
+        if (!unlink(ROUTE_CACHE)) {
             return $out->block('clear route cache error!', 'ERROR');
         }
 
@@ -122,7 +119,7 @@ class Router extends Command
     protected function help($in, $out)
     {
         $help = [
-            'show help: '  => 'php laf route help',
+            'show help: '   => 'php laf route help',
             'show route: '  => 'php laf route show',
             'cache route: ' => 'php laf route cache',
             'clear route: ' => 'php laf route clear',

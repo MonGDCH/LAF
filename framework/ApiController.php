@@ -37,7 +37,7 @@ class ApiController extends Controller
      *
      * @var [type]
      */
-    protected $allowMethods = []; 
+    protected $allowMethods = [];
 
     /**
      * 返回错误信息
@@ -75,13 +75,13 @@ class ApiController extends Controller
     protected function dataReturn($code, $msg, $data = [], $extend = [], $headers = [])
     {
         $this->headers = array_merge($this->headers, $headers);
-        if(!empty($this->allowOrigin)){
-            $origin = implode(',', $this->allowOrigin);
+        if (!empty($this->allowOrigin)) {
+            $origin = implode(',', (array)$this->allowOrigin);
             $this->headers['Access-Control-Allow-Origin'] = $origin;
         }
 
-        if(!empty($this->allowMethods)){
-            $method = strtoupper(implode(',', $this->allowMethods));
+        if (!empty($this->allowMethods)) {
+            $method = strtoupper(implode(',', (array)$this->allowMethods));
             $this->headers['Access-Control-Allow-Methods'] = $method;
         }
 

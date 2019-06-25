@@ -56,7 +56,7 @@ $app = \FApi\App::instance();
 | 这里获取配置服务, 定义配置环境
 |
 */
-$config = \mon\env\Config::instance()->env( RUN_MODE );
+$config = \mon\env\Config::instance();
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ $config = \mon\env\Config::instance()->env( RUN_MODE );
 | 这里注册加载全局配置信息
 |
 */
-$config->register( require(__DIR__.'/config/config.php') );
+$config->register(require(__DIR__ . '/config/config.php'));
 
 
 /*
@@ -75,7 +75,7 @@ $config->register( require(__DIR__.'/config/config.php') );
 | 这里设置时区
 |
 */
-date_default_timezone_set( $config->get('time_zone', 'PRC') );
+date_default_timezone_set($config->get('time_zone', 'PRC'));
 
 
 /*
@@ -85,7 +85,7 @@ date_default_timezone_set( $config->get('time_zone', 'PRC') );
 | 这里注册定义全局服务
 |
 */
-$app->singleton( require(__DIR__.'/config/kernel.php') );
+$app->singleton(require(__DIR__ . '/config/kernel.php'));
 
 
 /*
@@ -95,7 +95,7 @@ $app->singleton( require(__DIR__.'/config/kernel.php') );
 | 这里配置数据库链接信息
 |
 */
-\mon\orm\Db::setConfig( $config->get('database', []) );
+\mon\orm\Db::setConfig($config->get('database', []));
 
 /*
 |--------------------------------------------------------------------------
@@ -104,14 +104,13 @@ $app->singleton( require(__DIR__.'/config/kernel.php') );
 | 注册应用请求路由
 |
 */
-if(file_exists(ROUTE_CACHE)){
-    $app->route->setData( require(ROUTE_CACHE) );
-}
-else{
+if (file_exists(ROUTE_CACHE)) {
+    $app->route->setData(require(ROUTE_CACHE));
+} else {
     $app->route->group([
         'namespace' => 'App\Http\Controller\\',
     ], function ($router) {
-        require ROOT_PATH.'/app/Http/router.php';
+        require ROOT_PATH . '/app/Http/router.php';
     });
 }
 

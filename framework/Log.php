@@ -1,8 +1,8 @@
 <?php
-namespace Laf\lib;
+namespace Laf;
 
 use mon\env\Config;
-use FApi\traits\Instance;
+use mon\util\Instance;
 use mon\factory\Container;
 
 /**
@@ -12,7 +12,7 @@ use mon\factory\Container;
  */
 class Log
 {
-	use Instance;
+    use Instance;
 
     /**
      * 日志级别
@@ -32,11 +32,11 @@ class Log
     /**
      * 日志配置
      *
-     * @var [type]
+     * @var array
      */
     protected $config = [
-    	'maxSize'      => 20480000,     // 日志文件大小
-        'logPath'      => '',     		// 日志目录
+        'maxSize'      => 20480000,     // 日志文件大小
+        'logPath'      => '',           // 日志目录
         'rollNum'      => 3,            // 日志滚动卷数
         'logName'      => '',           // 日志名称，空则使用当前日期作为名称
     ];
@@ -55,7 +55,7 @@ class Log
      */
     protected function __construct($config = [])
     {
-    	$config = (empty($config)) ? Config::instance()->get('log', []) : $config;
+        $config = (empty($config)) ? Config::instance()->get('log', []) : $config;
         $this->register($config);
     }
 
@@ -102,11 +102,9 @@ class Log
      */
     public function record($msg, $type = 'info', array $context = [])
     {
-        if(is_string($msg))
-        {
+        if (is_string($msg)) {
             $replace = [];
-            foreach($context as $key => $val)
-            {
+            foreach ($context as $key => $val) {
                 $replace['{' . $key . '}'] = $val;
             }
 
@@ -117,7 +115,7 @@ class Log
         return $this;
     }
 
-	/**
+    /**
      * 记录日志信息
      *
      * @param string $level     日志级别
@@ -269,16 +267,16 @@ class Log
      */
     public function save()
     {
-        if(!empty($this->log)){
+        if (!empty($this->log)) {
             // 解析获取日志内容
             $log = $this->parseLog($this->log);
             $logName = empty($this->config['logName']) ? date('Ymd', $_SERVER['REQUEST_TIME']) : $this->config['logName'];
             $path = $this->config['logPath'] . DIRECTORY_SEPARATOR . $logName;
 
             // 分卷记录日志
-            $save = Container::get('file')->subsectionFile($log, $path, '.log', $this->config['maxSize'], $this->config['rollNum']);
+            $save = Container::get('file')->subsectionFile($log, $path, $this->config['maxSize'], $this->config['rollNum']);
             // 保存成功，清空日志
-            if($save){
+            if ($save) {
                 $this->clear();
             }
             return $save;
@@ -295,21 +293,18 @@ class Log
      */
     protected function parseLog($logs)
     {
-    	$log = '';
+        $log = '';
         $now = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
-        foreach($logs as $type => $value)
-        {
+        foreach ($logs as $type => $value) {
             $offset = "[{$now}] [{$type}] ";
 
-            if(is_array($value)){
+            if (is_array($value)) {
                 $info = '';
-                foreach($value as $data)
-                {
+                foreach ($value as $data) {
                     $msg = is_string($data) ? $data : var_export($data, true);
                     $info = $info . $offset . $msg . PHP_EOL;
                 }
-            }
-            else{
+            } else {
                 $info = $offset . $value . PHP_EOL;
             }
             $log .= $info;

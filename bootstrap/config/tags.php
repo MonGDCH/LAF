@@ -23,15 +23,15 @@ return [
 
 	// 执行回调后
 	'action_after' 	=> [],
-	
+
 	// 响应结果输出前
 	'send'			=> [],
-	
+
 	// 应用结束
 	'end'			=> [
 		\Laf\hook\End::class
 	],
-	
+
 	// 应用错误
 	'error'			=> [
 		\Laf\hook\Error::class

@@ -14,7 +14,5 @@ class Home
 	 * @return [type] [description]
 	 */
 	public function handler()
-	{
-
-	}
+	{ }
 }

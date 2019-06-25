@@ -16,7 +16,7 @@ $app = require __DIR__ . '/bootstrap.php';
 | 这里搭载应用钩子
 |
 */
-$app->definition( require(__DIR__.'/config/tags.php') );
+$app->definition(require(__DIR__ . '/config/tags.php'));
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +25,6 @@ $app->definition( require(__DIR__.'/config/tags.php') );
 | 这里初始化应用, 定义是否为开发环境
 |
 */
-$app->init( (strtolower(RUN_MODE) !== 'prd') );
+$app->init((strtolower(RUN_MODE) !== 'prd'));
 
 return $app;
