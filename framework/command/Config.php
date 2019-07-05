@@ -24,7 +24,7 @@ class Config extends Command
     public function execute(Input $in, Output $out)
     {
         // 获取查看的节点
-        $action = $in->getArgs()[0] ?? null;
+        $action = $in->getArgs()[0] ?? '';
         $out->write('');
         $config = Env::instance()->get($action);
 

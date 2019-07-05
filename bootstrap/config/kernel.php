@@ -8,7 +8,14 @@
 |
 */
 return [
+	// 请求实例
+	'request'		=> FApi\Request::instance(),
+	// URL请求、结果集操作
+	'url'			=> FApi\Url::instance(),
+	// 配置信息
+	'config'		=> mon\env\Config::instance(),
+	// 文件对象
 	'file'			=> mon\store\File::class,
-	// 日志类做了单例处理，所以这里直接注册日志实例
-	'log'			=> Laf\Log::instance(), 
+	// 日志
+	'log'			=> App\Kernel\Log::instance(), 
 ];

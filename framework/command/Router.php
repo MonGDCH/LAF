@@ -54,7 +54,7 @@ class Router extends Command
      */
     protected function show($in, $out)
     {
-        $columns = ['method', 'path', 'middleware', 'callback', 'append'];
+        $columns = ['method', 'path', 'befor', 'callback', 'append'];
 
         $data = Route::instance()->getData();
         $res = [];
@@ -63,7 +63,7 @@ class Router extends Command
                 $res[] = [
                     'method'    => $method,
                     'path'      => $path,
-                    'middleware' => $info['middleware'],
+                    'befor' => $info['befor'],
                     'callback'  => is_string($info['callback']) ? $info['callback'] : '- Closure Function',
                     'append'    => $info['append'],
                 ];

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use Laf\Controller;
@@ -13,6 +14,6 @@ class Index extends Controller
 	 */
 	public function index()
 	{
-		return 'Hello World';
+		return 'Hello World!';
 	}
 }
