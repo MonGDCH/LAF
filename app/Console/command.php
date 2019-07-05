@@ -28,6 +28,11 @@ return [
         'handle'    => Laf\command\Config::class,
         'desc'      => 'Check the configuration',
     ],
+    // 创建文件
+    'make'    => [
+        'handle'    => Laf\command\Make::class,
+        'desc'      => 'Make File Command',
+    ],
     // 自定义指令
     'test'    => App\Console\Command\Test::class,
 ];
