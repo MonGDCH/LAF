@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33c7f3353ff4b0473f3794a77b25b479",
+    "content-hash": "ad9b1b770a2f18775b7f53d8c395ed32",
     "packages": [
         {
             "name": "mongdch/fapi",
@@ -244,6 +244,56 @@
                 "orm"
             ],
             "time": "2019-07-05T08:15:55+00:00"
+        },
+        {
+            "name": "mongdch/mon-store",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-store.git",
+                "reference": "244d175548f705752a1963fbaa88b9a4a42d5f65"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-store/zipball/244d175548f705752a1963fbaa88b9a4a42d5f65",
+                "reference": "244d175548f705752a1963fbaa88b9a4a42d5f65",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\store\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The PHP store util",
+            "keywords": [
+                "cache",
+                "cookie",
+                "file",
+                "redis",
+                "session",
+                "store"
+            ],
+            "time": "2019-06-16T02:07:13+00:00"
         },
         {
             "name": "mongdch/mon-util",

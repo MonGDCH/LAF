@@ -14,8 +14,16 @@ return [
 	'url'			=> FApi\Url::instance(),
 	// 配置信息
 	'config'		=> mon\env\Config::instance(),
+	// 日志
+	'log'			=> Laf\provider\Log::instance(),
 	// 文件对象
 	'file'			=> mon\store\File::class,
-	// 日志
-	'log'			=> App\Kernel\Log::instance(), 
+	// Session
+	'session'		=> Laf\provider\Session::class,
+	// cookie
+	'cookie'		=> Laf\provider\Cookie::class,
+	// 文件缓存
+	'cache'			=> Laf\provider\Cache::class,
+	// Redis
+	'redis'			=> Laf\provider\Redis::class,
 ];

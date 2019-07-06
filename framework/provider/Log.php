@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Kernel;
+namespace Laf\provider;
 
 use mon\env\Config;
 use mon\util\Instance;

@@ -18,6 +18,11 @@ return [
     //     'alias'     => 'r'
     // ],
 
+    // 启动内置服务器
+    'server'    => [
+        'handle'    => Laf\command\Server::class,
+        'desc'      => 'Built-in HTTP server',
+    ],
     // 路由指令
     'router'    => [
         'handle'    => Laf\command\Router::class,
