@@ -2,10 +2,10 @@
 
 namespace Laf\command;
 
-use FApi\Route;
 use Mon\console\Command;
 use Mon\console\Input;
 use Mon\console\Output;
+use mon\factory\Container;
 
 /**
  * 生成指令
@@ -50,6 +50,7 @@ class Make extends Command
             'Validate: php LAF make validate name',
             'Befor: php LAF make befor name',
             'After: php LAF make after name',
+            'Command: php LAF make command name',
         ];
         $out->list($help);
 
@@ -81,6 +82,9 @@ class Make extends Command
                 break;
             case 'after':
                 $make = $this->after($config['name']);
+                break;
+            case 'command':
+                $make = $this->command($config['name']);
                 break;
             default:
                 return $out->block('Type Error!', 'ERROR');
@@ -115,7 +119,7 @@ class Make extends Command
             return false;
         }
         $content = sprintf($template, $model, $model, $model, $table);
-        $save = file_put_contents($model_file, $content);
+        $save = Container::instance()->file->createFile($content, $model_file, false);
         if (!$save) {
             $this->error = 'Save Model Error![' . $model_file . ']';
             return false;
@@ -146,7 +150,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $ctrl);
-        $save = file_put_contents($ctrl_file, $content);
+        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Controller Error![' . $ctrl_file . ']';
             return false;
@@ -177,7 +181,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $ctrl);
-        $save = file_put_contents($ctrl_file, $content);
+        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Validate Error![' . $ctrl_file . ']';
             return false;
@@ -208,7 +212,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $ctrl);
-        $save = file_put_contents($ctrl_file, $content);
+        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Befor Error![' . $ctrl_file . ']';
             return false;
@@ -239,7 +243,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $ctrl);
-        $save = file_put_contents($ctrl_file, $content);
+        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save After Error![' . $ctrl_file . ']';
             return false;
@@ -248,6 +252,36 @@ class Make extends Command
         return true;
     }
 
+    /**
+     * 创建指令
+     *
+     * @param  string $name 控制名称
+     * @return [type]       [description]
+     */
+    protected function command(string $name): bool
+    {
+        $path = $this->app_path . 'Console' . DIRECTORY_SEPARATOR . 'Command';
+        $ctrl = ucfirst($name);
+        $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
+        if (file_exists($ctrl_file)) {
+            $this->error = 'Command[' . $ctrl . '] Exists!';
+            return false;
+        }
+        // 加载模版
+        $template = $this->load('command');
+        if (!$template) {
+            return false;
+        }
+        // Make
+        $content = sprintf($template, $ctrl, $ctrl, $ctrl);
+        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
+        if (!$save) {
+            $this->error = 'Save Command Error![' . $ctrl_file . ']';
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * 加载模版

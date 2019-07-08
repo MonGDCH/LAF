@@ -1,4 +1,5 @@
 <?php
+
 namespace Laf;
 
 use mon\factory\Container;
@@ -95,12 +96,12 @@ class Controller
     {
         $this->headers = array_merge($this->headers, $headers);
         if (!empty($this->allowOrigin)) {
-            $origin = implode(',', (array)$this->allowOrigin);
+            $origin = implode(',', (array) $this->allowOrigin);
             $this->headers['Access-Control-Allow-Origin'] = $origin;
         }
 
         if (!empty($this->allowMethods)) {
-            $method = strtoupper(implode(',', (array)$this->allowMethods));
+            $method = strtoupper(implode(',', (array) $this->allowMethods));
             $this->headers['Access-Control-Allow-Methods'] = $method;
         }
 

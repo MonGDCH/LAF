@@ -4,7 +4,6 @@ namespace App\Model;
 
 use mon\orm\Model;
 use mon\util\Instance;
-use mon\factory\Container;
 
 /**
  * %s 模型

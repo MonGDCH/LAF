@@ -8,6 +8,7 @@ use mon\factory\Container;
 
 /**
  * 日志处理类
+ *
  * @author Mon
  * @version v2.1 修改打印日志格式
  */
