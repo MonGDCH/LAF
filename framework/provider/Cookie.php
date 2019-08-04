@@ -2,14 +2,14 @@
 
 namespace Laf\provider;
 
-use Laf\Kernel;
+use Laf\Provider;
 use mon\factory\Container;
 use mon\store\Cookie as Service;
 
 /**
  * Cookie组件封装
  */
-class Cookie extends Kernel
+class Cookie extends Provider
 {
     /**
      * 构造方法

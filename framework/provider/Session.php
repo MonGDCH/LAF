@@ -2,14 +2,14 @@
 
 namespace Laf\provider;
 
-use Laf\Kernel;
+use Laf\Provider;
 use mon\factory\Container;
 use mon\store\Session as Service;
 
 /**
  * Session组件封装
  */
-class Session extends Kernel
+class Session extends Provider
 {
     /**
      * 构造方法

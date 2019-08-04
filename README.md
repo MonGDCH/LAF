@@ -13,7 +13,7 @@ composer create-project mongdch/laf
 
 > v2.0.1
 
-- 正式发布2.0.2版本
+- 正式发布2.0.1版本
 
 > v2.0.0
 

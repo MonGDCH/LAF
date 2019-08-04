@@ -3,7 +3,7 @@ namespace Laf;
 
 use Exception;
 
-class Kernel
+class Provider
 {
     /**
      * 服务实例

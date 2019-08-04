@@ -2,14 +2,14 @@
 
 namespace Laf\provider;
 
-use Laf\Kernel;
+use Laf\Provider;
 use mon\factory\Container;
 use mon\store\Rdb as Service;
 
 /**
  * Redis组件封装
  */
-class Redis extends Kernel
+class Redis extends Provider
 {
     /**
      * 构造方法

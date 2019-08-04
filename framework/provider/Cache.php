@@ -2,14 +2,14 @@
 
 namespace Laf\provider;
 
-use Laf\Kernel;
+use Laf\Provider;
 use mon\factory\Container;
 use mon\store\Cache as Service;
 
 /**
  * Cache组件封装
  */
-class Cache extends Kernel
+class Cache extends Provider
 {
     /**
      * 构造方法
