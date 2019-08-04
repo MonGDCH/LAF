@@ -11,6 +11,10 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v2.0.1
+
+- 正式发布2.0.2版本
+
 > v2.0.0
 
 - 解耦代码

@@ -16,7 +16,7 @@ $app = require __DIR__ . '/bootstrap.php';
 | 这里获取获取指令
 |
 */
-$commands = require __DIR__ . '/config/commands.php';
+$commands = require __DIR__ . '/config/command.php';
 
 /*
 |--------------------------------------------------------------------------

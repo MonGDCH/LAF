@@ -10,7 +10,7 @@
 return [
 	// 应用初始化
 	'bootstrap'		=> [
-		\Laf\hook\Bootstrap::class,
+		\Laf\hook\Bootstrap::class
 	],
 
 	// 应用执行

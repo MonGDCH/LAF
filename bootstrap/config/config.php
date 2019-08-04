@@ -70,13 +70,4 @@ return [
 		'secure'	=> '',
 		'httponly'	=> ''
 	],
-
-	/**
-	 * OAuth权限控制
-	 */
-	'oauth'     => [
-		'salt'      => 'mon123465789',
-		'token_key' => 'mon_fapi_key',
-		'token_life'=> 86400,
-	],
 ];

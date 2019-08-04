@@ -11,3 +11,5 @@ $router->get('/', function () {
     $composer_config = json_decode(file_get_contents(ROOT_PATH . '/composer.json'), true);
     return 'Hello LAF! Version ' . $composer_config['version'];
 });
+
+$router->get('/index', 'Index@index');

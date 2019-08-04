@@ -85,7 +85,7 @@ date_default_timezone_set($config->get('time_zone', 'PRC'));
 | 这里注册定义全局服务
 |
 */
-$app->singleton(require(__DIR__ . '/config/kernel.php'));
+$app->singleton(require(__DIR__ . '/config/provider.php'));
 
 
 /*

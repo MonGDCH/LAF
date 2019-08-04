@@ -1,5 +1,6 @@
 <?php
-namespace Laf;
+
+namespace Laf\provider;
 
 use mon\env\Config;
 use mon\util\Instance;
@@ -7,6 +8,7 @@ use mon\factory\Container;
 
 /**
  * 日志处理类
+ *
  * @author Mon
  * @version v2.1 修改打印日志格式
  */
@@ -258,6 +260,22 @@ class Log
     public function curl($message, array $context = [])
     {
         return $this->log(__FUNCTION__, $message, $context);
+    }
+
+    /**
+     * 开放日志记录类型
+     *
+     * @param [type] $file  文件名称，__FILE__
+     * @param [type] $line  文件行，__LINE__
+     * @param [type] $log   日志信息
+     * @param string $level 日志类型级别
+     * @return void
+     */
+    public function oss($file, $line, $log, $level = 'info')
+    {
+        $message = "[{$file} => {$line}] " . $log;
+
+        return $this->log($level, $message);
     }
 
     /**
