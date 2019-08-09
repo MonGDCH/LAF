@@ -11,6 +11,11 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v2.1.0
+
+- 发布2.1.0LTS版本
+- 调整服务类库
+
 > v2.0.1
 
 - 正式发布2.0.1版本

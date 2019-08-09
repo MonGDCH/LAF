@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad9b1b770a2f18775b7f53d8c395ed32",
+    "content-hash": "a9b14566a58b5a69ac34687fd79c9b46",
     "packages": [
         {
             "name": "mongdch/fapi",
@@ -18,13 +18,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/20d1333382e62de19cf30ba238e17ebd2dedd1a2",
                 "reference": "20d1333382e62de19cf30ba238e17ebd2dedd1a2",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "mongdch/mon-container": "^1.0",
@@ -68,13 +62,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-console/zipball/df65e66757d238997acc3442c0c98e7c6a598bcb",
                 "reference": "df65e66757d238997acc3442c0c98e7c6a598bcb",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
@@ -114,13 +102,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-container/zipball/cae30a0fce957ef1c9df5a4dbe8f2fd46bfee374",
                 "reference": "cae30a0fce957ef1c9df5a4dbe8f2fd46bfee374",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.6.0"
@@ -161,13 +143,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-env/zipball/f0fba906a24c0bdbe26a1d923054f82c3b9256b7",
                 "reference": "f0fba906a24c0bdbe26a1d923054f82c3b9256b7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
@@ -208,13 +184,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/c30cab8c19fb42c2038b4ea23214a2f9c9bb92c4",
                 "reference": "c30cab8c19fb42c2038b4ea23214a2f9c9bb92c4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "mongdch/mon-container": "^1.0",
@@ -257,13 +227,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-store/zipball/244d175548f705752a1963fbaa88b9a4a42d5f65",
                 "reference": "244d175548f705752a1963fbaa88b9a4a42d5f65",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
@@ -307,13 +271,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-util/zipball/9c8bcf2724df50685804eb735bb9532d2e5a97f0",
                 "reference": "9c8bcf2724df50685804eb735bb9532d2e5a97f0",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.6.0"
@@ -353,13 +311,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/nikic/FastRoute/zipball/181d480e08d9476e61381e04a71b34dc0432e812",
                 "reference": "181d480e08d9476e61381e04a71b34dc0432e812",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
