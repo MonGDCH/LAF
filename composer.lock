@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f217b319de1f694cb949831c28516457",
+    "content-hash": "b4a622ccbcbe27cfe05543ddfc9ac47d",
     "packages": [
         {
             "name": "mongdch/fapi",
@@ -159,16 +159,16 @@
         },
         {
             "name": "mongdch/mon-client",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-client.git",
-                "reference": "172c2ffe477edf2ff5f49d4286fb989a14d751e2"
+                "reference": "0012c144dcd473986cedbda99ea9ebf8b2a63ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-client/zipball/172c2ffe477edf2ff5f49d4286fb989a14d751e2",
-                "reference": "172c2ffe477edf2ff5f49d4286fb989a14d751e2",
+                "url": "https://api.github.com/repos/MonGDCH/mon-client/zipball/0012c144dcd473986cedbda99ea9ebf8b2a63ccd",
+                "reference": "0012c144dcd473986cedbda99ea9ebf8b2a63ccd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -205,7 +205,7 @@
                 "tcp",
                 "udp"
             ],
-            "time": "2019-06-24T10:23:51+00:00"
+            "time": "2020-09-25T10:02:19+00:00"
         },
         {
             "name": "mongdch/mon-console",

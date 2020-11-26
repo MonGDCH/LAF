@@ -15,6 +15,7 @@ composer create-project mongdch/laf
 
 - 发布2.2.0LTS版本
 - 优化代码及业务结构
+- 增加gatewayworker支持
 
 > v2.1.0
 
