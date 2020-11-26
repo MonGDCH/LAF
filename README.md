@@ -11,6 +11,11 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v2.2.0
+
+- 发布2.2.0LTS版本
+- 优化代码及业务结构
+
 > v2.1.0
 
 - 发布2.1.0LTS版本

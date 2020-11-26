@@ -1,5 +1,6 @@
 <?php
-namespace App\Console\Command;
+
+namespace app\console\command;
 
 use Mon\console\Command;
 use Mon\console\Input;

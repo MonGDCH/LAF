@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAF FrameWork</title>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{background:#fff;font:normal 14px/1.6 Helvetica neue,Segoe UI,Arial,Microsoft Jhenghei,Microsoft Yahei,Sans-serif;font-size:14px;line-height:1.5}
+        img{width:100%}
+        a{text-decoration:none}
+        a:hover{text-decoration: underline;}
+        .container{margin-right:auto;margin-left:auto;padding-right:12px;padding-left:12px;width:100%}
+        .header{padding:10px 0;height:40px;background:#f7f7f7;color:#9d9d9d}
+        .header a{color: #9d9d9d;}
+        .header .header-main{display:flex;justify-content:space-between;align-items:center}
+        .nav{padding:20px 0;height:80px;border-bottom:1px solid #eee}
+        .nav .nav-main{display:flex;justify-content:space-between;align-items:center}
+        .nav .nav-main .logo{width:120px;position:relative;top:-6px;}
+        .nav .nav-main .about a{color:#758392;font-size:18px}
+        .warp{position:relative;height:calc(100vh - 160px);background:#fff;text-align:center}
+        .warp .warp-main{position:absolute;top:40%;left:50%;z-index:999;transform:translate(-50%,-50%)}
+        .warp h1{margin-bottom:40px;color:#353535;font-weight:200;font-size:48px}
+        .btn{padding:12px 20px;border:1px solid;border-radius:4px;opacity:1}
+        a.btn:hover{text-decoration: none;}
+        .btn:hover{opacity:.86}
+        .btn:active{opacity:1}
+        .btn-get{background:#4fc08d;color:#fff}
+        .footer{padding:10px 0;height:40px;background:#f7f7f7;color:#9d9d9d;text-align:center;font-size:14px}
+        @media (min-width:576px){.container{max-width:540px}}
+        @media (min-width:768px){.container{max-width:720px}}
+        @media (min-width:992px){.container{max-width:960px}}
+        @media (min-width:1200px){.container{max-width:1140px}}
+        @media screen and (max-width:480px){.call{display:none}}
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-main">
+            <div class="wellcom">欢迎使用LAF框架系统</div>
+            <div class="call"><a href="mailto:985558837@qq.com">快速搭建PHP系统平台@眷恋于夕阳</a></div>
+        </div>
+    </header>
+    <nav class="nav">
+        <div class="container nav-main">
+            <div class="logo">
+                <a href="">
+                    <img src="https://s3.ax1x.com/2020/11/26/DweXHU.png" alt="LAF" />
+                </a>
+            </div>
+            <div class="about">
+                <a href="https://gdmon.com/" target="_blank">关于作者</a>
+            </div>
+        </div>
+    </nav>
+    <section class="warp" id="particles-js">
+        <div class="warp-main">
+            <h1>LAF FrameWork</h1>
+            <div class="get">
+                <a href="https://github.com/MonGDCH/LAF" target="_blank" class="btn btn-get">立即获取</a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">© 2020 gdmon</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        window.onload = function () {
+            particlesJS('particles-js', { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#3280FC" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#3280FC" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#3280FC", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
+        }
+    </script>
+</body>
+
+</html>

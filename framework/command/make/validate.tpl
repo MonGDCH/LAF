@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Validate;
+namespace app\validate;
 
 use mon\util\Validate;
 
@@ -16,7 +16,7 @@ class %s extends Validate
     /**
      * 验证规则
      *
-     * @var [type]
+     * @var array
      */
     public $rule = [
 
@@ -25,7 +25,7 @@ class %s extends Validate
     /**
      * 错误提示信息
      *
-     * @var [type]
+     * @var array
      */
     public $message = [
 

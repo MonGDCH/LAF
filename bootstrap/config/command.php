@@ -24,8 +24,8 @@ return array_merge([
         'desc'      => 'Check the configuration',
     ],
     // 创建文件
-    'make'    => [
+    'make'      => [
         'handle'    => Laf\command\Make::class,
         'desc'      => 'Make File Command',
     ]
-], require ROOT_PATH . '/app/Console/command.php');
+], require ROOT_PATH . '/app/console/command.php');

@@ -11,6 +11,15 @@ $app = require __DIR__ . '/bootstrap.php';
 
 /*
 |--------------------------------------------------------------------------
+| 配置数据库
+|--------------------------------------------------------------------------
+| 命令控制台启动脚本，Mysql链接断开自动重连
+|
+*/
+\mon\orm\Db::setConfig(['break_reconnect' => true]);
+
+/*
+|--------------------------------------------------------------------------
 | 获取指令配置
 |--------------------------------------------------------------------------
 | 这里获取获取指令
@@ -25,7 +34,7 @@ $commands = require __DIR__ . '/config/command.php';
 | 这里获取控制台应用实例
 |
 */
-$console = \Mon\console\App::instance();
+$console = \mon\console\App::instance();
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +45,7 @@ $console = \Mon\console\App::instance();
 */
 foreach ($commands as $command => $option) {
     if (is_array($option)) {
-        $handle = $option['handle'] ?? null;
+        $handle = isset($option['handle']) ? $option['handle'] : null;
         if (is_null($handle)) {
             // 指令定义错误
             throw new Exception('[ERROR] register command error, handle required! command: ' . $command, 500);

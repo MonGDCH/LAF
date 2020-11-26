@@ -2,9 +2,7 @@
 
 namespace Laf\command;
 
-use Mon\console\Command;
-use Mon\console\Input;
-use Mon\console\Output;
+use mon\console\Command;
 
 /**
  * 启动内置服务
@@ -12,28 +10,47 @@ use Mon\console\Output;
 class Server extends Command
 {
     /**
+     * 默认IP
+     *
+     * @var string
+     */
+    protected $ip = '127.0.0.1';
+
+    /**
+     * 默认端口
+     *
+     * @var string
+     */
+    protected $port = '8088';
+
+    /**
+     * 默认入口文件
+     *
+     * @var string
+     */
+    protected $entry = 'index.php';
+
+    /**
      * 执行指令
      *
-     * @return [type] [description]
+     * @return void
      */
-    public function execute(Input $in, Output $out)
+    public function execute($in, $out)
     {
         $out->write('start LAF server...');
-        $out->write('format: php LAF server [ip:127.0.0.1] [port:8088] [entry:index.php]');
-
-
+        $out->write('format: php LAF server [ip:' . $this->ip . '] [port:' . $this->port . '] [entry:' . $this->entry . ']');
         $args = $in->getArgs();
-        $ip = $args[0] ?? '127.0.0.1';
-        $port = $args[1] ?? '8088';
-        $entry = $args[2] ?? 'index.php';
-        $root = ROOT_PATH . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR;
-
+        $ip = isset($args[0]) ? $args[0] : $this->ip;
+        $port = isset($args[1]) ? $args[1] : $this->port;
+        $entry = isset($args[2]) ? $args[2] : $this->entry;
+        $root = ROOT_PATH . DIRECTORY_SEPARATOR . 'public';
+        // 运行的PHP内置指令
         $command = sprintf(
             'php -S %s:%d -t %s %s',
             $ip,
             $port,
             escapeshellarg($root),
-            escapeshellarg($root . $entry)
+            escapeshellarg($root . DIRECTORY_SEPARATOR . $entry)
         );
 
         $out->write('server run start...');

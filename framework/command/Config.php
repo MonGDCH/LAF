@@ -2,9 +2,9 @@
 namespace Laf\command;
 
 use mon\env\Config as Env;
-use Mon\console\Command;
-use Mon\console\Input;
-use Mon\console\Output;
+use mon\console\Command;
+use mon\console\Input;
+use mon\console\Output;
 
 /**
  * 配置相关指令
@@ -21,18 +21,19 @@ class Config extends Command
      * @param  Output $out 输出实例
      * @return int         exit状态码
      */
-    public function execute(Input $in, Output $out)
+    public function execute($in, $out)
     {
         // 获取查看的节点
-        $action = $in->getArgs()[0] ?? '';
+        $args = $in->getArgs();
+        $action = isset($args[0]) ? $args[0] : '';
         $out->write('');
         $config = Env::instance()->get($action);
 
         if (!is_null($action)) {
-            return $out->list($config, $action);
+            return $out->dataList($config, $action);
         } else {
             foreach ($config as $title => $value) {
-                $out->list($value, $title);
+                $out->dataList($value, $title);
             }
 
             return 0;

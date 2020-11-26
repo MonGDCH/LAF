@@ -1,8 +1,9 @@
 <?php
-namespace App\Http\Befor;
+
+namespace app\http\middleware;
 
 /**
- * %s 中间件
+ * %s 前置中间件
  *
  * Class %s
  * @created for mon-console

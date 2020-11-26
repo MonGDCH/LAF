@@ -1,5 +1,6 @@
 <?php
-namespace Laf\hook;
+
+namespace Laf\hook\app;
 
 use mon\factory\Container;
 
@@ -14,7 +15,7 @@ class End
 	/**
 	 * 钩子回调
 	 *
-	 * @return [type] [description]
+	 * @return void
 	 */
 	public function handler()
 	{

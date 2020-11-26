@@ -2,9 +2,9 @@
 
 namespace Laf\command;
 
-use Mon\console\Command;
-use Mon\console\Input;
-use Mon\console\Output;
+use mon\console\Command;
+use mon\console\Input;
+use mon\console\Output;
 use mon\factory\Container;
 
 /**
@@ -39,33 +39,32 @@ class Make extends Command
     /**
      * 执行指令
      *
-     * @return [type] [description]
+     * @return void
      */
-    public function execute(Input $in, Output $out)
+    public function execute($in, $out)
     {
-        $out->write('format:');
-        $help = [
-            'Model: php LAF make model name table',
-            'Controller: php LAF make controller name',
-            'Validate: php LAF make validate name',
-            'Befor: php LAF make befor name',
-            'After: php LAF make after name',
-            'Command: php LAF make command name',
-        ];
-        $out->list($help);
-
-        $argv = $this->getArgv($in);
-        $config = $this->parseArgv($argv);
+        $args = $this->getArgv($in);
+        $config = $this->parseArgv($args);
         if (!$config) {
+            $out->write('format:');
+            $help = [
+                'Model: php LAF make model name table',
+                'Controller: php LAF make controller name',
+                'Validate: php LAF make validate name',
+                'Befor: php LAF make befor name',
+                'After: php LAF make after name',
+                'Command: php LAF make command name',
+            ];
+            $out->dataList($help);
             return $out->block($this->error, 'ERROR');
         }
         // 解析类型，执行make操作
         switch ($config['type']) {
             case 'model':
-                if (isset($argv['table']) && !empty($argv['table'])) {
-                    $table = $argv['table'];
-                } elseif (isset($argv[2]) && !empty($argv[2])) {
-                    $table = $argv[2];
+                if (isset($args['table']) && !empty($args['table'])) {
+                    $table = $args['table'];
+                } elseif (isset($args[2]) && !empty($args[2])) {
+                    $table = $args[2];
                 } else {
                     $table = $config['name'];
                 }
@@ -95,7 +94,7 @@ class Make extends Command
             return $out->block($this->error, 'ERROR');
         }
 
-        return $out->write('Make ' . $config['type'] . ' Success!');
+        return $out->write('Make ' . $config['type'] . ' ' . ucfirst($config['name']) . ' Success!');
     }
 
     /**
@@ -105,9 +104,9 @@ class Make extends Command
      * @param string $table 表名
      * @return boolean
      */
-    protected function model(string $name, string $table): bool
+    protected function model($name, $table)
     {
-        $path = $this->app_path . 'Model';
+        $path = $this->app_path . 'model';
         $model = ucfirst($name);
         $model_file = $path . DIRECTORY_SEPARATOR . $model . $this->ext;
         if (file_exists($model_file)) {
@@ -132,11 +131,11 @@ class Make extends Command
      * 创建控制器
      *
      * @param  string $name 控制名称
-     * @return [type]       [description]
+     * @return boolean
      */
-    protected function controller(string $name): bool
+    protected function controller($name)
     {
-        $path = $this->app_path . 'Http' . DIRECTORY_SEPARATOR . 'Controller';
+        $path = $this->app_path . 'http' . DIRECTORY_SEPARATOR . 'controller';
         $ctrl = ucfirst($name);
         $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
         if (file_exists($ctrl_file)) {
@@ -163,11 +162,11 @@ class Make extends Command
      * 创建验证器
      *
      * @param  string $name 验证器名称
-     * @return [type]       [description]
+     * @return boolean
      */
-    protected function validate(string $name): bool
+    protected function validate($name)
     {
-        $path = $this->app_path . 'Validate';
+        $path = $this->app_path . 'validate';
         $ctrl = ucfirst($name);
         $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
         if (file_exists($ctrl_file)) {
@@ -194,11 +193,11 @@ class Make extends Command
      * 创建前置件
      *
      * @param  string $name 前置件名称
-     * @return [type]       [description]
+     * @return boolean
      */
-    protected function befor(string $name): bool
+    protected function befor($name)
     {
-        $path = $this->app_path . 'Http' . DIRECTORY_SEPARATOR . 'Befor';
+        $path = $this->app_path . 'http' . DIRECTORY_SEPARATOR . 'middleware';
         $ctrl = ucfirst($name);
         $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
         if (file_exists($ctrl_file)) {
@@ -225,11 +224,11 @@ class Make extends Command
      * 创建后置件
      *
      * @param  string $name 控制名称
-     * @return [type]       [description]
+     * @return boolean
      */
-    protected function after(string $name): bool
+    protected function after($name)
     {
-        $path = $this->app_path . 'Http' . DIRECTORY_SEPARATOR . 'After';
+        $path = $this->app_path . 'http' . DIRECTORY_SEPARATOR . 'middleware';
         $ctrl = ucfirst($name);
         $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
         if (file_exists($ctrl_file)) {
@@ -256,11 +255,11 @@ class Make extends Command
      * 创建指令
      *
      * @param  string $name 控制名称
-     * @return [type]       [description]
+     * @return boolean
      */
-    protected function command(string $name): bool
+    protected function command($name)
     {
-        $path = $this->app_path . 'Console' . DIRECTORY_SEPARATOR . 'Command';
+        $path = $this->app_path . 'console' . DIRECTORY_SEPARATOR . 'command';
         $ctrl = ucfirst($name);
         $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
         if (file_exists($ctrl_file)) {
@@ -286,10 +285,10 @@ class Make extends Command
     /**
      * 加载模版
      *
-     * @param  [type] $name [description]
-     * @return [type]       [description]
+     * @param  string $name 模板名称
+     * @return mixed
      */
-    protected function load(string $name)
+    protected function load($name)
     {
         $path = __DIR__ . DIRECTORY_SEPARATOR . 'make' . DIRECTORY_SEPARATOR . $name . '.tpl';
         $content = file_get_contents($path);
@@ -304,12 +303,12 @@ class Make extends Command
     /**
      * 解析参数
      *
-     * @param  [type] $argv [description]
-     * @return [type]       [description]
+     * @param  array $args 参数值
+     * @return mixed
      */
-    protected function parseArgv(array $argv)
+    protected function parseArgv(array $args)
     {
-        if (empty($argv)) {
+        if (empty($args)) {
             $this->error = 'Invalid Argv!';
             return false;
         }
@@ -319,7 +318,7 @@ class Make extends Command
             'name' => null,
         ];
 
-        foreach ($argv as $k => $v) {
+        foreach ($args as $k => $v) {
             switch ($k) {
                 case '0':
                     $data['type'] = $v;
@@ -347,10 +346,10 @@ class Make extends Command
     /**
      * 获取入参
      *
-     * @param  Input  $in [description]
-     * @return [type]     [description]
+     * @param  Input  $in 入参
+     * @return array
      */
-    protected function getArgv(Input $in)
+    protected function getArgv($in)
     {
         $args = $in->getArgs();
         $lopt = $in->getlopt();

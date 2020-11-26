@@ -1,5 +1,6 @@
 <?php
-namespace Laf\hook;
+
+namespace Laf\hook\app;
 
 use mon\factory\Container;
 
@@ -14,12 +15,12 @@ class Error
 	/**
 	 * 错误回调钩子
 	 *
-	 * @param  [type] $error 错误信息
-	 * @return [type]        [description]
+	 * @param  array $error 错误信息
+	 * @return void
 	 */
 	public function handler($error)
 	{
-		$log = "file: {$error['file']} line: {$error['line']} level: {$error['level']} {$error['message']}";
+		$log = "file: {$error['file']} line: {$error['line']} level: {$error['level']} message: {$error['message']}";
 		Container::get('log')->error($log)->save();
 	}
 }

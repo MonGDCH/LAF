@@ -1,19 +1,21 @@
 <?php
 
-namespace App\Http\Controller;
+namespace app\http\controller;
 
 use Laf\Controller;
 
-
+/**
+ * 首页控制器
+ */
 class Index extends Controller
 {
-	/**
-	 * index方法
-	 *
-	 * @return [type] [description]
-	 */
-	public function index()
-	{
-		return 'Hello World!';
-	}
+    /**
+     * 首页
+     *
+     * @return void
+     */
+    public function index()
+    {
+        return $this->fetch('index');
+    }
 }

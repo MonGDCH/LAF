@@ -9,21 +9,17 @@
 */
 return [
     // 数据库类型
-    'type'            => 'mysql',
+    'type'          => 'mysql',
     // 服务器地址
-    'host'            => '127.0.0.1',
+    'host'          => '127.0.0.1',
     // 数据库名
-    'database'        => '',
+    'database'      => 'test',
     // 用户名
-    'username'        => '',
+    'username'      => 'root',
     // 密码
-    'password'        => '',
+    'password'      => 'root',
     // 端口
-    'port'            => '3306',
-    // 数据库连接参数
-    'params'          => [],
+    'port'          => '3306',
     // 数据库编码默认采用utf8
-    'charset'         => 'utf8',
-    // 返回结果集类型
-    'result_type'     => PDO::FETCH_ASSOC,
+    'charset'       => 'utf8',
 ];

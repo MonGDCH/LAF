@@ -19,7 +19,34 @@ define('RUN_MODE', 'dev');
 | 这里定义根路径, 用于路径查找
 |
 */
-define('ROOT_PATH', __DIR__ . '/..');
+define('ROOT_PATH', dirname(__DIR__));
+
+/*
+|--------------------------------------------------------------------------
+| 定义应用APP路径
+|--------------------------------------------------------------------------
+| 这里定义APP路径, 用于路径查找
+|
+*/
+define('APP_PATH', ROOT_PATH . '/app');
+
+/*
+|--------------------------------------------------------------------------
+| 定义配置文件路径
+|--------------------------------------------------------------------------
+| 这里定义配置文件路径, 用于路径查找获取配置信息
+|
+*/
+define('CONFIG_PATH', __DIR__ . '/config');
+
+/*
+|--------------------------------------------------------------------------
+| 静态资源路径
+|--------------------------------------------------------------------------
+| 这里定义静态资源路径, 需拥有读写权限，插件安装时如有资源依赖，会同步文件到对应的路径下
+|
+*/
+define('STATIC_PATH', ROOT_PATH . '/public/static');
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +64,7 @@ define('ROUTE_CACHE', ROOT_PATH . '/storage/cache/router.php');
 | 加载composer, 处理类文件自动加载
 |
 */
-require ROOT_PATH . '/vendor/autoload.php';
-
+require_once ROOT_PATH . '/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -65,8 +91,16 @@ $config = \mon\env\Config::instance();
 | 这里注册加载全局配置信息
 |
 */
-$config->register(require(__DIR__ . '/config/config.php'));
+$config->register(require(CONFIG_PATH . '/config.php'));
 
+/*
+|--------------------------------------------------------------------------
+| 获取钩子信息
+|--------------------------------------------------------------------------
+| 这里加载全局使用的钩子配置信息
+|
+*/
+$tags = require(CONFIG_PATH . '/tags.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +119,7 @@ date_default_timezone_set($config->get('time_zone', 'PRC'));
 | 这里注册定义全局服务
 |
 */
-$app->singleton(require(__DIR__ . '/config/provider.php'));
+$app->singleton(require(CONFIG_PATH . '/provider.php'));
 
 
 /*
@@ -97,6 +131,25 @@ $app->singleton(require(__DIR__ . '/config/provider.php'));
 */
 \mon\orm\Db::setConfig($config->get('database', []));
 
+
+/*
+|--------------------------------------------------------------------------
+| 定义数据库事件钩子
+|--------------------------------------------------------------------------
+| 这里配置数据库执行SQL事件的钩子
+|
+*/
+foreach ((array) $tags['db'] as $event => $callback) {
+    if (!empty($callback)) {
+        if (is_string($callback)) {
+            \mon\orm\Db::event($event, $callback);
+        } else {
+            throw new Exception('[ERROR] DB event unsupported hook type! event: ' . $event, 500);
+        }
+    }
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | 定义路由
@@ -107,10 +160,8 @@ $app->singleton(require(__DIR__ . '/config/provider.php'));
 if (file_exists(ROUTE_CACHE)) {
     $app->route->setData(require(ROUTE_CACHE));
 } else {
-    $app->route->group([
-        'namespace' => 'App\Http\Controller\\',
-    ], function ($router) {
-        require ROOT_PATH . '/app/Http/router.php';
+    $app->route->group([], function ($router) {
+        require_once ROOT_PATH . '/app/http/router.php';
     });
 }
 

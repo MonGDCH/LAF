@@ -1,5 +1,6 @@
 <?php
-namespace Laf\hook;
+
+namespace Laf\hook\app;
 
 use mon\factory\Container;
 
@@ -11,7 +12,8 @@ class InitLogName
 	/**
 	 * 钩子回调
 	 *
-	 * @return [type] [description]
+	 * @param mixed $app	App实例
+	 * @return void
 	 */
 	public function handler($app)
 	{

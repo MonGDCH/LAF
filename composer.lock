@@ -4,21 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9b14566a58b5a69ac34687fd79c9b46",
+    "content-hash": "f217b319de1f694cb949831c28516457",
     "packages": [
         {
             "name": "mongdch/fapi",
-            "version": "1.3.0",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/FApi.git",
-                "reference": "20d1333382e62de19cf30ba238e17ebd2dedd1a2"
+                "reference": "5410ba63864e763f87cf4ab17bf209e2c6e20fe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/20d1333382e62de19cf30ba238e17ebd2dedd1a2",
-                "reference": "20d1333382e62de19cf30ba238e17ebd2dedd1a2",
-                "shasum": ""
+                "url": "https://api.github.com/repos/MonGDCH/FApi/zipball/5410ba63864e763f87cf4ab17bf209e2c6e20fe2",
+                "reference": "5410ba63864e763f87cf4ab17bf209e2c6e20fe2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "mongdch/mon-container": "^1.0",
@@ -41,36 +47,193 @@
                     "email": "985558837@qq.com"
                 }
             ],
-            "description": "the php api routing framework",
-            "homepage": "http://blog.gdmon.com/",
+            "description": "the fast php api routing framework",
+            "homepage": "http://gdmon.com/",
             "keywords": [
                 "api",
-                "fapi",
+                "fast-route",
+                "mon",
                 "route"
             ],
-            "time": "2019-06-16T14:30:31+00:00"
+            "time": "2020-07-17T06:54:08+00:00"
         },
         {
-            "name": "mongdch/mon-console",
-            "version": "1.0.1",
+            "name": "mongdch/mon-auth",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/MonGDCH/mon-console.git",
-                "reference": "df65e66757d238997acc3442c0c98e7c6a598bcb"
+                "url": "https://github.com/MonGDCH/mon-auth.git",
+                "reference": "3bdc9a388fcf9906b5542b0fdae1bf538dd1e7cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-console/zipball/df65e66757d238997acc3442c0c98e7c6a598bcb",
-                "reference": "df65e66757d238997acc3442c0c98e7c6a598bcb",
-                "shasum": ""
+                "url": "https://api.github.com/repos/MonGDCH/mon-auth/zipball/3bdc9a388fcf9906b5542b0fdae1bf538dd1e7cd",
+                "reference": "3bdc9a388fcf9906b5542b0fdae1bf538dd1e7cd",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
-                "php": ">=7.0.0"
+                "mongdch/mon-orm": "^2.1",
+                "mongdch/mon-util": "^1.0",
+                "php": ">=5.6.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Mon\\console\\": "src/"
+                    "mon\\auth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The PHP Auth management engine",
+            "homepage": "http://blog.gdmon.com/",
+            "keywords": [
+                "jwt",
+                "mon",
+                "php",
+                "rbac"
+            ],
+            "time": "2019-11-12T08:57:49+00:00"
+        },
+        {
+            "name": "mongdch/mon-captcha",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-captcha.git",
+                "reference": "dccb6c3644e7a40518159336e64dd125f6c1cbe4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-captcha/zipball/dccb6c3644e7a40518159336e64dd125f6c1cbe4",
+                "reference": "dccb6c3644e7a40518159336e64dd125f6c1cbe4",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\captcha\\": "src"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The PHP Captcha Library",
+            "homepage": "http://blog.gdmon.com/",
+            "keywords": [
+                "captcha",
+                "mon",
+                "php"
+            ],
+            "time": "2019-12-18T09:33:32+00:00"
+        },
+        {
+            "name": "mongdch/mon-client",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-client.git",
+                "reference": "172c2ffe477edf2ff5f49d4286fb989a14d751e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-client/zipball/172c2ffe477edf2ff5f49d4286fb989a14d751e2",
+                "reference": "172c2ffe477edf2ff5f49d4286fb989a14d751e2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "mongdch/mon-container": "^1.0",
+                "php": ">= 5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\client\\": "src"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The PHP client for HTTP、TCP、UDP",
+            "homepage": "http://gdmon.com/",
+            "keywords": [
+                "http",
+                "tcp",
+                "udp"
+            ],
+            "time": "2019-06-24T10:23:51+00:00"
+        },
+        {
+            "name": "mongdch/mon-console",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-console.git",
+                "reference": "e16a6ebba4f0c0a409bada37053ee55875b23c34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-console/zipball/e16a6ebba4f0c0a409bada37053ee55875b23c34",
+                "reference": "e16a6ebba4f0c0a409bada37053ee55875b23c34",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\console\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -88,7 +251,7 @@
                 "cli",
                 "console"
             ],
-            "time": "2019-03-08T03:40:23+00:00"
+            "time": "2019-10-25T06:24:47+00:00"
         },
         {
             "name": "mongdch/mon-container",
@@ -102,7 +265,13 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/MonGDCH/mon-container/zipball/cae30a0fce957ef1c9df5a4dbe8f2fd46bfee374",
                 "reference": "cae30a0fce957ef1c9df5a4dbe8f2fd46bfee374",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=5.6.0"
@@ -133,20 +302,26 @@
         },
         {
             "name": "mongdch/mon-env",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-env.git",
-                "reference": "f0fba906a24c0bdbe26a1d923054f82c3b9256b7"
+                "reference": "bd87e7ab07fe0dd2ff683d6933d88b3e0cd6d6cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-env/zipball/f0fba906a24c0bdbe26a1d923054f82c3b9256b7",
-                "reference": "f0fba906a24c0bdbe26a1d923054f82c3b9256b7",
-                "shasum": ""
+                "url": "https://api.github.com/repos/MonGDCH/mon-env/zipball/bd87e7ab07fe0dd2ff683d6933d88b3e0cd6d6cf",
+                "reference": "bd87e7ab07fe0dd2ff683d6933d88b3e0cd6d6cf",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
-                "php": ">=7.0.0"
+                "php": ">=5.6.0"
             },
             "type": "library",
             "autoload": {
@@ -170,23 +345,30 @@
                 "env",
                 "php"
             ],
-            "time": "2019-04-23T05:48:59+00:00"
+            "time": "2020-09-24T02:10:28+00:00"
         },
         {
             "name": "mongdch/mon-orm",
-            "version": "v2.1.1",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-orm.git",
-                "reference": "c30cab8c19fb42c2038b4ea23214a2f9c9bb92c4"
+                "reference": "5b53eb5b5273760c724f12a6ba6a82049f6648b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/c30cab8c19fb42c2038b4ea23214a2f9c9bb92c4",
-                "reference": "c30cab8c19fb42c2038b4ea23214a2f9c9bb92c4",
-                "shasum": ""
+                "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/5b53eb5b5273760c724f12a6ba6a82049f6648b9",
+                "reference": "5b53eb5b5273760c724f12a6ba6a82049f6648b9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
+                "ext-pdo": ">=1.0.0",
                 "mongdch/mon-container": "^1.0",
                 "php": ">=5.6.0"
             },
@@ -213,24 +395,30 @@
                 "mysql",
                 "orm"
             ],
-            "time": "2019-07-05T08:15:55+00:00"
+            "time": "2020-11-20T06:54:30+00:00"
         },
         {
             "name": "mongdch/mon-store",
-            "version": "1.0.1",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-store.git",
-                "reference": "244d175548f705752a1963fbaa88b9a4a42d5f65"
+                "reference": "cc32ab7446ad7caefdbb49d47523e3e5dd2dfcc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-store/zipball/244d175548f705752a1963fbaa88b9a4a42d5f65",
-                "reference": "244d175548f705752a1963fbaa88b9a4a42d5f65",
-                "shasum": ""
+                "url": "https://api.github.com/repos/MonGDCH/mon-store/zipball/cc32ab7446ad7caefdbb49d47523e3e5dd2dfcc3",
+                "reference": "cc32ab7446ad7caefdbb49d47523e3e5dd2dfcc3",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
-                "php": ">=7.0.0"
+                "php": ">=5.6.0"
             },
             "type": "library",
             "autoload": {
@@ -240,7 +428,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -257,21 +445,76 @@
                 "session",
                 "store"
             ],
-            "time": "2019-06-16T02:07:13+00:00"
+            "time": "2020-06-16T06:59:11+00:00"
         },
         {
-            "name": "mongdch/mon-util",
-            "version": "1.0.3",
+            "name": "mongdch/mon-template",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/MonGDCH/mon-util.git",
-                "reference": "9c8bcf2724df50685804eb735bb9532d2e5a97f0"
+                "url": "https://github.com/MonGDCH/mon-template.git",
+                "reference": "f149a709d0f1f0985a7c650370d4017bcbd52adb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-util/zipball/9c8bcf2724df50685804eb735bb9532d2e5a97f0",
-                "reference": "9c8bcf2724df50685804eb735bb9532d2e5a97f0",
-                "shasum": ""
+                "url": "https://api.github.com/repos/MonGDCH/mon-template/zipball/f149a709d0f1f0985a7c650370d4017bcbd52adb",
+                "reference": "f149a709d0f1f0985a7c650370d4017bcbd52adb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">= 5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mon\\template\\": "src"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MonGDCH",
+                    "email": "985558837@qq.com"
+                }
+            ],
+            "description": "The PHP view template Library",
+            "homepage": "http://blog.gdmon.com/",
+            "keywords": [
+                "php",
+                "template",
+                "view"
+            ],
+            "time": "2019-09-12T08:18:54+00:00"
+        },
+        {
+            "name": "mongdch/mon-util",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonGDCH/mon-util.git",
+                "reference": "9bb8f1c810bfac4e801a3b0ec7d6003e3bacb212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonGDCH/mon-util/zipball/9bb8f1c810bfac4e801a3b0ec7d6003e3bacb212",
+                "reference": "9bb8f1c810bfac4e801a3b0ec7d6003e3bacb212",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=5.6.0"
@@ -280,7 +523,10 @@
             "autoload": {
                 "psr-4": {
                     "mon\\util\\": "src/"
-                }
+                },
+                "files": [
+                    "src/function.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -297,7 +543,7 @@
                 "php",
                 "utils"
             ],
-            "time": "2019-06-15T09:56:17+00:00"
+            "time": "2020-11-25T10:29:51+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -311,7 +557,13 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/nikic/FastRoute/zipball/181d480e08d9476e61381e04a71b34dc0432e812",
                 "reference": "181d480e08d9476e61381e04a71b34dc0432e812",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=5.4.0"
@@ -344,6 +596,203 @@
                 "routing"
             ],
             "time": "2018-02-13T20:26:39+00:00"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "v6.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "e38888a75c070304ca5514197d4847a59a5c853f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/e38888a75c070304ca5514197d4847a59a5c853f",
+                "reference": "e38888a75c070304ca5514197d4847a59a5c853f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-filter": "*",
+                "ext-hash": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "doctrine/annotations": "^1.2",
+                "phpcompatibility/php-compatibility": "^9.3.5",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.5.6",
+                "yoast/phpunit-polyfills": "^0.2.0"
+            },
+            "suggest": {
+                "ext-mbstring": "Needed to send email in multibyte encoding charset",
+                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                "psr/log": "For optional PSR-3 debug logging",
+                "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPMailer\\PHPMailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-only"
+            ],
+            "authors": [
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2020-11-25T15:24:57+00:00"
+        },
+        {
+            "name": "workerman/gateway-worker",
+            "version": "v3.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/GatewayWorker.git",
+                "reference": "50d3a77deb7f7fb206d641ee0307ae1c41d5d41d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/walkor/GatewayWorker/zipball/50d3a77deb7f7fb206d641ee0307ae1c41d5d41d",
+                "reference": "50d3a77deb7f7fb206d641ee0307ae1c41d5d41d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "workerman/workerman": ">=3.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GatewayWorker\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "communication",
+                "distributed"
+            ],
+            "time": "2020-07-15T06:45:01+00:00"
+        },
+        {
+            "name": "workerman/gatewayclient",
+            "version": "v3.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/GatewayClient.git",
+                "reference": "6f4e76f38947be5cabca2c6fee367151f248d949"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/walkor/GatewayClient/zipball/6f4e76f38947be5cabca2c6fee367151f248d949",
+                "reference": "6f4e76f38947be5cabca2c6fee367151f248d949",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GatewayClient\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "time": "2018-09-15T03:03:50+00:00"
+        },
+        {
+            "name": "workerman/workerman",
+            "version": "v4.0.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/Workerman.git",
+                "reference": "5ea330083d2824196914a3a27e9e98892226010e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/walkor/Workerman/zipball/5ea330083d2824196914a3a27e9e98892226010e",
+                "reference": "5ea330083d2824196914a3a27e9e98892226010e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "suggest": {
+                "ext-event": "For better performance. "
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Workerman\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "walkor",
+                    "email": "walkor@workerman.net",
+                    "homepage": "http://www.workerman.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2020-11-16T02:48:15+00:00"
         }
     ],
     "packages-dev": [],
@@ -353,7 +802,11 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=5.6.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-bcmath": "*",
+        "ext-mbstring": "*"
     },
     "platform-dev": []
 }

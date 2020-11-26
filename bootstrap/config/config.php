@@ -7,6 +7,7 @@
 | 定义应用配置信息
 |
 */
+
 return [
 	/**
 	 * 应用时区
@@ -21,6 +22,7 @@ return [
 		'logPath'      	=> ROOT_PATH . '/storage/log',
 		'rollNum'      	=> 3,
 		'logName'      	=> '',
+		'splitLine'     => '======================================================',
 	],
 
 	/**
@@ -66,8 +68,51 @@ return [
 	 */
 	'session'	=> [
 		'prefix'	=> '',
-		'expire'	=> '',
+		'expire'	=> '10800',
 		'secure'	=> '',
 		'httponly'	=> ''
 	],
+
+	/**
+	 * 视图配置
+	 */
+	'view'		=> [
+		// 视图文件目录
+		'path'	=> ROOT_PATH . '/app/http/view/',
+		// 视图文件后缀
+		'ext'	=> 'html'
+	],
+
+	/**
+	 * jwt权限控制
+	 */
+	'jwt'		=> [
+		// 加密key
+		'key'	=> 'lkjghssosklqpworiqlkdshlkjf',
+		// 加密算法
+		'alg'	=> 'HS256',
+		// 有效时间
+		'exp'	=> 7200,
+		// 签发单位
+		'iss'	=> 'mon-admin',
+	],
+
+	/**
+	 * RBAC权限控制
+	 */
+	'rbac'		=> [
+		// 权限开关
+		'auth_on'           => true,
+		// 用户组数据表名     
+		'auth_group'        => 'auth_group',
+		// 用户-用户组关系表
+		'auth_group_access' => 'auth_access',
+		// 权限规则表
+		'auth_rule'         => 'auth_rule',
+		// 超级管理员权限标志
+		'admin_mark'        => '*',
+	],
+
+	// 异步长链接服务配置
+	'service'		=> file_exists(__DIR__ . '/service.php') ? require(__DIR__ . '/service.php') : [],
 ];

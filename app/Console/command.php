@@ -9,15 +9,14 @@
 */
 return [
     // 指令名称
-    // 'router'    => [
-    //     // 指令回调, [class|function]
-    //     'handle'    => Laf\command\Router::class,
-    //     // 指令描述
-    //     'desc'      => 'Router dependent instruction.',
-    //     // 路由别名, 调用：-r
-    //     'alias'     => 'r'
-    // ],
-
+    'test'      => [
+        // 指令回调, [class|function]
+        'handle'    => app\console\command\Test::class,
+        // 指令描述
+        'desc'      => 'This is Test Command.',
+        // 路由别名, 调用：-t
+        'alias'     => 't'
+    ],
     // 测试指令
-    'test'    => App\Console\Command\Test::class,
+    // 'test'    => app\console\command\Test::class,
 ];

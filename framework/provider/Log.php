@@ -11,6 +11,8 @@ use mon\factory\Container;
  *
  * @author Mon
  * @version v2.1 修改打印日志格式
+ * @version v2.2 修改调整日志写入默认路径，增加日志记录分割线
+ * @version v2.3 调整时间戳获取，支持命令控制台常驻应用启动使用
  */
 class Log
 {
@@ -18,6 +20,8 @@ class Log
 
     /**
      * 日志级别
+     * 
+     * @var string
      */
     const EMERGENCY = 'emergency';
     const ALERT     = 'alert';
@@ -37,10 +41,11 @@ class Log
      * @var array
      */
     protected $config = [
-        'maxSize'      => 20480000,     // 日志文件大小
-        'logPath'      => '',           // 日志目录
-        'rollNum'      => 3,            // 日志滚动卷数
-        'logName'      => '',           // 日志名称，空则使用当前日期作为名称
+        'maxSize'       => 20480000,     // 日志文件大小
+        'logPath'       => '',           // 日志目录
+        'rollNum'       => 3,            // 日志滚动卷数
+        'logName'       => '',           // 日志名称，空则使用当前日期作为名称
+        'splitLine'     => '======================================================',
     ];
 
     /**
@@ -53,7 +58,7 @@ class Log
     /**
      * 初始化日志配置
      *
-     * @return [type]         [description]
+     * @param array $config 配置信息
      */
     protected function __construct($config = [])
     {
@@ -64,8 +69,8 @@ class Log
     /**
      * 注册日志配置信息
      *
-     * @param  array  $config [description]
-     * @return [type]         [description]
+     * @param  array  $config 配置信息
+     * @return void
      */
     public function register($config = [])
     {
@@ -86,7 +91,7 @@ class Log
     /**
      * 清空日志信息
      *
-     * @return $this
+     * @return Log
      */
     public function clear()
     {
@@ -100,7 +105,7 @@ class Log
      * @param mixed  $msg       日志信息
      * @param string $type      日志级别
      * @param array  $context   替换内容
-     * @return $this
+     * @return Log
      */
     public function record($msg, $type = 'info', array $context = [])
     {
@@ -113,7 +118,7 @@ class Log
             $msg = strtr($msg, $replace);
         }
 
-        $this->log[$type][] = $msg;
+        $this->log[strtolower($type)][] = $msg;
         return $this;
     }
 
@@ -123,7 +128,7 @@ class Log
      * @param string $level     日志级别
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function log($level, $message, array $context = [])
     {
@@ -135,7 +140,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function emergency($message, array $context = [])
     {
@@ -147,7 +152,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function alert($message, array $context = [])
     {
@@ -159,7 +164,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function critical($message, array $context = [])
     {
@@ -171,7 +176,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function error($message, array $context = [])
     {
@@ -183,7 +188,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function warning($message, array $context = [])
     {
@@ -195,7 +200,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function notice($message, array $context = [])
     {
@@ -207,7 +212,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function info($message, array $context = [])
     {
@@ -219,7 +224,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function debug($message, array $context = [])
     {
@@ -231,7 +236,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function sql($message, array $context = [])
     {
@@ -243,7 +248,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function cache($message, array $context = [])
     {
@@ -255,7 +260,7 @@ class Log
      *
      * @param mixed  $message   日志信息
      * @param array  $context   替换内容
-     * @return void
+     * @return Log
      */
     public function curl($message, array $context = [])
     {
@@ -265,11 +270,11 @@ class Log
     /**
      * 开放日志记录类型
      *
-     * @param [type] $file  文件名称，__FILE__
-     * @param [type] $line  文件行，__LINE__
-     * @param [type] $log   日志信息
+     * @param string $file  文件名称，__FILE__
+     * @param string $line  文件行，__LINE__
+     * @param string $log   日志信息
      * @param string $level 日志类型级别
-     * @return void
+     * @return Log
      */
     public function oss($file, $line, $log, $level = 'info')
     {
@@ -281,14 +286,15 @@ class Log
     /**
      * 批量写入日志
      *
-     * @return [type] [description]
+     * @return mixed
      */
     public function save()
     {
         if (!empty($this->log)) {
             // 解析获取日志内容
             $log = $this->parseLog($this->log);
-            $logName = empty($this->config['logName']) ? date('Ymd', $_SERVER['REQUEST_TIME']) : $this->config['logName'];
+            $time = time();
+            $logName = empty($this->config['logName']) ? date('Ym', $time) . DIRECTORY_SEPARATOR . date('Ymd', $time) : $this->config['logName'];
             $path = $this->config['logPath'] . DIRECTORY_SEPARATOR . $logName;
 
             // 分卷记录日志
@@ -306,13 +312,13 @@ class Log
     /**
      * 解析日志
      *
-     * @param  [type] $logs [description]
-     * @return [type]       [description]
+     * @param  array $logs 日志列表
+     * @return string 解析生成的日志字符串
      */
     protected function parseLog($logs)
     {
         $log = '';
-        $now = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
+        $now = date('Y-m-d H:i:s', time());
         foreach ($logs as $type => $value) {
             $offset = "[{$now}] [{$type}] ";
 
@@ -326,6 +332,11 @@ class Log
                 $info = $offset . $value . PHP_EOL;
             }
             $log .= $info;
+        }
+
+        // 添加分割线
+        if (!empty($this->config['splitLine'])) {
+            $log .= $this->config['splitLine'] . PHP_EOL;
         }
 
         return $log;

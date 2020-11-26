@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controller;
+namespace app\http\controller;
 
 use Laf\Controller;
 

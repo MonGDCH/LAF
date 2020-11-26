@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace app\model;
 
 use mon\orm\Model;
 use mon\util\Instance;
@@ -25,14 +25,14 @@ class %s extends Model
     /**
      * 新增自动写入字段
      *
-     * @var [type]
+     * @var array
      */
     protected $insert = ['create_time', 'update_time'];
 
     /**
      * 更新自动写入字段
      *
-     * @var [type]
+     * @var array
      */
     protected $update = ['update_time'];
 
@@ -47,7 +47,7 @@ class %s extends Model
     /**
      * 自动完成create_time字段
      * 
-     * @param [type] $val 默认值
+     * @param mixed $val 默认值
      * @param array  $row 列值
      */
     protected function setCreateTimeAttr($val)
@@ -58,7 +58,7 @@ class %s extends Model
     /**
      * 自动完成update_time字段
      * 
-     * @param [type] $val 默认值
+     * @param mixed $val 默认值
      * @param array  $row 列值
      */
     protected function setUpdateTimeAttr($val)

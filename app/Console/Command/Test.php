@@ -1,9 +1,10 @@
 <?php
-namespace App\Console\Command;
 
-use Mon\console\Command;
-use Mon\console\Input;
-use Mon\console\Output;
+namespace app\console\command;
+
+use mon\console\Command;
+use mon\console\Input;
+use mon\console\Output;
 
 class Test extends Command
 {
@@ -14,7 +15,7 @@ class Test extends Command
      * @param  Output $out 输出实例
      * @return int         exit状态码
      */
-    public function execute(Input $in, Output $out)
+    public function execute($in, $out)
     {
         return $out->write('This is Test Command!');
     }

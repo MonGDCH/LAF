@@ -1,10 +1,11 @@
 <?php
+
 namespace Laf\command;
 
 use FApi\Route;
-use Mon\console\Command;
-use Mon\console\Input;
-use Mon\console\Output;
+use mon\console\Command;
+use mon\console\Input;
+use mon\console\Output;
 
 /**
  * 路由相关指令
@@ -21,10 +22,11 @@ class Router extends Command
      * @param  Output $out 输出实例
      * @return int         exit状态码
      */
-    public function execute(Input $in, Output $out)
+    public function execute($in, $out)
     {
         // 获取执行的回调
-        $action = $in->getArgs()[0] ?? 'help';
+        $args = $in->getArgs();
+        $action = isset($args[0]) ? $args[0] : 'help';
         $out->write('');
         // 执行回调
         switch ($action) {
@@ -50,7 +52,7 @@ class Router extends Command
     /**
      * 显示路由列表
      *
-     * @return [type] [description]
+     * @return void
      */
     protected function show($in, $out)
     {
@@ -63,9 +65,9 @@ class Router extends Command
                 $res[] = [
                     'method'    => $method,
                     'path'      => $path,
-                    'befor' => $info['befor'],
+                    'befor'     => isset($info['befor']) ? implode(',', $info['befor']) : '',
                     'callback'  => is_string($info['callback']) ? $info['callback'] : '- Closure Function',
-                    'append'    => $info['append'],
+                    'append'    => isset($info['append']) ? implode(',', $info['append']) : '',
                 ];
             }
         }
@@ -76,9 +78,7 @@ class Router extends Command
     /**
      * 缓存路由
      *
-     * @param  [type] $in  [description]
-     * @param  [type] $out [description]
-     * @return [type]      [description]
+     * @return void
      */
     protected function cache($in, $out)
     {
@@ -93,9 +93,7 @@ class Router extends Command
     /**
      * 清除路由缓存
      *
-     * @param  [type] $in  [description]
-     * @param  [type] $out [description]
-     * @return [type]      [description]
+     * @return void
      */
     protected function clear($in, $out)
     {
@@ -112,9 +110,7 @@ class Router extends Command
     /**
      * 指令帮助
      *
-     * @param  [type] $in  [description]
-     * @param  [type] $out [description]
-     * @return [type]      [description]
+     * @return void
      */
     protected function help($in, $out)
     {
@@ -125,6 +121,6 @@ class Router extends Command
             'clear route: ' => 'php laf route clear',
         ];
 
-        return $out->list($help, 'route command help');
+        return $out->dataList($help, 'route command help');
     }
 }

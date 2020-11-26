@@ -1,5 +1,6 @@
 <?php
-namespace Laf\hook;
+
+namespace Laf\hook\app;
 
 use mon\factory\Container;
 
@@ -14,7 +15,7 @@ class Bootstrap
 	/**
 	 * 钩子回调方法
 	 *
-	 * @return [type] [description]
+	 * @return void
 	 */
 	public function handler()
 	{
@@ -24,7 +25,7 @@ class Bootstrap
 	/**
 	 * 解析请求为日志信息
 	 *
-	 * @return [type] [description]
+	 * @return string
 	 */
 	protected function parseRequest()
 	{
