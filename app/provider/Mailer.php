@@ -2,19 +2,21 @@
 
 namespace app\provider;
 
+use mon\env\Config;
+use mon\util\Instance;
 use PHPMailer\PHPMailer\PHPMailer;
-use app\model\admin\general\Config;
-use app\model\admin\log\MailerLog;
 
 /**
  * 邮件工具
  * 
- * @see phpmailer/phpmailer
+ * @require phpmailer/phpmailer
  * @author Mon <985558837@qq.com>
  * @version 1.0.0
  */
 class Mailer
 {
+    use Instance;
+
     /**
      * 邮箱配置信息
      *
@@ -37,7 +39,7 @@ class Mailer
     public function __construct(array $config = [])
     {
         if (empty($config)) {
-            $config = Config::instance()->getConfig('email');
+            $config = Config::instance()->get('email');
         }
 
         $this->config = array_merge($this->config, $config);
@@ -108,7 +110,7 @@ class Mailer
             // SMTP密码
             $mail->Password = $config['password'];
             // 启用 TLS 或者 ssl 协议         
-            if ($config['ssl'] == '1') {
+            if ($config['ssl']) {
                 $mail->SMTPSecure = 'ssl';
             }
             // 服务器端口 25 或者465 具体要看邮箱服务器支持
@@ -160,54 +162,6 @@ class Mailer
             return true;
         } catch (\PHPMailer\PHPMailer\Exception $e) {
             $this->error = $mail->ErrorInfo;
-            return false;
-        }
-    }
-
-    /**
-     * 发送邮件并记录日志
-     *
-     * @param string $title     邮件标题
-     * @param string $content   邮件内容
-     * @param array $to         接收人
-     * @param array $cc         抄送人
-     * @param array $bcc        秘密抄送人
-     * @param array $attachment 附件
-     * @param array $config     独立使用配置信息
-     * @return boolean
-     */
-    public function sendAndLog($title, $content, array $to, array $cc = [], array $bcc = [], array $attachment = [], array $config = [])
-    {
-        $model = MailerLog::instance();
-        $model->startTrans();
-        try {
-            // 记录流水
-            $save = $model->add([
-                'title'         => $title,
-                'to'            => $to,
-                'cc'            => $cc,
-                'bcc'           => $bcc,
-                'attachment'    => $attachment
-            ]);
-            if (!$save) {
-                $model->rollback();
-                $this->error = '邮件发送失败!(' . $model->getError() . ')';
-                return false;
-            }
-
-            // 发送邮件
-            $send = $this->send($title, $content, $to, $cc, $bcc, $attachment, $config);
-            if (!$send) {
-                $model->rollback();
-                $this->error = '邮件发送失败!(' . $this->getError() . ')';
-                return false;
-            }
-
-            $model->commit();
-            return true;
-        } catch (\Exception $e) {
-            $model->rollback();
-            $this->error = '发送邮件失败!(' . $e->getMessage() . ')';
             return false;
         }
     }

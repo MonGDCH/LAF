@@ -2,7 +2,7 @@
 
 namespace Laf\hook\app;
 
-use mon\factory\Container;
+use mon\util\Container;
 
 /**
  * 应用初始化钩子

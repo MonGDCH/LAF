@@ -4,7 +4,7 @@ namespace Laf\provider;
 
 use mon\env\Config;
 use mon\util\Instance;
-use mon\factory\Container;
+use mon\util\Container;
 
 /**
  * 日志处理类

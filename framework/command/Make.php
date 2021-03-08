@@ -5,7 +5,7 @@ namespace Laf\command;
 use mon\console\Command;
 use mon\console\Input;
 use mon\console\Output;
-use mon\factory\Container;
+use mon\util\Container;
 
 /**
  * 生成指令

@@ -8,5 +8,12 @@
 */
 
 // 首页
+
+use app\provider\Mailer;
+
 $router->any('/', 'app\http\controller\Index@index');
 
+$router->any('/test', function(Mailer $mail){
+    $send = $mail->send('test', 'Hello Mon', ['985558837@qq.com']);
+    debug($send);
+});

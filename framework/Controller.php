@@ -3,7 +3,7 @@
 namespace Laf;
 
 use FApi\Request;
-use mon\factory\Container;
+use mon\util\Container;
 
 /**
  * 控制器基类
@@ -93,7 +93,6 @@ abstract class Controller
     protected function error($msg, $data = [], $extend = [], $headers = [])
     {
         if (!$this->container->request->isAjax()) {
-            // return $this->container->url->abort(403, $msg);
             return $this->abort($msg, 403);
         }
         return $this->dataReturn(0, $msg, $data, $extend, $headers);
@@ -148,7 +147,6 @@ abstract class Controller
     protected function abort($msg, $code = 404)
     {
         $html = $this->container->view->display(__DIR__ . '/abort', ['code' => $code, 'msg' => $msg]);
-        // return $this->container->url->abort($code, $msg);
         return $this->container->url->abort(200, $html);
     }
 

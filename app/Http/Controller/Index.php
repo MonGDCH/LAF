@@ -12,7 +12,7 @@ class Index extends Controller
     /**
      * 首页
      *
-     * @return void
+     * @return string
      */
     public function index()
     {

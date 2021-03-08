@@ -2,7 +2,7 @@
 
 namespace Laf\hook\app;
 
-use mon\factory\Container;
+use mon\util\Container;
 
 /**
  * 定义设置日志保存名称

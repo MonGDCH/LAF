@@ -2,7 +2,7 @@
 
 namespace Laf\provider;
 
-use mon\factory\Container;
+use mon\util\Container;
 use mon\template\View as Template;
 
 /**

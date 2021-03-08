@@ -4,7 +4,7 @@ namespace Laf\provider;
 
 use mon\auth\jwt\Token;
 use mon\auth\jwt\Payload;
-use mon\factory\Container;
+use mon\util\Container;
 use mon\auth\exception\JwtException;
 
 /**

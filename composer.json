@@ -2,7 +2,7 @@
     "name": "mongdch/laf",
     "type": "project",
     "description": "The PHP Fast Framework",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "keywords": [
         "PHP",
         "mon",
@@ -26,16 +26,13 @@
         "mongdch/fapi": "^2.0",
         "mongdch/mon-console": "^1.0",
         "mongdch/mon-env": "^1.0",
-        "mongdch/mon-container": "^1.0",
         "mongdch/mon-util": "^1.0",
         "mongdch/mon-store": "^1.0",
         "mongdch/mon-template": "^1.0",
         "mongdch/mon-auth": "^1.0",
-        "mongdch/mon-captcha": "^1.1",
-        "phpmailer/phpmailer": "^6.1",
-        "mongdch/mon-client": "^2.0",
         "workerman/gateway-worker": "^3.0",
-        "workerman/gatewayclient": "^3.0"
+        "workerman/gatewayclient": "^3.0",
+        "phpmailer/phpmailer": "^6.3"
     },
     "autoload": {
         "psr-4": {

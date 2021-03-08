@@ -115,4 +115,22 @@ return [
 
 	// 异步长链接服务配置
 	'service'		=> file_exists(__DIR__ . '/service.php') ? require(__DIR__ . '/service.php') : [],
+
+	// 邮件配置
+	'email'			=> [
+		// SMTP服务器
+		'host'		=> 'smtp.qq.com',
+		// SMTP服务器的远程服务器端口号
+		'port'		=> 465,
+		// 是否开启ssl
+		'ssl'		=> true,
+		// 发件人邮箱地址
+		'from'		=> '985558837@qq.com',
+		// SMTP发件人名称
+		'name'		=> 'Mon-LAF',
+		// SMTP登录账号
+		'user'		=> '985558837@qq.com',
+		// SMTP登录密码
+		'password'	=> 'pigzcegfxcpobcdi',
+	],
 ];

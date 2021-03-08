@@ -3,7 +3,7 @@
 namespace Laf\provider;
 
 use Laf\Provider;
-use mon\factory\Container;
+use mon\util\Container;
 use mon\store\Cache as Service;
 
 /**
