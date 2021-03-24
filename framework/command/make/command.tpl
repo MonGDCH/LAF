@@ -10,7 +10,8 @@ use Mon\console\Output;
  * %s 指令
  *
  * Class %s
- * @created for mon-console
+ * @copyright %s mon-console
+ * @version 1.0.0
  */
 class %s extends Command
 {
@@ -19,9 +20,9 @@ class %s extends Command
      *
      * @param  Input  $in  输入实例
      * @param  Output $out 输出实例
-     * @return int         exit状态码
+     * @return integer     exit状态码
      */
-    public function execute(Input $in, Output $out)
+    public function execute($in, $out)
     {
         return 0;
     }

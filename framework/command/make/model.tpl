@@ -9,7 +9,8 @@ use mon\util\Instance;
  * %s 模型
  *
  * Class %s
- * @created for mon-console
+ * @copyright %s mon-console
+ * @version 1.0.0
  */
 class %s extends Model
 {
@@ -49,6 +50,7 @@ class %s extends Model
      * 
      * @param mixed $val 默认值
      * @param array  $row 列值
+     * @return void
      */
     protected function setCreateTimeAttr($val)
     {
@@ -60,6 +62,7 @@ class %s extends Model
      * 
      * @param mixed $val 默认值
      * @param array  $row 列值
+     * @return void
      */
     protected function setUpdateTimeAttr($val)
     {

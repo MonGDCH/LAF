@@ -11,7 +11,7 @@ use mon\util\Container;
  * 生成指令
  *
  * @author Mon <98555883@qq.com>
- * @version v1.0
+ * @version v1.1 优化代码，增加生成文件时间
  */
 class Make extends Command
 {
@@ -30,16 +30,25 @@ class Make extends Command
     protected $ext = '.php';
 
     /**
+     * 当前日期
+     *
+     * @var string
+     */
+    protected $now;
+
+    /**
      * 错误信息
      *
-     * @var [type]
+     * @var string
      */
     protected $error;
 
     /**
      * 执行指令
      *
-     * @return void
+     * @param Input $in 输入实例
+     * @param Output $out 输出实例
+     * @return integer
      */
     public function execute($in, $out)
     {
@@ -58,6 +67,8 @@ class Make extends Command
             $out->dataList($help);
             return $out->block($this->error, 'ERROR');
         }
+        // 获取当前日期
+        $this->now = date('Y-m-d', time());
         // 解析类型，执行make操作
         switch ($config['type']) {
             case 'model':
@@ -117,7 +128,7 @@ class Make extends Command
         if (!$template) {
             return false;
         }
-        $content = sprintf($template, $model, $model, $model, $table);
+        $content = sprintf($template, $model, $model, $this->now, $model, $table);
         $save = Container::instance()->file->createFile($content, $model_file, false);
         if (!$save) {
             $this->error = 'Save Model Error![' . $model_file . ']';
@@ -148,7 +159,7 @@ class Make extends Command
             return false;
         }
         // Make
-        $content = sprintf($template, $ctrl, $ctrl, $ctrl);
+        $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
         $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Controller Error![' . $ctrl_file . ']';
@@ -179,7 +190,7 @@ class Make extends Command
             return false;
         }
         // Make
-        $content = sprintf($template, $ctrl, $ctrl, $ctrl);
+        $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
         $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Validate Error![' . $ctrl_file . ']';
@@ -210,7 +221,7 @@ class Make extends Command
             return false;
         }
         // Make
-        $content = sprintf($template, $ctrl, $ctrl, $ctrl);
+        $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
         $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Befor Error![' . $ctrl_file . ']';
@@ -241,7 +252,7 @@ class Make extends Command
             return false;
         }
         // Make
-        $content = sprintf($template, $ctrl, $ctrl, $ctrl);
+        $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
         $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save After Error![' . $ctrl_file . ']';
@@ -272,7 +283,7 @@ class Make extends Command
             return false;
         }
         // Make
-        $content = sprintf($template, $ctrl, $ctrl, $ctrl);
+        $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
         $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Command Error![' . $ctrl_file . ']';

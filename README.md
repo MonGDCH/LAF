@@ -11,6 +11,11 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v2.2.2
+
+- 优化代码，更新依赖
+- 增加代码注解
+
 > v2.2.1
 
 - 优化代码结构，优化依赖
@@ -19,7 +24,7 @@ composer create-project mongdch/laf
 
 - 发布2.2.0LTS版本
 - 优化代码及业务结构
-- 增加gatewayworker支持
+- 增加gatewayworker支持，通过运行根目录下server.php或service.bat启动，可在service.php配置文件中修改对应的配置
 
 > v2.1.0
 

@@ -33,7 +33,9 @@ class Server extends Command
     /**
      * 执行指令
      *
-     * @return void
+     * @param  Input  $in  输入实例
+     * @param  Output $out 输出实例
+     * @return integer
      */
     public function execute($in, $out)
     {
@@ -53,7 +55,7 @@ class Server extends Command
             escapeshellarg($root . DIRECTORY_SEPARATOR . $entry)
         );
 
-        $out->write('server run start...');
+        $out->write("server runing {$ip}:{$port}");
         $out->write('You can exit with <info>`CTRL-C`</info>');
         $out->write(sprintf('Document root is: %s', $root));
         passthru($command);

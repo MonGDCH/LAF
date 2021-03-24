@@ -4,6 +4,8 @@ namespace service;
 
 /**
  * 服务抽象基类
+ * 
+ * @author Mon <985558837@qq.com>
  */
 interface Service
 {

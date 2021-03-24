@@ -4,12 +4,12 @@ namespace app\validate;
 
 use mon\util\Validate;
 
-
 /**
  * %s 验证器
  *
  * Class %s
- * @created for mon-console
+ * @copyright %s mon-console
+ * @version 1.0.0
  */
 class %s extends Validate
 {
@@ -34,7 +34,7 @@ class %s extends Validate
     /**
      * 验证场景
      *
-     * @var [type]
+     * @var array
      */
     public $scope = [
 

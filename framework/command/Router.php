@@ -11,7 +11,7 @@ use mon\console\Output;
  * 路由相关指令
  *
  * @author Mon <98555883@qq.com>
- * @version v1.0
+ * @version v1.0.0
  */
 class Router extends Command
 {
@@ -20,7 +20,7 @@ class Router extends Command
      *
      * @param  Input  $in  输入实例
      * @param  Output $out 输出实例
-     * @return int         exit状态码
+     * @return integer  exit状态码
      */
     public function execute($in, $out)
     {
@@ -52,7 +52,9 @@ class Router extends Command
     /**
      * 显示路由列表
      *
-     * @return void
+     * @param  Input  $in  输入实例
+     * @param  Output $out 输出实例
+     * @return integer
      */
     protected function show($in, $out)
     {
@@ -78,7 +80,9 @@ class Router extends Command
     /**
      * 缓存路由
      *
-     * @return void
+     * @param  Input  $in  输入实例
+     * @param  Output $out 输出实例
+     * @return integer
      */
     protected function cache($in, $out)
     {
@@ -93,7 +97,9 @@ class Router extends Command
     /**
      * 清除路由缓存
      *
-     * @return void
+     * @param  Input  $in  输入实例
+     * @param  Output $out 输出实例
+     * @return integer
      */
     protected function clear($in, $out)
     {
@@ -110,7 +116,9 @@ class Router extends Command
     /**
      * 指令帮助
      *
-     * @return void
+     * @param  Input  $in  输入实例
+     * @param  Output $out 输出实例
+     * @return integer
      */
     protected function help($in, $out)
     {

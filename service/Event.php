@@ -10,6 +10,8 @@ use GatewayWorker\Lib\Gateway;
 
 /**
  * 事件回调入口服务
+ * 
+ * @author Mon <985558837@qq.com>
  */
 class Event
 {
@@ -48,7 +50,7 @@ class Event
         // 记录客户端ID
         $_SESSION['clientID'] = $client_id;
         // 通知客户端ID
-        Gateway::sendToCurrentClient(Result::instance()->data(Result::CONNECT, ['id' => $client_id]));
+        Gateway::sendToCurrentClient(Result::instance()->data(Result::CONNECT, Result::getMessgae(Result::CONNECT), ['id' => $client_id]));
         Log::instance()->save();
     }
 
@@ -85,7 +87,7 @@ class Event
         $query = json_decode($message, true);
         if (!isset($query['cmd'])) {
             // 不存在指令, 返回错误提示
-            Gateway::sendToCurrentClient(Result::instance()->data(Result::ERR_CMD_NOTFOUND));
+            Gateway::sendToCurrentClient(Result::instance()->data(Result::ERR_CMD_NOTFOUND, Result::getMessgae(Result::ERR_CMD_NOTFOUND)));
         } else {
             // 获取指定业务cmd指令
             $cmd = ucfirst($query['cmd']);

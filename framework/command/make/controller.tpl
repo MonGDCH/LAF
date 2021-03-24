@@ -8,7 +8,8 @@ use Laf\Controller;
  * %s 控制器
  *
  * Class %s
- * @created for mon-console
+ * @copyright %s mon-console
+ * @version 1.0.0
  */
 class %s extends Controller
 {

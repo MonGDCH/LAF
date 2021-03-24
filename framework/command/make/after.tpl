@@ -6,16 +6,17 @@ namespace app\http\middleware;
  * %s 后置中间件
  *
  * Class %s
- * @created for mon-console
+ * @copyright %s mon-console
+ * @version 1.0.0
  */
 class %s
 {
 	/**
 	 * 回调方法
 	 *
-	 * @param [type] $result	响应结果集
-	 * @param [type] $app		App实例
-	 * @return void
+	 * @param mixed $result  响应结果集
+	 * @param \FApi\App $app App实例
+	 * @return mixed 响应输出结果集
 	 */
 	public function handler($result, $app)
 	{

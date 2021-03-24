@@ -10,7 +10,7 @@ use mon\console\Output;
  * 配置相关指令
  *
  * @author Mon <98555883@qq.com>
- * @version v1.0
+ * @version v1.0.0
  */
 class Config extends Command
 {
@@ -19,7 +19,7 @@ class Config extends Command
      *
      * @param  Input  $in  输入实例
      * @param  Output $out 输出实例
-     * @return int         exit状态码
+     * @return integer  exit状态码
      */
     public function execute($in, $out)
     {

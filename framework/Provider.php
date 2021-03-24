@@ -24,7 +24,7 @@ abstract class Provider
      *
      * @param string $name      方法名
      * @param mixed $arguments 参数列表
-     * @return void
+     * @return mixed
      */
     public function __call($name, $arguments)
     {

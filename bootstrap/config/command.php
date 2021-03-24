@@ -6,7 +6,6 @@
 | 定义控制台指令
 |
 */
-
 return array_merge([
     // 启动内置服务器
     'server'    => [

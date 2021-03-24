@@ -7,7 +7,6 @@
 | 定义应用配置信息
 |
 */
-
 return [
 	/**
 	 * 应用时区
@@ -125,12 +124,12 @@ return [
 		// 是否开启ssl
 		'ssl'		=> true,
 		// 发件人邮箱地址
-		'from'		=> '985558837@qq.com',
+		'from'		=> '',
 		// SMTP发件人名称
-		'name'		=> 'Mon-LAF',
+		'name'		=> '',
 		// SMTP登录账号
-		'user'		=> '985558837@qq.com',
+		'user'		=> '',
 		// SMTP登录密码
-		'password'	=> 'pigzcegfxcpobcdi',
+		'password'	=> '',
 	],
 ];
