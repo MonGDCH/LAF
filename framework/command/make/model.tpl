@@ -50,7 +50,7 @@ class %s extends Model
      * 
      * @param mixed $val 默认值
      * @param array  $row 列值
-     * @return void
+     * @return string
      */
     protected function setCreateTimeAttr($val)
     {
@@ -62,7 +62,7 @@ class %s extends Model
      * 
      * @param mixed $val 默认值
      * @param array  $row 列值
-     * @return void
+     * @return string
      */
     protected function setUpdateTimeAttr($val)
     {
