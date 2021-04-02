@@ -2,9 +2,9 @@
 
 namespace app\console\command;
 
-use Mon\console\Command;
-use Mon\console\Input;
-use Mon\console\Output;
+use mon\console\Command;
+use mon\console\Input;
+use mon\console\Output;
 
 /**
  * %s 指令

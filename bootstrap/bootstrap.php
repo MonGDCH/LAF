@@ -37,7 +37,7 @@ define('APP_PATH', ROOT_PATH . '/app');
 | 这里定义配置文件路径, 用于路径查找获取配置信息
 |
 */
-define('CONFIG_PATH', __DIR__ . '/config');
+define('CONFIG_PATH', ROOT_PATH . '/config');
 
 /*
 |--------------------------------------------------------------------------
@@ -111,7 +111,6 @@ $tags = require(CONFIG_PATH . '/tags.php');
 */
 date_default_timezone_set($config->get('time_zone', 'PRC'));
 
-
 /*
 |--------------------------------------------------------------------------
 | 注册服务
@@ -120,7 +119,6 @@ date_default_timezone_set($config->get('time_zone', 'PRC'));
 |
 */
 $app->singleton(require(CONFIG_PATH . '/provider.php'));
-
 
 /*
 |--------------------------------------------------------------------------
