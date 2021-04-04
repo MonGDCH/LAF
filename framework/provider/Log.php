@@ -2,9 +2,9 @@
 
 namespace Laf\provider;
 
+use mon\util\File;
 use mon\env\Config;
 use mon\util\Instance;
-use mon\util\Container;
 
 /**
  * 日志处理类
@@ -62,7 +62,7 @@ class Log
      */
     protected function __construct($config = [])
     {
-        $config = (empty($config)) ? Config::instance()->get('log', []) : $config;
+        $config = (empty($config)) ? Config::instance()->get('app.log', []) : $config;
         $this->register($config);
     }
 
@@ -298,7 +298,7 @@ class Log
             $path = $this->config['logPath'] . DIRECTORY_SEPARATOR . $logName;
 
             // 分卷记录日志
-            $save = Container::get('file')->subsectionFile($log, $path, $this->config['maxSize'], $this->config['rollNum']);
+            $save = File::instance()->subsectionFile($log, $path, $this->config['maxSize'], $this->config['rollNum']);
             // 保存成功，清空日志
             if ($save) {
                 $this->clear();

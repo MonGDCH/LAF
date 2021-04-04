@@ -2,7 +2,7 @@
 
 namespace Laf\hook\app;
 
-use mon\util\Container;
+use Laf\provider\Log;
 
 /**
  * 定义设置日志保存名称
@@ -24,6 +24,6 @@ class InitLogName
 			$names = str_replace('app\http\controller\\', '', $ctrl);
 			$name = str_replace('\\', DIRECTORY_SEPARATOR, $names);
 		}
-		Container::get('log')->register(['logName' => $name]);
+		Log::instance()->register(['logName' => $name]);
 	}
 }

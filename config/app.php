@@ -25,20 +25,6 @@ return [
 	],
 
 	/**
-	 * 数据库配置
-	 */
-	'database'  => file_exists(__DIR__ . '/database.php') ? require(__DIR__ . '/database.php') : [],
-
-	/**
-	 * Redis缓存数据库
-	 */
-	'redis'		=> [
-		'host'       => '127.0.0.1',
-		'port'       => 6379,
-		'password'   => '',
-	],
-
-	/**
 	 * cache文件缓存
 	 */
 	'cache'		=> [
@@ -73,16 +59,6 @@ return [
 	],
 
 	/**
-	 * 视图配置
-	 */
-	'view'		=> [
-		// 视图文件目录
-		'path'	=> ROOT_PATH . '/app/http/view/',
-		// 视图文件后缀
-		'ext'	=> 'html'
-	],
-
-	/**
 	 * jwt权限控制
 	 */
 	'jwt'		=> [
@@ -112,24 +88,31 @@ return [
 		'admin_mark'        => '*',
 	],
 
-	// 异步长链接服务配置
-	'service'		=> file_exists(__DIR__ . '/service.php') ? require(__DIR__ . '/service.php') : [],
-
-	// 邮件配置
-	'email'			=> [
-		// SMTP服务器
-		'host'		=> 'smtp.qq.com',
-		// SMTP服务器的远程服务器端口号
-		'port'		=> 465,
-		// 是否开启ssl
-		'ssl'		=> true,
-		// 发件人邮箱地址
-		'from'		=> '',
-		// SMTP发件人名称
-		'name'		=> '',
-		// SMTP登录账号
-		'user'		=> '',
-		// SMTP登录密码
-		'password'	=> '',
-	],
+	/**
+	 * app业务钩子配置
+	 */
+	'tags'		=> [
+		// 应用初始化
+		'bootstrap'		=> [
+			\Laf\hook\app\Bootstrap::class
+		],
+		// 应用执行
+		'run'			=> [],
+		// 执行回调前
+		'beforAction' 	=> [],
+		// 执行回调后
+		'afterAction' 	=> [],
+		// 响应结果输出前
+		'beforSend'		=> [],
+		// 响应结果输出后
+		'afterSend'		=> [],
+		// 应用结束
+		'end'			=> [
+			\Laf\hook\app\End::class
+		],
+		// 应用错误
+		'error'			=> [
+			\Laf\hook\app\Error::class
+		],
+	]
 ];

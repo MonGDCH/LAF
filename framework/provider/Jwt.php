@@ -2,9 +2,10 @@
 
 namespace Laf\provider;
 
+use mon\env\Config;
+use mon\util\Instance;
 use mon\auth\jwt\Token;
 use mon\auth\jwt\Payload;
-use mon\util\Container;
 use mon\auth\exception\JwtException;
 
 /**
@@ -15,6 +16,8 @@ use mon\auth\exception\JwtException;
  */
 class Jwt
 {
+    use Instance;
+
     /**
      * 配置信息
      *
@@ -34,7 +37,7 @@ class Jwt
      */
     public function __construct()
     {
-        $this->config = Container::instance()->config->get('jwt', []);
+        $this->config = Config::instance()->get('app.jwt', []);
     }
 
     /**

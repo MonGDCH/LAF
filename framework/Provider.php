@@ -20,6 +20,13 @@ abstract class Provider
     protected $service;
 
     /**
+     * 获取服务
+     *
+     * @return mixed
+     */
+    abstract public function getService();
+
+    /**
      * 回调服务
      *
      * @param string $name      方法名
@@ -31,6 +38,6 @@ abstract class Provider
         if (is_null($this->service)) {
             throw new Exception('Kernel Service is NULL!');
         }
-        return call_user_func_array([$this->service, $name], (array) $arguments);
+        return call_user_func_array([$this->getService(), $name], (array) $arguments);
     }
 }

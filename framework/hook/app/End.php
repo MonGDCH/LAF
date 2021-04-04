@@ -2,7 +2,7 @@
 
 namespace Laf\hook\app;
 
-use mon\util\Container;
+use Laf\provider\Log;
 
 /**
  * 应用结束钩子
@@ -20,6 +20,6 @@ class End
 	public function handler()
 	{
 		// 记录日志
-		Container::get('log')->save();
+		Log::instance()->save();
 	}
 }

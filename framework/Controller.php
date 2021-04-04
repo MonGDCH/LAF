@@ -9,7 +9,7 @@ use mon\util\Container;
  * 控制器基类
  *
  * @author Mon <985558837@qq.com>
- * @version v1.0
+ * @version 1.0.0
  */
 abstract class Controller
 {
@@ -56,29 +56,12 @@ abstract class Controller
     protected $allowMethods = [];
 
     /**
-     * 二级设置视图路径
-     *
-     * @var string
-     */
-    protected $viewPath = '';
-
-    /**
-     * 视图输出数据
-     *
-     * @var array
-     */
-    protected $out = [];
-
-    /**
      * 构造方法
      */
     public function __construct()
     {
         $this->container = Container::instance();
         $this->request = Request::instance();
-        if (!empty($this->viewPath)) {
-            $this->container->view->setPath($this->viewPath);
-        }
     }
 
     /**
@@ -92,9 +75,6 @@ abstract class Controller
      */
     protected function error($msg, $data = [], $extend = [], $headers = [])
     {
-        if (!$this->container->request->isAjax()) {
-            return $this->abort($msg, 403);
-        }
         return $this->dataReturn(0, $msg, $data, $extend, $headers);
     }
 
@@ -135,43 +115,5 @@ abstract class Controller
         }
 
         return $this->container->url->result($code, $msg, $data, $extend, $this->dataType, $this->headers);
-    }
-
-    /**
-     * 错误页面
-     *
-     * @param string $msg
-     * @param integer $code
-     * @return void
-     */
-    protected function abort($msg, $code = 404)
-    {
-        $html = $this->container->view->display(__DIR__ . '/abort', ['code' => $code, 'msg' => $msg]);
-        return $this->container->url->abort(200, $html);
-    }
-
-    /**
-     * 模版赋值
-     *
-     * @param mixed $key    赋值数据
-     * @param mixed $value  值
-     * @return void
-     */
-    protected function assign($key, $value = null)
-    {
-        return $this->container->view->assign($key, $value);
-    }
-
-    /**
-     * 输出视图
-     *
-     * @param string $path  视图名称
-     * @param array $data   视图数据
-     * @return string
-     */
-    protected function fetch($path = '', $data = [])
-    {
-        $this->out = array_merge($this->out, $data);
-        return $this->container->view->fetch($path, $this->out);
     }
 }

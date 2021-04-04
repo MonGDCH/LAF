@@ -7,7 +7,7 @@
 | 这里获取应用实例
 |
 */
-$app = require __DIR__ . '/bootstrap.php';
+$app = require_once __DIR__ . '/bootstrap.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +18,6 @@ $app = require __DIR__ . '/bootstrap.php';
 */
 \mon\orm\Db::setConfig(['break_reconnect' => true]);
 
-/*
-|--------------------------------------------------------------------------
-| 获取指令配置
-|--------------------------------------------------------------------------
-| 这里获取获取指令
-|
-*/
-$commands = require __DIR__ . '/config/command.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +28,7 @@ $commands = require __DIR__ . '/config/command.php';
 */
 $console = \mon\console\App::instance();
 
+
 /*
 |--------------------------------------------------------------------------
 | 注册指令
@@ -43,6 +36,7 @@ $console = \mon\console\App::instance();
 | 这里注册指令
 |
 */
+$commands = $config->get('command', []);
 foreach ($commands as $command => $option) {
     if (is_array($option)) {
         $handle = isset($option['handle']) ? $option['handle'] : null;

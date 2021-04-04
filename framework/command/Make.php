@@ -2,10 +2,10 @@
 
 namespace Laf\command;
 
-use mon\console\Command;
 use mon\console\Input;
 use mon\console\Output;
 use mon\util\Container;
+use mon\console\Command;
 
 /**
  * 生成指令

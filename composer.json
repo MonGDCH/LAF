@@ -27,8 +27,7 @@
         "mongdch/mon-console": "^1.0",
         "mongdch/mon-env": "^1.0",
         "mongdch/mon-util": "^1.0",
-        "mongdch/mon-store": "^1.0",
-        "mongdch/mon-template": "^1.0",
+        "mongdch/mon-store": "^1.1",
         "mongdch/mon-auth": "^1.0",
         "workerman/gateway-worker": "^3.0",
         "workerman/gatewayclient": "^3.0"
@@ -36,8 +35,7 @@
     "autoload": {
         "psr-4": {
             "app\\": "app",
-            "Laf\\": "framework",
-            "service\\": "service"
+            "Laf\\": "framework"
         }
     }
 }

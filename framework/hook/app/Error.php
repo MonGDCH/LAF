@@ -2,7 +2,7 @@
 
 namespace Laf\hook\app;
 
-use mon\util\Container;
+use Laf\provider\Log;
 
 /**
  * 应用错误钩子
@@ -21,6 +21,6 @@ class Error
 	public function handler($error)
 	{
 		$log = "file: {$error['file']} line: {$error['line']} level: {$error['level']} message: {$error['message']}";
-		Container::get('log')->error($log)->save();
+		Log::instance()->error($log)->save();
 	}
 }

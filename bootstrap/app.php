@@ -7,7 +7,7 @@
 | 这里获取应用实例
 |
 */
-$app = require __DIR__ . '/bootstrap.php';
+$app = require_once __DIR__ . '/bootstrap.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ $app = require __DIR__ . '/bootstrap.php';
 | 这里搭载框架应用钩子
 |
 */
-$app->definition($tags['app']);
+$app->definition($config->get('app.tags', []));
 
 /*
 |--------------------------------------------------------------------------

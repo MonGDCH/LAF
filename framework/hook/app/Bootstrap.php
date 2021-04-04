@@ -2,6 +2,7 @@
 
 namespace Laf\hook\app;
 
+use Laf\provider\Log;
 use mon\util\Container;
 
 /**
@@ -19,7 +20,7 @@ class Bootstrap
 	 */
 	public function handler()
 	{
-		Container::get('log')->info($this->parseRequest());
+		Log::instance()->info($this->parseRequest());
 	}
 
 	/**

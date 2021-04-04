@@ -6,7 +6,7 @@
 | 定义控制台指令
 |
 */
-return array_merge([
+return [
     // 启动内置服务器
     'server'    => [
         'handle'    => Laf\command\Server::class,
@@ -26,5 +26,19 @@ return array_merge([
     'make'      => [
         'handle'    => Laf\command\Make::class,
         'desc'      => 'Make File Command',
+    ],
+    // 启动socket服务
+    'socket'      => [
+        'handle'    => app\console\command\Socket::class,
+        'desc'      => 'Runing Socket Service',
+    ],
+    // 指令名称
+    'test'      => [
+        // 指令回调, [class|function]
+        'handle'    => app\console\command\Test::class,
+        // 指令描述
+        'desc'      => 'This is Test Command.',
+        // 路由别名, 调用：-t
+        'alias'     => 't'
     ]
-], require ROOT_PATH . '/app/console/command.php');
+];

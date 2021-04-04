@@ -1,6 +1,6 @@
 <?php
 
-namespace service;
+namespace app\console\libs;
 
 use mon\util\Instance;
 

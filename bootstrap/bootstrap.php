@@ -41,15 +41,6 @@ define('CONFIG_PATH', ROOT_PATH . '/config');
 
 /*
 |--------------------------------------------------------------------------
-| 静态资源路径
-|--------------------------------------------------------------------------
-| 这里定义静态资源路径, 需拥有读写权限，插件安装时如有资源依赖，会同步文件到对应的路径下
-|
-*/
-define('STATIC_PATH', ROOT_PATH . '/public/static');
-
-/*
-|--------------------------------------------------------------------------
 | 定义路由缓存文件路径
 |--------------------------------------------------------------------------
 | 这里定义路由缓存文件路径, 存在路由缓存文件则不重新加载路由定义文件
@@ -91,16 +82,13 @@ $config = \mon\env\Config::instance();
 | 这里注册加载全局配置信息
 |
 */
-$config->register(require(CONFIG_PATH . '/config.php'));
-
-/*
-|--------------------------------------------------------------------------
-| 获取钩子信息
-|--------------------------------------------------------------------------
-| 这里加载全局使用的钩子配置信息
-|
-*/
-$tags = require(CONFIG_PATH . '/tags.php');
+$configFiles = [];
+if (is_dir(CONFIG_PATH)) {
+    $configFiles = glob(CONFIG_PATH . '/*.php');
+}
+foreach ($configFiles as $file) {
+    $config->load($file, pathinfo($file, PATHINFO_FILENAME));
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +97,7 @@ $tags = require(CONFIG_PATH . '/tags.php');
 | 这里设置时区
 |
 */
-date_default_timezone_set($config->get('time_zone', 'PRC'));
+date_default_timezone_set($config->get('app.time_zone', 'PRC'));
 
 /*
 |--------------------------------------------------------------------------
@@ -118,7 +106,8 @@ date_default_timezone_set($config->get('time_zone', 'PRC'));
 | 这里注册定义全局服务
 |
 */
-$app->singleton(require(CONFIG_PATH . '/provider.php'));
+$app->singleton($config->get('provider', []));
+
 
 /*
 |--------------------------------------------------------------------------
@@ -137,13 +126,9 @@ $app->singleton(require(CONFIG_PATH . '/provider.php'));
 | 这里配置数据库执行SQL事件的钩子
 |
 */
-foreach ((array) $tags['db'] as $event => $callback) {
-    if (!empty($callback)) {
-        if (is_string($callback)) {
-            \mon\orm\Db::event($event, $callback);
-        } else {
-            throw new Exception('[ERROR] DB event unsupported hook type! event: ' . $event, 500);
-        }
+foreach ($config->get('database.event', []) as $event => $listen) {
+    foreach ($listen as $callback) {
+        \mon\orm\Db::listen($event, $callback);
     }
 }
 

@@ -1,10 +1,10 @@
 <?php
 namespace Laf\command;
 
-use mon\env\Config as Env;
-use mon\console\Command;
 use mon\console\Input;
 use mon\console\Output;
+use mon\console\Command;
+use mon\env\Config as Env;
 
 /**
  * 配置相关指令

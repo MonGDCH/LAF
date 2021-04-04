@@ -3,9 +3,9 @@
 namespace Laf\command;
 
 use FApi\Route;
-use mon\console\Command;
 use mon\console\Input;
 use mon\console\Output;
+use mon\console\Command;
 
 /**
  * 路由相关指令
