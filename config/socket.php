@@ -41,8 +41,6 @@ return [
         'count'             => 2,
         // 服务注册地址
         'registerAddress'   => '127.0.0.1:1239',
-        // 服务回调对象，含命名空间
-        // 'eventHandler'      => \service\Event::class,
     ],
     // register 服务
     'register' => [

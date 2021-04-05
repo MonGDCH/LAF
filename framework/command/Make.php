@@ -63,7 +63,6 @@ class Make extends Command
                 'Befor: php LAF make befor name',
                 'After: php LAF make after name',
                 'Command: php LAF make command name',
-                'Service: php LAF make service name',
             ];
             $out->dataList($help);
             return $out->block($this->error, 'ERROR');
@@ -96,9 +95,6 @@ class Make extends Command
                 break;
             case 'command':
                 $make = $this->command($config['name']);
-                break;
-            case 'service':
-                $make = $this->service($config['name']);
                 break;
             default:
                 return $out->block('Type Error!', 'ERROR');
@@ -291,37 +287,6 @@ class Make extends Command
         $save = Container::instance()->file->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Command Error![' . $ctrl_file . ']';
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * 创建服务
-     *
-     * @param  string $name 服务名称
-     * @return boolean
-     */
-    protected function service($name)
-    {
-        $path = $this->app_path . 'service';
-        $ctrl = ucfirst($name);
-        $ctrl_file = $path . DIRECTORY_SEPARATOR . $ctrl . $this->ext;
-        if (file_exists($ctrl_file)) {
-            $this->error = 'Service[' . $ctrl . '] Exists!';
-            return false;
-        }
-        // 加载模版
-        $template = $this->load('service');
-        if (!$template) {
-            return false;
-        }
-        // Make
-        $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
-        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
-        if (!$save) {
-            $this->error = 'Save Service Error![' . $ctrl_file . ']';
             return false;
         }
 

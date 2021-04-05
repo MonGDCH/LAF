@@ -13,7 +13,7 @@ class Test extends Command
      *
      * @param  Input  $in  输入实例
      * @param  Output $out 输出实例
-     * @return int         exit状态码
+     * @return integer exit状态码
      */
     public function execute($in, $out)
     {
