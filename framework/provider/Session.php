@@ -32,7 +32,6 @@ class Session extends Provider
     {
         if (is_null($this->service)) {
             $config = Config::instance()->get('app.session', []);
-            debug($config);exit;
             $this->service = new Service($config);
         }
 

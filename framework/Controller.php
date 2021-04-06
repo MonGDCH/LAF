@@ -2,6 +2,7 @@
 
 namespace Laf;
 
+use FApi\Url;
 use FApi\Request;
 use mon\util\Container;
 
@@ -26,6 +27,13 @@ abstract class Controller
      * @var Request
      */
     protected $request;
+
+    /**
+     * URL类实例
+     *
+     * @var Url
+     */
+    protected $url;
 
     /**
      * 返回数据类型
@@ -62,6 +70,7 @@ abstract class Controller
     {
         $this->container = Container::instance();
         $this->request = Request::instance();
+        $this->url = Url::instance();
     }
 
     /**
