@@ -2,8 +2,7 @@
 
 namespace Laf\hook\app;
 
-use Laf\provider\Log;
-use mon\util\Container;
+use Laf\Log;
 
 /**
  * 应用初始化钩子

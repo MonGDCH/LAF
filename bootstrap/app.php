@@ -16,7 +16,7 @@ $app = require_once __DIR__ . '/bootstrap.php';
 | 这里搭载框架应用钩子
 |
 */
-$app->definition($config->get('app.tags', []));
+$app->definition($config->get('tags.app', []));
 
 /*
 |--------------------------------------------------------------------------

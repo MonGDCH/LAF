@@ -2,9 +2,9 @@
 
 namespace app\console\command;
 
+use Laf\Log;
 use mon\orm\Db;
 use mon\env\Config;
-use Laf\provider\Log;
 use Workerman\Worker;
 use mon\console\Input;
 use mon\console\Output;
@@ -15,6 +15,12 @@ use app\service\SocketService;
 use GatewayWorker\BusinessWorker;
 use GatewayWorker\Lib\Gateway as LibGateway;
 
+/**
+ * 基于GateWay的socket服务, 业务操作回调\app\service\SocketService类
+ * 
+ * @author Mon <985558837@qq.com>
+ * @version 1.0.0
+ */
 class Socket extends Command
 {
     /**
@@ -151,7 +157,7 @@ class Socket extends Command
         Log::instance()->info('clinet send message, IP: ' . $_SERVER['REMOTE_ADDR'] . ', message: ' . $message);
         // 业务操作
         SocketService::instance()->handle($client_id, $message);
-
+        // 写入日志
         Log::instance()->save();
     }
 

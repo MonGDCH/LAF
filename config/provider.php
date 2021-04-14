@@ -8,13 +8,13 @@
 */
 return [
 	// Session
-	'session'	=> Laf\provider\Session::class,
+	'session'	=> Laf\Session::class,
 	// cookie
-	'cookie'	=> Laf\provider\Cookie::class,
+	'cookie'	=> Laf\Cookie::class,
 	// 文件缓存
-	'cache'		=> Laf\provider\Cache::class,
+	'cache'		=> Laf\Cache::class,
 	// JWT权限控制
-	'jwt'		=> Laf\provider\Jwt::class,
+	'jwt'		=> Laf\Jwt::class,
 	// RBAC权限控制
-	'auth'		=> Laf\provider\Rbac::class,
+	'auth'		=> Laf\Rbac::class,
 ];

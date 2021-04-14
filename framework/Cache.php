@@ -1,8 +1,7 @@
 <?php
 
-namespace Laf\provider;
+namespace Laf;
 
-use Laf\Provider;
 use mon\env\Config;
 use mon\util\Instance;
 use mon\store\Cache as Service;

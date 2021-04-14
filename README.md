@@ -11,6 +11,11 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v3.0.0
+
+- 优化代码，返璞归真
+- 增强对workerman的支持
+
 > v2.2.2
 
 - 优化代码，更新依赖

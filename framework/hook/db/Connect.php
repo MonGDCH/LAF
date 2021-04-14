@@ -2,7 +2,7 @@
 
 namespace Laf\hook\db;
 
-use Laf\provider\Log;
+use Laf\Log;
 use mon\orm\db\Connection;
 
 /**

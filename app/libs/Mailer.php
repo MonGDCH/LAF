@@ -1,6 +1,6 @@
 <?php
 
-namespace app\provider;
+namespace app\libs;
 
 use mon\env\Config;
 use mon\util\Instance;

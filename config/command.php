@@ -32,6 +32,11 @@ return [
         'handle'    => app\console\command\Socket::class,
         'desc'      => 'Runing Socket Service',
     ],
+    // 启动定时器服务
+    'timer'      => [
+        'handle'    => app\console\command\Timer::class,
+        'desc'      => 'Runing timer Service',
+    ],
     // 指令名称
     'test'      => [
         // 指令回调, [class|function]

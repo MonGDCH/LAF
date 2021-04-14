@@ -2,10 +2,13 @@
 
 namespace app\console\command;
 
-use mon\console\Command;
 use mon\console\Input;
 use mon\console\Output;
+use mon\console\Command;
 
+/**
+ * 测试指令
+ */
 class Test extends Command
 {
     /**

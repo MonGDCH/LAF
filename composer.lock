@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d8276ad84f6108e2c3d18444696f967",
+    "content-hash": "7e589fc1846d37c063aadecae2cdc911",
     "packages": [
         {
             "name": "mongdch/fapi",
@@ -195,16 +195,16 @@
         },
         {
             "name": "mongdch/mon-orm",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MonGDCH/mon-orm.git",
-                "reference": "5544ad102f0bebbc070b950ccbd62183e3eb7ae3"
+                "reference": "6a87e779de6c87872e3c3169a98d9acc7ea24084"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/5544ad102f0bebbc070b950ccbd62183e3eb7ae3",
-                "reference": "5544ad102f0bebbc070b950ccbd62183e3eb7ae3",
+                "url": "https://api.github.com/repos/MonGDCH/mon-orm/zipball/6a87e779de6c87872e3c3169a98d9acc7ea24084",
+                "reference": "6a87e779de6c87872e3c3169a98d9acc7ea24084",
                 "shasum": ""
             },
             "require": {
@@ -229,7 +229,7 @@
                 }
             ],
             "description": "Mysql database ORM for PHP",
-            "homepage": "http://blog.gdmonlam.com/",
+            "homepage": "http://gdmon.com/",
             "keywords": [
                 "database",
                 "mysql",
@@ -238,9 +238,9 @@
             ],
             "support": {
                 "issues": "https://github.com/MonGDCH/mon-orm/issues",
-                "source": "https://github.com/MonGDCH/mon-orm/tree/2.4.0"
+                "source": "https://github.com/MonGDCH/mon-orm/tree/2.4.1"
             },
-            "time": "2021-04-03T04:56:33+00:00"
+            "time": "2021-04-13T10:05:03+00:00"
         },
         {
             "name": "mongdch/mon-store",

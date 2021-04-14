@@ -1,6 +1,6 @@
 <?php
 
-namespace Laf\provider;
+namespace Laf;
 
 use mon\util\File;
 use mon\env\Config;

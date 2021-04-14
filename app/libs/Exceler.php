@@ -1,6 +1,6 @@
 <?php
 
-namespace app\provider;
+namespace app\libs;
 
 use mon\util\Instance;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;

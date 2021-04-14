@@ -2,7 +2,7 @@
 
 namespace Laf\hook\app;
 
-use Laf\provider\Log;
+use Laf\Log;
 
 /**
  * 应用结束钩子

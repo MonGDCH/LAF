@@ -39,6 +39,17 @@ define('APP_PATH', ROOT_PATH . '/app');
 */
 define('CONFIG_PATH', ROOT_PATH . '/config');
 
+
+/*
+|--------------------------------------------------------------------------
+| 定义存储路径
+|--------------------------------------------------------------------------
+| 这里定义存储路径, 用于存储系统相关资源内容
+|
+*/
+define('STORAGE_PATH', ROOT_PATH . '/storage');
+
+
 /*
 |--------------------------------------------------------------------------
 | 定义路由缓存文件路径
@@ -126,7 +137,7 @@ $app->singleton($config->get('provider', []));
 | 这里配置数据库执行SQL事件的钩子
 |
 */
-foreach ($config->get('database.event', []) as $event => $listen) {
+foreach ($config->get('tags.database', []) as $event => $listen) {
     foreach ($listen as $callback) {
         \mon\orm\Db::listen($event, $callback);
     }

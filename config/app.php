@@ -18,7 +18,7 @@ return [
 	 */
 	'log'		=> [
 		'maxSize'      	=> 20480000,
-		'logPath'      	=> ROOT_PATH . '/storage/log',
+		'logPath'      	=> STORAGE_PATH . '/log',
 		'rollNum'      	=> 3,
 		'logName'      	=> '',
 		'splitLine'     => '======================================================',
@@ -28,10 +28,11 @@ return [
 	 * cache文件缓存
 	 */
 	'cache'		=> [
+		'type'			=> 'file',
 		'expire'        => 0,
 		'cache_subdir'  => true,
 		'prefix'        => '',
-		'path'          => ROOT_PATH . '/storage/cache',
+		'path'          => STORAGE_PATH . '/cache',
 		'data_compress' => false,
 	],
 
@@ -56,6 +57,20 @@ return [
 		'expire'	=> '10800',
 		'secure'	=> '',
 		'httponly'	=> ''
+	],
+
+	/**
+	 * 文件上传配置
+	 */
+	'upload'	=> [
+		// 保存路根径
+		'root'		=> ROOT_PATH . '/public',
+		// 保存目录
+		'save'		=> 'upload',
+		// 最大尺寸, 10M
+		'maxSize'	=> 10000000,
+		// 允许上传文件类型
+		'exts'		=> ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'mp4', 'avi', 'mkv', 'flv', 'rmvb', 'pdf', 'md'],
 	],
 
 	/**
@@ -87,32 +102,4 @@ return [
 		// 超级管理员权限标志
 		'admin_mark'        => '*',
 	],
-
-	/**
-	 * app业务钩子配置
-	 */
-	'tags'		=> [
-		// 应用初始化
-		'bootstrap'		=> [
-			\Laf\hook\app\Bootstrap::class
-		],
-		// 应用执行
-		'run'			=> [],
-		// 执行回调前
-		'beforAction' 	=> [],
-		// 执行回调后
-		'afterAction' 	=> [],
-		// 响应结果输出前
-		'beforSend'		=> [],
-		// 响应结果输出后
-		'afterSend'		=> [],
-		// 应用结束
-		'end'			=> [
-			\Laf\hook\app\End::class
-		],
-		// 应用错误
-		'error'			=> [
-			\Laf\hook\app\Error::class
-		],
-	]
 ];
