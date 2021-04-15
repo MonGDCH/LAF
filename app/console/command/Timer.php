@@ -34,6 +34,7 @@ class Timer extends Command
     {
         $worker = new Worker();
         $worker->count = 1;
+        $worker->name = 'MonTimer';
         $worker->onWorkerStart = function ($task) {
             // 启动定时器
             $id = null;

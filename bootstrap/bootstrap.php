@@ -12,6 +12,7 @@
 */
 define('RUN_MODE', 'dev');
 
+
 /*
 |--------------------------------------------------------------------------
 | 定义应用根路径
@@ -21,6 +22,7 @@ define('RUN_MODE', 'dev');
 */
 define('ROOT_PATH', dirname(__DIR__));
 
+
 /*
 |--------------------------------------------------------------------------
 | 定义应用APP路径
@@ -29,6 +31,7 @@ define('ROOT_PATH', dirname(__DIR__));
 |
 */
 define('APP_PATH', ROOT_PATH . '/app');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +62,7 @@ define('STORAGE_PATH', ROOT_PATH . '/storage');
 */
 define('ROUTE_CACHE', ROOT_PATH . '/storage/cache/router.php');
 
+
 /*
 |--------------------------------------------------------------------------
 | 加载composer
@@ -67,6 +71,7 @@ define('ROUTE_CACHE', ROOT_PATH . '/storage/cache/router.php');
 |
 */
 require_once ROOT_PATH . '/vendor/autoload.php';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +82,7 @@ require_once ROOT_PATH . '/vendor/autoload.php';
 */
 $app = \FApi\App::instance();
 
+
 /*
 |--------------------------------------------------------------------------
 | 获取配置服务
@@ -85,6 +91,7 @@ $app = \FApi\App::instance();
 |
 */
 $config = \mon\env\Config::instance();
+
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +108,7 @@ foreach ($configFiles as $file) {
     $config->load($file, pathinfo($file, PATHINFO_FILENAME));
 }
 
+
 /*
 |--------------------------------------------------------------------------
 | 定义应用时区
@@ -109,6 +117,7 @@ foreach ($configFiles as $file) {
 |
 */
 date_default_timezone_set($config->get('app.time_zone', 'PRC'));
+
 
 /*
 |--------------------------------------------------------------------------
