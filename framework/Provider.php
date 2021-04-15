@@ -35,9 +35,6 @@ abstract class Provider
      */
     public function __call($name, $arguments)
     {
-        if (is_null($this->service)) {
-            throw new Exception('Kernel Service is NULL!');
-        }
         return call_user_func_array([$this->getService(), $name], (array) $arguments);
     }
 }

@@ -17,7 +17,7 @@ class Record
      * @param mixed $option 参数
      * @return void
      */
-    public function handle($option, $connect)
+    public function handler($connect, $option)
     {
         Log::instance()->sql($connect->getLastSql());
     }

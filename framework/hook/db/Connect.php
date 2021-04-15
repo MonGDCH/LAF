@@ -17,7 +17,7 @@ class Connect
      * @param mixed $config 配置信息
      * @return void
      */
-    public function handle($connect, $config)
+    public function handler($connect, $config)
     {
         Log::instance()->sql('connect database => ' . var_export($config, true));
     }
