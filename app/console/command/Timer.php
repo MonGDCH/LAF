@@ -6,11 +6,10 @@ use Workerman\Worker;
 use mon\console\Input;
 use mon\console\Output;
 use mon\console\Command;
-use app\service\TimerService;
 use Workerman\Lib\Timer as WorkermanTimer;
 
 /**
- * 基于workerman的定时器, 业务操作回调\app\service\TimerService类
+ * 基于workerman的定时器
  * 
  * @author Mon <985558837@qq.com>
  * @version 1.0.0
@@ -38,10 +37,21 @@ class Timer extends Command
         $worker->onWorkerStart = function ($task) {
             // 启动定时器
             $id = null;
-            $id = WorkermanTimer::add($this->interval, [TimerService::instance(), 'handle'], [&$id]);
+            $id = WorkermanTimer::add($this->interval, [$this, 'handle'], [&$id]);
         };
 
         Worker::runAll();
         return 0;
+    }
+
+    /**
+     * 定时脚本执行回调
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function handle($id)
+    {
+        echo $id . PHP_EOL;
     }
 }

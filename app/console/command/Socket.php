@@ -8,15 +8,15 @@ use mon\env\Config;
 use Workerman\Worker;
 use mon\console\Input;
 use mon\console\Output;
+use mon\util\Container;
 use mon\console\Command;
 use GatewayWorker\Gateway;
 use GatewayWorker\Register;
-use app\service\SocketService;
 use GatewayWorker\BusinessWorker;
 use GatewayWorker\Lib\Gateway as LibGateway;
 
 /**
- * 基于GateWay的socket服务, 业务操作回调\app\service\SocketService类
+ * 基于GateWay的socket服务
  * 
  * @author Mon <985558837@qq.com>
  * @version 1.0.0
@@ -29,6 +29,18 @@ class Socket extends Command
      * @var integer
      */
     const CONNECT = 200;
+
+    /**
+     * 不存在对应指令映射
+     */
+    const NOT_FOUND = 404;
+
+    /**
+     * 指令回调业务对象映射
+     * 
+     * @var array
+     */
+    protected static $cmd = [];
 
     /**
      * 执行指令
@@ -156,7 +168,19 @@ class Socket extends Command
     {
         Log::instance()->info('clinet send message, IP: ' . $_SERVER['REMOTE_ADDR'] . ', message: ' . $message);
         // 业务操作
-        SocketService::instance()->handle($client_id, $message);
+        $query = json_decode($message, true);
+        if (!isset($query['cmd']) || !isset(Socket::$cmd[$query['cmd']])) {
+            // 不存在指令, 返回错误提示
+            LibGateway::sendToCurrentClient(json_encode([
+                'code'  => Socket::NOT_FOUND,
+                'msg'   => 'cmd not found'
+            ], JSON_UNESCAPED_UNICODE));
+        } else {
+            // 执行指令回调
+            $callback = Socket::$cmd[$query['cmd']];
+            Container::instance()->invokeMethd([$callback, 'handle'], [$query, $client_id]);
+        }
+
         // 写入日志
         Log::instance()->save();
     }
