@@ -11,6 +11,7 @@ use Workerman\Lib\Timer as WorkermanTimer;
 /**
  * 基于workerman的定时器
  * 
+ * @requires workerman/workerman
  * @author Mon <985558837@qq.com>
  * @version 1.0.0
  */

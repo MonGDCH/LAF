@@ -8,6 +8,11 @@
 |
 */
 return [
+    // 指令回调映射
+    'cmd'   => [
+        'visitor'   => \app\service\VisitorService::class,
+        'reception' => \app\service\ReceptionService::class,
+    ],
     // geteway 进程
     'gateway' => [
         // gateway名称，status方便查看

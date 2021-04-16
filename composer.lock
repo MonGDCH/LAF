@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e589fc1846d37c063aadecae2cdc911",
+    "content-hash": "cde77d89c52fab601e0ef515df1b357c",
     "packages": [
         {
             "name": "mongdch/fapi",
@@ -398,6 +398,40 @@
                 "source": "https://github.com/nikic/FastRoute/tree/master"
             },
             "time": "2018-02-13T20:26:39+00:00"
+        },
+        {
+            "name": "workerman/channel",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/channel.git",
+                "reference": "3df772d0d20d4cebfcfd621c33d1a1ab732db523"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/walkor/channel/zipball/3df772d0d20d4cebfcfd621c33d1a1ab732db523",
+                "reference": "3df772d0d20d4cebfcfd621c33d1a1ab732db523",
+                "shasum": ""
+            },
+            "require": {
+                "workerman/workerman": ">=4.0.12"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Channel\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "support": {
+                "issues": "https://github.com/walkor/channel/issues",
+                "source": "https://github.com/walkor/channel/tree/v1.1.0"
+            },
+            "time": "2021-02-08T02:45:42+00:00"
         },
         {
             "name": "workerman/gateway-worker",

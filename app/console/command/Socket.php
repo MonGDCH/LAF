@@ -18,6 +18,7 @@ use GatewayWorker\Lib\Gateway as LibGateway;
 /**
  * 基于GateWay的socket服务
  * 
+ * @requires workerman/gateway-worker
  * @author Mon <985558837@qq.com>
  * @version 1.0.0
  */
@@ -34,13 +35,6 @@ class Socket extends Command
      * 不存在对应指令映射
      */
     const NOT_FOUND = 404;
-
-    /**
-     * 指令回调业务对象映射
-     * 
-     * @var array
-     */
-    protected static $cmd = [];
 
     /**
      * 执行指令
@@ -169,7 +163,8 @@ class Socket extends Command
         Log::instance()->info('clinet send message, IP: ' . $_SERVER['REMOTE_ADDR'] . ', message: ' . $message);
         // 业务操作
         $query = json_decode($message, true);
-        if (!isset($query['cmd']) || !isset(Socket::$cmd[$query['cmd']])) {
+        $cmd = Config::instance()->get('socket.cmd', []);
+        if (!isset($query['cmd']) || !isset($cmd[$query['cmd']])) {
             // 不存在指令, 返回错误提示
             LibGateway::sendToCurrentClient(json_encode([
                 'code'  => Socket::NOT_FOUND,
@@ -177,7 +172,7 @@ class Socket extends Command
             ], JSON_UNESCAPED_UNICODE));
         } else {
             // 执行指令回调
-            $callback = Socket::$cmd[$query['cmd']];
+            $callback = $cmd[$query['cmd']];
             Container::instance()->invokeMethd([$callback, 'handle'], [$query, $client_id]);
         }
 

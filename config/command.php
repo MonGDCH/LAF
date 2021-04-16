@@ -37,6 +37,11 @@ return [
         'handle'    => app\console\command\Timer::class,
         'desc'      => 'Runing timer Service',
     ],
+    // 启动定时器服务
+    'channel'      => [
+        'handle'    => app\console\command\Channel::class,
+        'desc'      => 'Runing channel Service',
+    ],
     // 指令名称
     'test'      => [
         // 指令回调, [class|function]
