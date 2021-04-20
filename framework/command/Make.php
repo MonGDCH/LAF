@@ -2,9 +2,9 @@
 
 namespace Laf\command;
 
+use mon\util\File;
 use mon\console\Input;
 use mon\console\Output;
-use mon\util\Container;
 use mon\console\Command;
 
 /**
@@ -129,7 +129,7 @@ class Make extends Command
             return false;
         }
         $content = sprintf($template, $model, $model, $this->now, $model, $table);
-        $save = Container::instance()->file->createFile($content, $model_file, false);
+        $save = File::instance()->createFile($content, $model_file, false);
         if (!$save) {
             $this->error = 'Save Model Error![' . $model_file . ']';
             return false;
@@ -160,7 +160,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
-        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
+        $save = File::instance()->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Controller Error![' . $ctrl_file . ']';
             return false;
@@ -191,7 +191,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
-        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
+        $save = File::instance()->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Validate Error![' . $ctrl_file . ']';
             return false;
@@ -222,7 +222,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
-        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
+        $save = File::instance()->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Befor Error![' . $ctrl_file . ']';
             return false;
@@ -253,7 +253,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
-        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
+        $save = File::instance()->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save After Error![' . $ctrl_file . ']';
             return false;
@@ -284,7 +284,7 @@ class Make extends Command
         }
         // Make
         $content = sprintf($template, $ctrl, $ctrl, $this->now, $ctrl);
-        $save = Container::instance()->file->createFile($content, $ctrl_file, false);
+        $save = File::instance()->createFile($content, $ctrl_file, false);
         if (!$save) {
             $this->error = 'Save Command Error![' . $ctrl_file . ']';
             return false;
