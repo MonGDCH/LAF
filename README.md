@@ -11,6 +11,10 @@ composer create-project mongdch/laf
 
 ## Version
 
+> v3.0.1
+
+- 优化整理代码
+
 > v3.0.0
 
 - 优化代码，返璞归真

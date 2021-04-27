@@ -54,7 +54,7 @@ class %s extends Model
      */
     protected function setCreateTimeAttr($val)
     {
-        return $_SERVER['REQUEST_TIME'];
+        return time();
     }
 
     /**
@@ -66,6 +66,6 @@ class %s extends Model
      */
     protected function setUpdateTimeAttr($val)
     {
-        return $_SERVER['REQUEST_TIME'];
+        return time();
     }
 }

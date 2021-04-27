@@ -9,9 +9,21 @@
 */
 return [
     // 指令回调映射
-    'cmd'   => [
-        'visitor'   => \app\service\VisitorService::class,
-        'reception' => \app\service\ReceptionService::class,
+    'cmd'   => [],
+    // 链接鉴权
+    'safe'  => [
+        // 是否开启鉴权
+        'auth'      => true,
+        // 加密盐秘钥
+        'salt'      => 'ws-mon-2021',
+        // ticket名称
+        'name'      => '_ws_',
+        // token名称
+        'token'     => '_ws_token_',
+        // tokentime名称
+        'time'      => '_ws_token_time_',
+        // 有效期
+        'expire'    => 36000,
     ],
     // geteway 进程
     'gateway' => [

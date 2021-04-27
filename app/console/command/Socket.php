@@ -4,6 +4,7 @@ namespace app\console\command;
 
 use Laf\Log;
 use mon\orm\Db;
+use mon\util\Tool;
 use mon\env\Config;
 use Workerman\Worker;
 use mon\console\Input;
@@ -124,9 +125,6 @@ class Socket extends Command
             Log::instance()->info('clinet not in white list, close connect, IP: ' . $_SERVER['REMOTE_ADDR'] . ', clientID: ' . $client_id)->save();
             return;
         }
-
-        // 记录客户端ID
-        $_SESSION['clientID'] = $client_id;
         // 通知客户端ID
         LibGateway::sendToCurrentClient(json_encode(['code' => self::CONNECT, 'msg' => 'connect success', 'data' => ['id' => $client_id]], JSON_UNESCAPED_UNICODE));
         Log::instance()->save();
@@ -148,6 +146,22 @@ class Socket extends Command
             LibGateway::closeClient($client_id);
             Log::instance()->info('clinet not in websocket domain, close connect, IP: ' . $_SERVER['REMOTE_ADDR'] . ', domain: ' . $data['server']['HTTP_ORIGIN'])->save();
             return;
+        }
+        // 链接鉴权
+        $safeConfig = Config::instance()->get('socket.safe');
+        if ($safeConfig['auth']) {
+            // 客服系统，使用另外的统一的秘钥
+            $salt = $safeConfig['salt'];
+            $token = isset($data['cookie'][$safeConfig['token']]) ? $data['cookie'][$safeConfig['token']] : '';
+            $time = isset($data['cookie'][$safeConfig['time']]) ? $data['cookie'][$safeConfig['time']] : '';
+            $ticket = isset($data['cookie'][$safeConfig['name']]) ? $data['cookie'][$safeConfig['name']] : '';
+            $check = Tool::instance()->checkTicket($ticket, $token, $time, $salt, false, $safeConfig['expire']);
+            if (!$check) {
+                // 未通过鉴权，断开链接
+                LibGateway::closeClient($client_id);
+            }
+            // 保存已通过鉴权的ticket
+            $_SESSION['ticket'] = $ticket;
         }
     }
 
