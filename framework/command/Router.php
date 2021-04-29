@@ -123,10 +123,10 @@ class Router extends Command
     protected function help($in, $out)
     {
         $help = [
-            'show help: '   => 'php laf route help',
-            'show route: '  => 'php laf route show',
-            'cache route: ' => 'php laf route cache',
-            'clear route: ' => 'php laf route clear',
+            'show help: '   => ' php laf route help',
+            'show route: '  => ' php laf route show',
+            'cache route: ' => ' php laf route cache',
+            'clear route: ' => ' php laf route clear',
         ];
 
         return $out->dataList($help, 'route command help');
