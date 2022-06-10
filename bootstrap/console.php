@@ -17,7 +17,7 @@ $app = require_once __DIR__ . '/bootstrap.php';
 | 命令控制台启动脚本，Mysql链接断开自动重连
 |
 */
-\mon\orm\Db::setConfig(['break_reconnect' => true]);
+\mon\orm\Db::reconnect(true);
 
 
 /*
@@ -37,7 +37,7 @@ $console = \mon\console\App::instance();
 | 这里注册指令
 |
 */
-$commands = $config->get('command', []);
+$commands = require APP_PATH . '/console/Command.php';
 foreach ($commands as $command => $option) {
     if (is_array($option)) {
         $handle = isset($option['handle']) ? $option['handle'] : null;

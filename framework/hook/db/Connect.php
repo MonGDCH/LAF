@@ -19,6 +19,7 @@ class Connect
      */
     public function handler($connect, $config)
     {
-        Log::instance()->sql('connect database => ' . var_export($config, true));
+        // Log::instance()->sql('connect database => ' . var_export($config, true));
+        Log::instance()->sql('connect database => ' . "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset={$config['charset']}");
     }
 }

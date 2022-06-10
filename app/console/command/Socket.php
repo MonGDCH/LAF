@@ -3,7 +3,6 @@
 namespace app\console\command;
 
 use Laf\Log;
-use mon\orm\Db;
 use mon\util\Tool;
 use mon\env\Config;
 use Workerman\Worker;
@@ -34,8 +33,17 @@ class Socket extends Command
 
     /**
      * 不存在对应指令映射
+     * 
+     * @var integer
      */
     const NOT_FOUND = 404;
+
+    /**
+     * 鉴权未通过
+     * 
+     * @var integer
+     */
+    const NOT_AUTH = 403;
 
     /**
      * 执行指令
@@ -104,7 +112,7 @@ class Socket extends Command
     public static function onWorkerStart($businessWorker)
     {
         // 命令控制台启动脚本，Mysql链接断开自动重连
-        Db::setConfig(['break_reconnect' => true]);
+        Log::instance()->register(['logPath' => RUNTIME_PATH . '/log/socket']);
         Log::instance()->info('socket service start')->save();
     }
 
@@ -158,6 +166,7 @@ class Socket extends Command
             $check = Tool::instance()->checkTicket($ticket, $token, $time, $salt, false, $safeConfig['expire']);
             if (!$check) {
                 // 未通过鉴权，断开链接
+                LibGateway::sendToCurrentClient(json_encode(['code' => self::NOT_AUTH, 'msg' => 'no auth permission', 'data' => []], JSON_UNESCAPED_UNICODE));
                 LibGateway::closeClient($client_id);
             }
             // 保存已通过鉴权的ticket
@@ -202,6 +211,25 @@ class Socket extends Command
      */
     public static function onClose($client_id)
     {
+        // 退出链接, 访客退出，通知客服
+        // if (isset($_SESSION['role']) && $_SESSION['role'] == 'visitor' && !count(LibGateway::getClientIdByUid($_SESSION['uid']))) {
+        //     // 移除会话
+        //     LibGateway::leaveGroup($client_id, "chat_" . $_SESSION['app']);
+        //     // 通知客服
+        //     LibGateway::sendToUid($_SESSION['group'], json_encode([
+        //         'code'      => 200,
+        //         // 访客退出标志
+        //         'type'      => 'visitorExit',
+        //         // 提示信息
+        //         'msg'       => '客户断开连接...',
+        //         'data'      => [
+        //             'type'  => 'visitorExit',
+        //             // 访客的标识uid
+        //             'client'    => $_SESSION['uid'],
+        //         ]
+        //     ], JSON_UNESCAPED_UNICODE));
+        // }
+
         Log::instance()->info('clinet close connect, IP: ' . $_SERVER['REMOTE_ADDR'] . ', clientID: ' . $client_id)->save();
     }
 

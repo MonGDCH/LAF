@@ -1,6 +1,6 @@
 <?php
 
-namespace app\console\libs;
+namespace app\libs;
 
 use Channel\Server;
 

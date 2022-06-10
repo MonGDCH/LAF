@@ -27,6 +27,11 @@ return [
         'handle'    => Laf\command\Make::class,
         'desc'      => 'Make File Command',
     ],
+    // 插件产管理
+    'addons'    => [
+        'handle'    => Laf\addons\Command::class,
+        'desc'      => 'Addons management Command',
+    ],
     // 启动socket服务
     'socket'      => [
         'handle'    => app\console\command\Socket::class,
@@ -37,10 +42,10 @@ return [
         'handle'    => app\console\command\Timer::class,
         'desc'      => 'Runing timer Service',
     ],
-    // 启动定时器服务
-    'channel'      => [
-        'handle'    => app\console\command\Channel::class,
-        'desc'      => 'Runing channel Service',
+    // 启动任务服务
+    'task'      => [
+        'handle'    => app\console\command\Task::class,
+        'desc'      => 'Runing task Service',
     ],
     // 指令名称
     'test'      => [

@@ -7,5 +7,16 @@
 |
 */
 
-// 首页
-$router->any('/', 'app\http\controller\Index@index');
+use FApi\Route;
+
+Route::instance()->any('/', '\app\http\controller\IndexController@index');
+
+// 滑动验证码图片
+Route::instance()->get('/verify/img', function (\app\libs\verify\Verify $verify) {
+    return $verify->setConfig([
+        'bg_width'      => 300,
+        'bg_height'     => 160,
+        'mark_width'    => 50,
+        'mark_height'   => 50,
+    ])->create();
+});

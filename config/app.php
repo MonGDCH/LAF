@@ -18,7 +18,7 @@ return [
 	 */
 	'log'		=> [
 		'maxSize'      	=> 20480000,
-		'logPath'      	=> STORAGE_PATH . '/log',
+		'logPath'      	=> RUNTIME_PATH . '/log',
 		'rollNum'      	=> 3,
 		'logName'      	=> '',
 		'splitLine'     => '======================================================',
@@ -32,7 +32,7 @@ return [
 		'expire'        => 0,
 		'cache_subdir'  => true,
 		'prefix'        => '',
-		'path'          => STORAGE_PATH . '/cache',
+		'path'          => RUNTIME_PATH . '/cache',
 		'data_compress' => false,
 	],
 
@@ -101,5 +101,5 @@ return [
 		'auth_rule'         => 'auth_rule',
 		// 超级管理员权限标志
 		'admin_mark'        => '*',
-	],
+	]
 ];

@@ -4,7 +4,9 @@ namespace Laf;
 
 use FApi\Url;
 use FApi\Request;
+use mon\orm\model\Data;
 use mon\util\Container;
+use mon\orm\model\DataCollection;
 
 /**
  * 控制器基类
@@ -64,6 +66,13 @@ abstract class Controller
     protected $allowMethods = [];
 
     /**
+     * 允许跨域的请求头
+     *
+     * @var array
+     */
+    protected $allowHeaders = [];
+
+    /**
      * 构造方法
      */
     public function __construct()
@@ -121,6 +130,16 @@ abstract class Controller
         if (!empty($this->allowMethods)) {
             $method = strtoupper(implode(',', (array) $this->allowMethods));
             $this->headers['Access-Control-Allow-Methods'] = $method;
+        }
+
+        if (!empty($this->allowHeaders)) {
+            $headers = strtoupper(implode(',', (array) $this->allowHeaders));
+            $this->headers['Access-Control-Allow-Headers'] = $headers;
+        }
+
+        // 兼容ORM
+        if ($data instanceof Data || $data instanceof DataCollection) {
+            $data = $data->toArray();
         }
 
         return $this->container->url->result($code, $msg, $data, $extend, $this->dataType, $this->headers);

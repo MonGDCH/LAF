@@ -28,9 +28,16 @@ class Jwt
     /**
      * 错误信息
      *
-     * @var mixed
+     * @var string
      */
     protected $error;
+
+    /**
+     * 错误码
+     *
+     * @var integer
+     */
+    protected $errorCode;
 
     /**
      * 构造方法
@@ -43,13 +50,25 @@ class Jwt
     /**
      * 获取错误信息
      *
-     * @return mixed
+     * @return string
      */
     public function getError()
     {
         $error = $this->error;
         $this->error = '';
         return $error;
+    }
+
+    /**
+     * 获取错误码
+     *
+     * @return integer
+     */
+    public function getErrorCode()
+    {
+        $code = $this->errorCode;
+        $this->errorCode = 0;
+        return $code;
     }
 
     /**
@@ -97,6 +116,7 @@ class Jwt
             return $token->check($jwt, $this->config['key'], $this->config['alg']);
         } catch (JwtException $e) {
             $this->error = $e->getMessage();
+            $this->errorCode = $e->getCode();
             return false;
         }
     }

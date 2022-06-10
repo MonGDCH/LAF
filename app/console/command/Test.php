@@ -20,6 +20,6 @@ class Test extends Command
      */
     public function execute($in, $out)
     {
-        return $out->write('This is Test Command!');
+        return $out->write('Hello LAF Command!');
     }
 }

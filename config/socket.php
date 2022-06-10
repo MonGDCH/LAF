@@ -9,11 +9,13 @@
 */
 return [
     // 指令回调映射
-    'cmd'   => [],
+    'cmd'   => [
+        'test'   => \app\console\socket\TestSocket::class
+    ],
     // 链接鉴权
     'safe'  => [
         // 是否开启鉴权
-        'auth'      => true,
+        'auth'      => false,
         // 加密盐秘钥
         'salt'      => 'ws-mon-2021',
         // ticket名称
@@ -45,7 +47,7 @@ return [
         'registerAddress'   => '127.0.0.1:1239',
         // 链接协议地址
         'address'           => 'websocket://0.0.0.0:8623',
-        // context附加参数, 主要用于实现ssl
+        // context附加参数, 主要用于实现ssl，可使用nginx方向代理实现ssl
         'context'           => [],
         // 传输协议，一般不需要改动，如需使用ssl，则修改为ssl
         'transport'         => 'tcp'

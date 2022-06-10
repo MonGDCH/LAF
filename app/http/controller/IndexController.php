@@ -7,7 +7,7 @@ use Laf\Controller;
 /**
  * 首页控制器
  */
-class Index extends Controller
+class IndexController extends Controller
 {
     /**
      * 首页
@@ -16,6 +16,6 @@ class Index extends Controller
      */
     public function index()
     {
-        return 'Hello LAF';
+        return 'Hello LAF!';
     }
 }

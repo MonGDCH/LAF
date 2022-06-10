@@ -11,13 +11,13 @@ use PhpOffice\PhpSpreadsheet\Writer\Html;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 /**
- * 简单的Excel导出工具类
+ * 简单的Excel导出服务
  * 
  * @require phpoffice/phpspreadsheet
  * @author Mon <985558837@qq.com>
  * @version 1.0.0
  */
-class Exceler
+class ExcelService
 {
     use Instance;
 
@@ -26,7 +26,7 @@ class Exceler
      *
      * @var array
      */
-    protected $cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'];
+    protected $cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
     /**
      * 导出Excel
@@ -35,7 +35,7 @@ class Exceler
      * @param array $header     表格头部
      * @param string $filename  文件名
      * @param string $title     标题
-     * @return bool
+     * @return boolean
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      * 
@@ -166,7 +166,7 @@ class Exceler
                     // 解析字段
                     $realData = $this->formatting($header[$key], trim($this->formattingField($row, $value[1])), $row);
                     // 写入excel
-                    $sheet->setCellValue(Coordinate::stringFromColumnIndex($span) . $column, $realData)->getStyle(Coordinate::stringFromColumnIndex($span) . $column)->applyFromArray($styleArray);
+                    $sheet->setCellValue(Coordinate::stringFromColumnIndex($span) . $column, $realData)->getStyle(Coordinate::stringFromColumnIndex($span) . $column)->applyFromArray($styleArray)->getAlignment()->setWrapText(true);
                     $hk += 1;
                     $span++;
                 }

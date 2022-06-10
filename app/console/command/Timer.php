@@ -2,6 +2,8 @@
 
 namespace app\console\command;
 
+use Laf\Log;
+use mon\env\Config;
 use Workerman\Worker;
 use mon\console\Input;
 use mon\console\Output;
@@ -33,10 +35,16 @@ class Timer extends Command
      */
     public function execute($in, $out)
     {
+        // 定义worker日志名称
+        $workerLog = Config::instance()->get('app.log.logPath');
+        Worker::$logFile = $workerLog ? ($workerLog . '/workerman.log') : '';
         $worker = new Worker();
-        $worker->count = 1;
         $worker->name = 'MonTimer';
+        $worker->count = 1;
         $worker->onWorkerStart = function ($task) {
+            // 命令控制台启动脚本，Mysql链接断开自动重连
+            Log::instance()->register(['logPath' => RUNTIME_PATH . '/log/timer']);
+            Log::instance()->info('Timer service start')->save();
             // 启动定时器
             $id = null;
             $id = WorkermanTimer::add($this->interval, [$this, 'handle'], [&$id]);
