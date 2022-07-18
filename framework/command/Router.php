@@ -3,6 +3,7 @@
 namespace Laf\command;
 
 use FApi\Route;
+use mon\util\File;
 use mon\console\Input;
 use mon\console\Output;
 use mon\console\Command;
@@ -12,7 +13,7 @@ use FastRoute\Dispatcher;
  * 路由相关指令
  *
  * @author Mon <98555883@qq.com>
- * @version v1.0.0
+ * @version 1.0.0
  */
 class Router extends Command
 {
@@ -153,8 +154,15 @@ class Router extends Command
      */
     protected function cache($in, $out)
     {
-        $cache = Route::instance()->cache(ROUTE_CACHE);
+        // 获取路由信息
+        $cache = Route::instance()->cache();
         if (!$cache) {
+            return $out->block('get route info error!', 'ERROR');
+        }
+        // 生成路由文件
+        $content = '<?php ' . PHP_EOL . 'return ' . $cache . ';';
+        $save = File::instance()->createFile($content, ROUTE_CACHE, false);
+        if (!$save) {
             return $out->block('build route cache error!', 'ERROR');
         }
 

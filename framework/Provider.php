@@ -2,8 +2,6 @@
 
 namespace Laf;
 
-use Exception;
-
 /**
  * 服务提供抽象类
  * 

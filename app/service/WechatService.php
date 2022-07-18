@@ -9,7 +9,7 @@ use mon\util\Network;
 use mon\util\Instance;
 
 /**
- * 微信SDK工具类
+ * 微信SDK工具服务
  *
  * @author Mon <985558837@qq.com>
  * @version 2.0.0 支持h5支付
@@ -439,7 +439,7 @@ class WechatService
         $url = $this->api['prepay'];
         $xml = Network::instance()->sendHTTP($url, $post_xml, 'post');
         // 将【统一下单】api返回xml数据转换成数组，全要大写
-        $array = Common::instance()->xml2array($xml);
+        $array = Common::instance()->xmlToArr($xml);
         if ($array['RETURN_CODE'] == 'SUCCESS' && $array['RESULT_CODE'] == 'SUCCESS') {
             // 成功，返回结果集
             return $array;
@@ -482,7 +482,7 @@ class WechatService
         $post_xml .= '<sign>' . $sign . '</sign></xml>';
         $xml = Network::instance()->sendHTTP($this->api['query_order'], $post_xml, 'post');
         // 将【统一下单】api返回xml数据转换成数组，全要大写
-        $array = Common::instance()->xml2array($xml);
+        $array = Common::instance()->xmlToArr($xml);
         if (array_key_exists("RETURN_CODE", (array) $array) && array_key_exists("RESULT_CODE", (array) $array) && $array["RETURN_CODE"] == "SUCCESS" && $array["RESULT_CODE"] == "SUCCESS") {
             return true;
         }

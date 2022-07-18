@@ -43,7 +43,7 @@ class Task extends Command
         // 启动监听
         $channelServer->getWorker()->onWorkerStart = function ($worker) use ($config) {
             // 命令控制台启动脚本，Mysql链接断开自动重连
-            Log::instance()->register(['logPath' => RUNTIME_PATH . '/log/task']);
+            Log::instance()->setConfig(['logPath' => RUNTIME_PATH . '/log/task']);
             Log::instance()->info('task service start')->save();
 
             // 链接通信服务

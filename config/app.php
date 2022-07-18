@@ -21,7 +21,7 @@ return [
 		'logPath'      	=> RUNTIME_PATH . '/log',
 		'rollNum'      	=> 3,
 		'logName'      	=> '',
-		'splitLine'     => '======================================================',
+		'splitLine'     => '=========================================================================',
 	],
 
 	/**
@@ -54,7 +54,7 @@ return [
 	 */
 	'session'	=> [
 		'prefix'	=> '',
-		'expire'	=> '10800',
+		'expire'	=> 10800,
 		'secure'	=> '',
 		'httponly'	=> ''
 	],
@@ -78,13 +78,13 @@ return [
 	 */
 	'jwt'		=> [
 		// 加密key
-		'key'	=> 'lkjghssosklqpworiqlkdshlkjf',
+		'key'	=> 'lkjghssoskl)_wo!iqlkdshlkjf',
 		// 加密算法
 		'alg'	=> 'HS256',
 		// 有效时间
 		'exp'	=> 7200,
 		// 签发单位
-		'iss'	=> 'mon-admin',
+		'iss'	=> 'mon',
 	],
 
 	/**

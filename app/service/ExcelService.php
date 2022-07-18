@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Html;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 /**
- * 简单的Excel导出服务
+ * Excel导出服务
  * 
  * @require phpoffice/phpspreadsheet
  * @author Mon <985558837@qq.com>

@@ -12,7 +12,7 @@ use mon\auth\exception\JwtException;
  * JWT权限控制
  * 
  * @author Mon <985558837@qq.com>
- * @version 1.0.0
+ * @version 1.0.1 优化注解  2022-07-15
  */
 class Jwt
 {
@@ -75,11 +75,12 @@ class Jwt
      * 注册配置信息
      *
      * @param array $config
-     * @return void
+     * @return Jwt
      */
     public function register(array $config)
     {
         $this->config = array_merge($this->config, $config);
+        return $this;
     }
 
     /**
@@ -87,7 +88,7 @@ class Jwt
      *
      * @param int|string $uid   面向的用户ID
      * @param array $ext        扩展的JWT内容
-     * @return mixed
+     * @return string|false
      */
     public function create($uid, array $ext = [])
     {
@@ -107,7 +108,7 @@ class Jwt
      * 验证JWT
      *
      * @param string $jwt   JWT字符串
-     * @return mixed
+     * @return array|false
      */
     public function check($jwt)
     {

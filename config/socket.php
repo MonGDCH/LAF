@@ -41,8 +41,8 @@ return [
         'pingInterval'      => 58,
         // 心跳数据
         'pingData'          => '',
-        // 多少心跳间隔时间内客户端未报通信则断开连接（pingInterval * pingNotLimit = 时间间隔）
-        'pingNotLimit'      => 0,
+        // 多少心跳间隔时间内客户端未报通信则断开连接（pingInterval * pingNotLimit = 时间间隔）,0则表示不需要客服端发送心跳，1则表示必须客户端发送心跳
+        'pingNotLimit'      => 1,
         // 服务注册地址
         'registerAddress'   => '127.0.0.1:1239',
         // 链接协议地址

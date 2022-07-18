@@ -21,9 +21,6 @@ class ApiLogin
      */
     public function handler($val, $app)
     {
-        if (!Tool::instance()->is_wx()) {
-            return Url::instance()->abort(404);
-        }
         $token = Request::instance()->server('HTTP_MON_TOKEN');
         if (!$token) {
             return Url::instance()->abort(403);

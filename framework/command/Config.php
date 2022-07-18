@@ -10,7 +10,7 @@ use mon\env\Config as Env;
  * 配置相关指令
  *
  * @author Mon <98555883@qq.com>
- * @version v1.0.0
+ * @version 1.0.0
  */
 class Config extends Command
 {

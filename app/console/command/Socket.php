@@ -112,7 +112,7 @@ class Socket extends Command
     public static function onWorkerStart($businessWorker)
     {
         // 命令控制台启动脚本，Mysql链接断开自动重连
-        Log::instance()->register(['logPath' => RUNTIME_PATH . '/log/socket']);
+        Log::instance()->setConfig(['logPath' => RUNTIME_PATH . '/log/socket']);
         Log::instance()->info('socket service start')->save();
     }
 

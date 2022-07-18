@@ -11,7 +11,7 @@ use mon\console\Command;
  * 生成指令
  *
  * @author Mon <98555883@qq.com>
- * @version v1.1 优化代码，增加生成文件时间
+ * @version 1.1.0 优化代码，增加生成文件时间
  */
 class Make extends Command
 {

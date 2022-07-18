@@ -6,7 +6,7 @@ use mon\util\Instance;
 use PHPMailer\PHPMailer\PHPMailer;
 
 /**
- * 邮件工具
+ * 邮件推送服务
  * 
  * @require phpmailer/phpmailer
  * @author Mon <985558837@qq.com>

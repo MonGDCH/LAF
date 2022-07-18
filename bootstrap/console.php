@@ -32,12 +32,49 @@ $console = \mon\console\App::instance();
 
 /*
 |--------------------------------------------------------------------------
+| 获取生成指令
+|--------------------------------------------------------------------------
+| 这里注册可执行的指令
+|
+*/
+$sysCommand = [
+    // 优化应用
+    'optimize'  => [
+        'handle'    => Laf\command\Optimize::class,
+        'desc'      => 'optimize application'
+    ],
+    // 启动内置服务器
+    'server'    => [
+        'handle'    => Laf\command\Server::class,
+        'desc'      => 'Built-in HTTP server',
+    ],
+    // 路由指令
+    'router'    => [
+        'handle'    => Laf\command\Router::class,
+        'desc'      => 'Router dependent instruction',
+    ],
+    // 查看配置指令
+    'config'    => [
+        'handle'    => Laf\command\Config::class,
+        'desc'      => 'Check the configuration',
+    ],
+    // 创建文件
+    'make'      => [
+        'handle'    => Laf\command\Make::class,
+        'desc'      => 'Make File Command',
+    ]
+];
+$userCommand = require APP_PATH . '/console/command.php';
+$commands = $sysCommand + $userCommand;
+
+
+/*
+|--------------------------------------------------------------------------
 | 注册指令
 |--------------------------------------------------------------------------
 | 这里注册指令
 |
 */
-$commands = require APP_PATH . '/console/Command.php';
 foreach ($commands as $command => $option) {
     if (is_array($option)) {
         $handle = isset($option['handle']) ? $option['handle'] : null;

@@ -9,14 +9,16 @@ use mon\store\Session as Service;
 /**
  * Session组件封装
  * 
- * @method Service set($key, $value = '', array $option = []) void 设置session
- * @method Service has($name, $prefix = null) boolean 判断是否存在
- * @method Service get($key = '', $default = null, $prefix = null) mixed 获取session
- * @method Service del($key, $prefix = null) void 删除session
- * @method Service clear($prefix = null) void 清空session
+ * @method void set(string $key, mixed $value = '', array $option = [])  设置session
+ * @method boolean has(string $name, string $prefix = null)  判断是否存在
+ * @method mixed get(string $key = '', mixed $default = null, string $prefix = null)  获取session
+ * @method void del(string $key, string $prefix = null)  删除session
+ * @method void clear(string $prefix = null)  清空session
+ * @method string getSessionId()  获取session_id
+ * @method void regenerate($delete = false)  重新生成session_id
  * 
  * @author Mon <095558837@qq.com>
- * @version 1.0.0
+ * @version 1.0.1 优化注解  2022-07-15
  */
 class Session extends Provider
 {

@@ -9,15 +9,15 @@ use mon\store\Cookie as Service;
 /**
  * Cookie组件封装
  * 
- * @method Service set($key, $value = '', array $option = []) void 设置cookie
- * @method Service forever($name, $value = '', array $option = []) void 永久保存
- * @method Service has($name, $prefix = null) boolean 判断是否存在
- * @method Service get($key = '', $default = null, $prefix = null) mixed 获取cookie
- * @method Service del($key, $prefix = null) void 删除cookie
- * @method Service clear($prefix = null) void 清空cookie
+ * @method void set(string $key, mixed $value = '', array $option = [])  设置cookie
+ * @method void forever(string $name, mixed $value = '', array $option = [])  永久保存
+ * @method boolean has(string $name, string $prefix = null)  判断是否存在
+ * @method mixed get(string $key = '', mixed $default = null, string $prefix = null)  获取cookie
+ * @method void del(string $key, string $prefix = null)  删除cookie
+ * @method void clear(string $prefix = null)  清空cookie
  * 
  * @author Mon <985558837@qq.com>
- * @version 1.0.0
+ * @version 1.0.1 优化注解 2022-07-15
  */
 class Cookie extends Provider
 {

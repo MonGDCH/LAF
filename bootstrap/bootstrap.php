@@ -55,32 +55,22 @@ define('RUNTIME_PATH', ROOT_PATH . '/runtime');
 
 /*
 |--------------------------------------------------------------------------
-| 插件目录路径
-|--------------------------------------------------------------------------
-| 这里定义插件目录路径, 插件目录需拥有读写权限
-|
-*/
-define('ADDONS_PATH', ROOT_PATH . '/addons');
-
-
-/*
-|--------------------------------------------------------------------------
-| 静态资源路径
-|--------------------------------------------------------------------------
-| 这里定义静态资源路径, 需拥有读写权限，插件安装时如有资源依赖，会同步文件到对应的路径下
-|
-*/
-define('STATIC_PATH', ROOT_PATH . '/public/static');
-
-
-/*
-|--------------------------------------------------------------------------
 | 定义路由缓存文件路径
 |--------------------------------------------------------------------------
 | 这里定义路由缓存文件路径, 存在路由缓存文件则不重新加载路由定义文件
 |
 */
-define('ROUTE_CACHE', ROOT_PATH . '/storage/cache/router.php');
+define('ROUTE_CACHE', RUNTIME_PATH . '/cache/router.php');
+
+
+/*
+|--------------------------------------------------------------------------
+| 定义配置缓存文件路径
+|--------------------------------------------------------------------------
+| 这里定义配置缓存文件路径, 存在配置缓存文件则不重新加载配置定义文件
+|
+*/
+define('CONFIG_CACHE', RUNTIME_PATH . '/cache/config.php');
 
 
 /*
@@ -120,12 +110,16 @@ $config = \mon\env\Config::instance();
 | 这里注册加载全局配置信息
 |
 */
-$configFiles = [];
-if (is_dir(CONFIG_PATH)) {
-    $configFiles = glob(CONFIG_PATH . '/*.php');
-}
-foreach ($configFiles as $file) {
-    $config->load($file, pathinfo($file, PATHINFO_FILENAME));
+if (PHP_SAPI != 'cli' && PHP_SAPI != 'cli-server' && file_exists(CONFIG_CACHE)) {
+    $config->register(require(CONFIG_CACHE));
+} else {
+    $configFiles = [];
+    if (is_dir(CONFIG_PATH)) {
+        $configFiles = glob(CONFIG_PATH . '/*.php');
+    }
+    foreach ($configFiles as $file) {
+        $config->load($file, pathinfo($file, PATHINFO_FILENAME));
+    }
 }
 
 
@@ -180,11 +174,11 @@ foreach ($config->get('tags.database', []) as $event => $listen) {
 | 注册应用请求路由
 |
 */
-if (file_exists(ROUTE_CACHE)) {
+if (PHP_SAPI != 'cli' && PHP_SAPI != 'cli-server' && file_exists(ROUTE_CACHE)) {
     $app->route->setData(require(ROUTE_CACHE));
 } else {
     $app->route->group([], function ($router) {
-        require_once ROOT_PATH . '/app/http/router.php';
+        require_once APP_PATH . '/http/router.php';
     });
 }
 

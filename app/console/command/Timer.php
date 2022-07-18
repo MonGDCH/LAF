@@ -43,7 +43,7 @@ class Timer extends Command
         $worker->count = 1;
         $worker->onWorkerStart = function ($task) {
             // 命令控制台启动脚本，Mysql链接断开自动重连
-            Log::instance()->register(['logPath' => RUNTIME_PATH . '/log/timer']);
+            Log::instance()->setConfig(['logPath' => RUNTIME_PATH . '/log/timer']);
             Log::instance()->info('Timer service start')->save();
             // 启动定时器
             $id = null;

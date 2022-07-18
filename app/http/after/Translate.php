@@ -99,7 +99,7 @@ class Translate
      * @param boolean $asc  排序方式
      * @return array
      */
-    private function keyLenSort($data = [], $asc = false)
+    protected function keyLenSort($data = [], $asc = false)
     {
         $keys = array_keys($data);
         for ($i = 0; $i < count($keys); $i++) {
